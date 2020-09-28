@@ -3,15 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
+      <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
         <methods>
+          <include name="createTicket"/>
           <include name="initialBrowserDriver"/>
-          <include name="InvalidUsernameInvalidPassword"/>
-          <include name="ValidUsernameInvalidPassword"/>
-          <include name="InvalidUsernameValidPassword"/>
-          <include name="ValidUsernameEmptyPassword"/>
         </methods>
-      </class> <!-- testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests -->
+      </class> <!-- testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -111,9 +111,9 @@ public class PayrollHelpDesk_LoginPageTests {
 	@Test(priority = 4)
 	public void EmptyUsernameEmptyPassword() {
 		
-		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);		
-		objLoginPage.invalidLogin("", "");
-		
+		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);				
+		objLoginPage.validateEmptyUsernameEmptyPassword("", "");
+
 		Reporter.log("NEGATIVE TESTCASE-1	:Login Page: Empty Username & Password!", true);
 		try { 
 			Thread.sleep(2000); 
@@ -121,7 +121,6 @@ public class PayrollHelpDesk_LoginPageTests {
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
 		} 
-
 		//driver.close();
 	}
 	
@@ -129,7 +128,8 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void EmptyUsernameValidPassword() {
 		
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);		
-		objLoginPage.invalidLogin("", "12345678");
+		//objLoginPage.invalidLogin("", "12345678");
+		objLoginPage.validateEmptyUsernameValidPassword("", "12345678");
 		
 		Reporter.log("NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password", true);
 		try { 
@@ -145,7 +145,8 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void ValidUsernameEmptyPassword() {
 		
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.invalidLogin("testAdmin", "");
+		//objLoginPage.invalidLogin("testAdmin", "");
+		objLoginPage.verifyValidUsernameEmptyPassword("testAdmin", "");
 		
 		Reporter.log("NEGATIVE TESTCASE-3	:Login Page: Valid Username & Empty Password", true);
 		try { 
@@ -162,7 +163,8 @@ public class PayrollHelpDesk_LoginPageTests {
 	@Test(priority = 7)
 	public void InvalidUsernameValidPassword() {
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.invalidLogin("!@$~&", "12345678");
+		//objLoginPage.invalidLogin("!@$~&", "12345678");
+		objLoginPage.verifyInvalidUsernameValidPassword("!@$~&", "12345678");
 		
 		Reporter.log("NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password", true);
 		try { 
@@ -179,7 +181,8 @@ public class PayrollHelpDesk_LoginPageTests {
 	@Test(priority = 8)
 	public void ValidUsernameInvalidPassword() {
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.invalidLogin("testAdmin", "!@$~&");
+		//objLoginPage.invalidLogin("testAdmin", "!@$~&");
+		objLoginPage.verifyValidUsernameInvalidPassword("testAdmin", "!@$~&");
 		
 		Reporter.log("NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password", true);
 		try { 
@@ -195,7 +198,8 @@ public class PayrollHelpDesk_LoginPageTests {
 	@Test(priority = 9)
 	public void InvalidUsernameInvalidPassword() {
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.invalidLogin("!@$~&", "!@$~&");
+		//objLoginPage.invalidLogin("!@$~&", "!@$~&");
+		objLoginPage.verifyInvalidUsernameInvalidPassword("!@$~&", "!@$~&");
 		
 		Reporter.log("NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password", true);
 		try { 
