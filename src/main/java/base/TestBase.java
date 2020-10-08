@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import utility.Constants;
+
 public class TestBase {
 
 	private static WebDriver driver;
@@ -16,27 +18,28 @@ public class TestBase {
 
 	public static WebDriver testBase() {
 		try {
-			FileInputStream fis = new FileInputStream("D:\\HARDIK\\Work\\Automation\\LuxshPayrollHelpDesk\\config.properties");
+			FileInputStream fis = new FileInputStream(Constants.PROJECTPATH + "\\config.properties");
 			ps = new Properties();
 			ps.load(fis);
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 		String browsername = ps.getProperty("browser");
 		System.out.println(browsername);
 		WebDriver driver = null;
 		if (browsername.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver","D:\\HARDIK\\Work\\Automation\\LuxshPayrollHelpDesk\\drivers\\IEDriverServerWin32.exe");
+			System.setProperty("webdriver.gecko.driver", Constants.PROJECTPATH + "\\drivers\\IEDriverServerWin32.exe");
 			driver = new FirefoxDriver();
 		}
 
 		else if (browsername.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver","D:\\HARDIK\\Work\\Automation\\LuxshPayrollHelpDesk\\drivers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver",Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 		}
-		System.out.println(ps.getProperty("url"));
-		driver.get(ps.getProperty("url"));
+		//System.out.println(ps.getProperty(Constants.BASEURL));
+		//driver.get(ps.getProperty(Constants.BASEURL));
+		System.out.println(Constants.BASEURL);
+		driver.get(Constants.BASEURL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return driver;

@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.TestBase;
+import utility.Constants;
 import PayrollHelpDesk.test.Payroll_HelpDesk_page_LoginLocator;
 
 public class PayrollHelpDesk_LoginPageTests {
@@ -26,7 +27,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void verifyAdminLogin() {
 
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);		
-		objLoginPage.validateLogin("testAdmin", "12345678");
+		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 		Reporter.log("POSITIVE TESTCASE-1	:Login Page: verify Admin User type", true);
 		try { 
@@ -42,7 +43,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void verifyEmployeeLogin() {
 
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);		
-		objLoginPage.validateLogin("testEmp", "12345678");
+		objLoginPage.validateLogin(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
 
 		Reporter.log("POSITIVE TESTCASE-2	:Login Page: verify Employee User type", true);
 		try { 
@@ -59,7 +60,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void verifyUserLogin() {
 
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);		
-		objLoginPage.validateLogin("testUser", "12345678");
+		objLoginPage.validateLogin(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
 
 		Reporter.log("POSITIVE TESTCASE-3	:Login Page: verify Normal User type", true);
 		try { 
@@ -112,7 +113,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void EmptyUsernameEmptyPassword() {
 		
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);				
-		objLoginPage.validateEmptyUsernameEmptyPassword("", "");
+		objLoginPage.validateEmptyUsernameEmptyPassword(Constants.EMPTYDATA, Constants.EMPTYDATA);
 
 		Reporter.log("NEGATIVE TESTCASE-1	:Login Page: Empty Username & Password!", true);
 		try { 
@@ -129,7 +130,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);		
 		//objLoginPage.invalidLogin("", "12345678");
-		objLoginPage.validateEmptyUsernameValidPassword("", "12345678");
+		objLoginPage.validateEmptyUsernameValidPassword(Constants.EMPTYDATA, Constants.PASSWORD);
 		
 		Reporter.log("NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password", true);
 		try { 
@@ -146,7 +147,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 		//objLoginPage.invalidLogin("testAdmin", "");
-		objLoginPage.verifyValidUsernameEmptyPassword("testAdmin", "");
+		objLoginPage.verifyValidUsernameEmptyPassword(Constants.USERNAME, Constants.EMPTYDATA);
 		
 		Reporter.log("NEGATIVE TESTCASE-3	:Login Page: Valid Username & Empty Password", true);
 		try { 
@@ -164,7 +165,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void InvalidUsernameValidPassword() {
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 		//objLoginPage.invalidLogin("!@$~&", "12345678");
-		objLoginPage.verifyInvalidUsernameValidPassword("!@$~&", "12345678");
+		objLoginPage.verifyInvalidUsernameValidPassword(Constants.INVALIDUSERNAME, Constants.PASSWORD);
 		
 		Reporter.log("NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password", true);
 		try { 
@@ -182,7 +183,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void ValidUsernameInvalidPassword() {
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 		//objLoginPage.invalidLogin("testAdmin", "!@$~&");
-		objLoginPage.verifyValidUsernameInvalidPassword("testAdmin", "!@$~&");
+		objLoginPage.verifyValidUsernameInvalidPassword(Constants.USERNAME, Constants.INVALIDPASSWORD);
 		
 		Reporter.log("NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password", true);
 		try { 
@@ -199,7 +200,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void InvalidUsernameInvalidPassword() {
 		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 		//objLoginPage.invalidLogin("!@$~&", "!@$~&");
-		objLoginPage.verifyInvalidUsernameInvalidPassword("!@$~&", "!@$~&");
+		objLoginPage.verifyInvalidUsernameInvalidPassword(Constants.INVALIDUSERNAME, Constants.INVALIDPASSWORD);
 		
 		Reporter.log("NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password", true);
 		try { 

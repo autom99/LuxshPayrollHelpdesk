@@ -5,6 +5,7 @@
     <classes>
       <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
         <methods>
+          <include name="screenShot"/>
           <include name="createTicket"/>
           <include name="initialBrowserDriver"/>
         </methods>
