@@ -1,4 +1,4 @@
-package PayrollHelpDesk.test;
+package pages;
 
 /**
  * Hello world!

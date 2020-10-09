@@ -1,4 +1,4 @@
-package PayrollHelpDesk.test;
+package pages;
 
 import java.awt.AWTException;
 import java.io.File;
@@ -11,7 +11,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
+import bsh.Console;
 import utility.Constants;
 
 public class Payroll_HelpDesk_page_CreateTicketLocator {
@@ -132,6 +134,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 		file.click();
 		Runtime.getRuntime().exec(Constants.PROJECTPATH  +  File.separator + "helper" + File.separator +"fileUpload.exe");
 		System.out.println(Constants.PROJECTPATH  +  File.separator + "helper" + File.separator +"fileUpload.exe");		
+		Reporter.log(Constants.PROJECTPATH  +  File.separator + "helper" + File.separator +"fileUpload.exe");
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
@@ -155,8 +158,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 		 * robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
 		 * robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(100); } catch (Exception e)
 		 * { e.printStackTrace(); }
-		 */
-		
+		 */		
 				
 		buttonSubmit.click();	
 
