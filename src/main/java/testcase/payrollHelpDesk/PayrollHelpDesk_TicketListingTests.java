@@ -1,13 +1,12 @@
 package testcase.payrollHelpDesk;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_LoginLocator;
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_TicketListingLocator;
 import base.TestBase;
+import pages.Payroll_HelpDesk_page_LoginLocator;
+import pages.Payroll_HelpDesk_page_TicketListingLocator;
 import utility.Constants;
 
 public class PayrollHelpDesk_TicketListingTests {
@@ -23,31 +22,55 @@ public class PayrollHelpDesk_TicketListingTests {
 	}
 	
 	/**
-	 * TESTCASE-1: searchByStatusTicketListing
+	 * TESTCASE-1: searchByAllStatusTicketListing
 	 * @param searchText
 	 */
 	@Test(priority = 1)
-	public void searchByStatusTicketListing() {
-		
+	public void searchByAllStatusTicketListing() {
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.PASSWORD);
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		String exp_URL =  Constants.BASEURL + "/Home/Index";
-		String act_URL = driver.getCurrentUrl();
-		Assert.assertEquals(act_URL, exp_URL);
-
-		//Reporter.log("Successfully login by Admin User", true);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 		
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.searchByStatusTicketListing("All");
+	}
+
+	/*
+	@Test(priority = 2)
+	public void searchByOpenStatusTicketListing() {				
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.searchByStatusTicketListing("Open");
+	}
+	
+	@Test(priority = 3)
+	public void searchByClosedStatusTicketListing() {
+		
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.searchByStatusTicketListing("Closed");
+	}
+	
+	@Test(priority = 4)
+	public void searchByPendingStatusTicketListing() {
 		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
 		objTicketListingPage.searchByStatusTicketListing("Pending");
 	}
+	
+	@Test(priority = 5)
+	public void searchByOnHoldStatusTicketListing() {
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.searchByStatusTicketListing("On-Hold");
+	}
+	
+	@Test(priority = 6)
+	public void searchByReOpenStatusTicketListing() {
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.searchByStatusTicketListing("Re-Open");
+	}
+	
+	@Test(priority = 7)
+	public void searchByAssignToMeStatusTicketListing() {
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.searchByStatusTicketListing("Assign to me");
+	}
+	*/
+	
 }

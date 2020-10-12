@@ -1,13 +1,12 @@
 package testcase.payrollHelpDesk;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_LoginLocator;
+
 import base.TestBase;
+import pages.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
+import pages.Payroll_HelpDesk_page_LoginLocator;
 import utility.Constants;
 
 public class PayrollHelpDesk_AdminSettings_GroupPageTests {
@@ -27,22 +26,7 @@ public class PayrollHelpDesk_AdminSettings_GroupPageTests {
 	public void createGroup() {
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
 		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		String exp_URL =  Constants.BASEURL + "Home/Index";
-		String act_URL = driver.getCurrentUrl();
-		Assert.assertEquals(act_URL, exp_URL);
-
-		Reporter.log("Successfully login by ADMIN User", true);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
+		
 		objGroupPage = new Payroll_HelpDesk_page_AdminSetting_GroupLocator(driver);
 		objGroupPage.createGroup("test group code" + Constants.date.getTime(), "test group name" + Constants.date.getTime(), "test note created on " + Constants.date.getTime());				
 	}

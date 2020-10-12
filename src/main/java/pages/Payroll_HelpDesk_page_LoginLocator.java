@@ -20,7 +20,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	String homeUrl = Constants.BASEURL + "Home/Index";
 
 	public Payroll_HelpDesk_page_LoginLocator(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
@@ -167,7 +166,7 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	}
 
 	/**
-	 *NEGATIVE TESTCASE-1 :Login Page-Empty Username & Password! 
+	 *NEGATIVE TESTCASE-1 :Login Page-Empty username & Password! 
 	 * 
 	 * @param username
 	 * @param password
@@ -349,6 +348,15 @@ public class Payroll_HelpDesk_page_LoginLocator {
 
 		try {
 			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		String exp_URL =  Constants.BASEURL + "Home/Index";
+		String act_URL = driver.getCurrentUrl();
+		Assert.assertEquals(act_URL, exp_URL);
+		try {
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

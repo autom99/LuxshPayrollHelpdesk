@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import utility.Constants;
@@ -14,6 +15,10 @@ import utility.Constants;
 public class TestBase {
 
 	private static WebDriver driver;
+
+	ChromeOptions options = new ChromeOptions();
+	//options.setExperimentalOption("useAutomationExtension", false);
+
 	static Properties ps;
 
 	public static WebDriver testBase() {

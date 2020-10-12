@@ -1,14 +1,12 @@
 package testcase.payrollHelpDesk;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_DashboardLocator;
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_LoginLocator;
 import base.TestBase;
+import pages.Payroll_HelpDesk_page_DashboardLocator;
+import pages.Payroll_HelpDesk_page_LoginLocator;
 import utility.Constants;
 
 public class PayrollHelpDesk_DashboardPageTests {
@@ -31,21 +29,6 @@ public class PayrollHelpDesk_DashboardPageTests {
 	public void dashboardNavigationAllFunctionality() {
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
 		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		String exp_URL =  Constants.BASEURL + "Home/Index";
-		String act_URL = driver.getCurrentUrl();
-		Assert.assertEquals(act_URL, exp_URL);
-
-		Reporter.log("Welcome to the PAYROLL HELPDESK SYSTEM..!", true);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		
 		objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
 		objDashboardPage.dashboardOperations();	

@@ -7,11 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utility.CheckBox;
+
 public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 
-	WebDriver driver;
-	WebDriverWait wait;
+	public WebDriver driver;
+	public static WebDriverWait wait;
 
+	public static CheckBox objCheckBox = new CheckBox();
+	
 	public Payroll_HelpDesk_page_AdminSetting_GroupLocator(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver = driver;
@@ -77,7 +81,10 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 	@FindBy(xpath = "//div[@id='editCustomGroup']//button[@class='btn light btn-outline btn-danger'][contains(text(),'Cancel')]")
 	private WebElement edit_buttonCancel;
 	//---------------------------------------------------------------------------------------------------------------------
-	
+	@FindBy(xpath="//a[@href ='/Home/Index']")
+	private WebElement logo_img;
+	//---------------------------------------------------------------------------------------------------------------------
+
 	/**TESTCASE METHOD: CREATE GROUP
 	 * 
 	 * @param GroupCode
@@ -88,14 +95,14 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 
 		link_AdminSettings.click();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
 		link_Group.click();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -117,26 +124,20 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 
 		Group_Name.clear();
 		Group_Name.sendKeys(GroupName);
+
+		Notes.clear();
+		Notes.sendKeys(Note);		
+
 		try {
-			Thread.sleep(2000);
+			objCheckBox.Select_The_Checkbox(Active_checkbox);
+			Thread.sleep(1000);
+			objCheckBox.DeSelect_The_Checkbox(Active_checkbox);
+			Thread.sleep(1000);
+			objCheckBox.Select_The_Checkbox(Active_checkbox);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
-		Notes.clear();
-		Notes.sendKeys(Note);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-
-		//		Active_checkbox.click();
-		//		try {
-		//			Thread.sleep(2000);
-		//		} catch (InterruptedException e) {
-		//			e.printStackTrace();
-		//		}		
 
 		buttonSave.click();
 		try {
@@ -180,7 +181,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 		
 		editIconButton.click();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -188,7 +189,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 		edit_Group_Code.clear();
 		edit_Group_Code.sendKeys(UpdatedGroupCode);
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -196,7 +197,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 		edit_Group_Name.clear();
 		edit_Group_Name.sendKeys(UpdatedGroupName);
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -204,7 +205,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 		edit_Notes.clear();
 		edit_Notes.sendKeys(UpdatedNote);
 		try {
-			Thread.sleep(4000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -214,6 +215,23 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}		
+		}	
+		
+		searchBar.clear();
+		searchBar.sendKeys(UpdatedGroupCode);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}	
+		
+		//Navigate to the Dashboard Page
+		logo_img.click();
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+				
 	}
 }

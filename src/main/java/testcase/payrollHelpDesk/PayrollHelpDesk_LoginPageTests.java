@@ -7,8 +7,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.TestBase;
+import pages.Payroll_HelpDesk_page_LoginLocator;
 import utility.Constants;
-import PayrollHelpDesk.test.Payroll_HelpDesk_page_LoginLocator;
 
 public class PayrollHelpDesk_LoginPageTests {
 
