@@ -64,61 +64,38 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void validateLogin(String username, String password) {
 
 		try {
+			emp_code.clear();
+			emp_code.sendKeys(username);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		emp_code.clear();
-		emp_code.sendKeys(username);
 
-		try {
+			Password.clear();
+			Password.sendKeys(password);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Password.clear();
-		Password.sendKeys(password);
 
-		try {
+			RememberMe.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		RememberMe.click();
 
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		buttonLogin.click();
-
-		//Reporter.log("====Login Page Test====", true);
-
-		try {
+			buttonLogin.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		usernameTitle.click();
 
-		try {
+			usernameTitle.click();
 			Thread.sleep(2000);
+
+			if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
+				// System.out.println("Clicking on buttonLogout with using java script click");
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
+			} else {
+				System.out.println("Unable to click on element");
+			}
+
+			/*
+			 * JavascriptExecutor executor = (JavascriptExecutor)driver;
+			 * executor.executeScript("arguments[0].click();", buttonLogout);
+			 * buttonLogout.click();
+			 */
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
-			// System.out.println("Clicking on buttonLogout with using java script click");
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
-		} else {
-			System.out.println("Unable to click on element");
-		}
-
-		/*
-		 * JavascriptExecutor executor = (JavascriptExecutor)driver;
-		 * executor.executeScript("arguments[0].click();", buttonLogout);
-		 * buttonLogout.click();
-		 */
 	}
 
 	/**
@@ -129,36 +106,18 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	 */
 	public void invalidLogin(String username, String password) {
 		try {
+			emp_code.clear();
+			emp_code.sendKeys(username);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		emp_code.clear();
-		emp_code.sendKeys(username);
 
-		try {
+			Password.clear();
+			Password.sendKeys(password);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Password.clear();
-		Password.sendKeys(password);
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		RememberMe.click();
-
-		try {
+			RememberMe.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		buttonLogin.click();
 
-		try {
+			buttonLogin.click();
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -174,7 +133,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void validateEmptyUsernameEmptyPassword(String username, String password) {
 
 		String expectedUrl = driver.getCurrentUrl();
-
 		invalidLogin(username, password);
 
 		if((emp_code_error.isDisplayed() && emp_code_error.getText() == "Please enter username!") && 
@@ -199,7 +157,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void validateEmptyUsernameValidPassword(String username, String password) {
 
 		String expectedUrl = driver.getCurrentUrl();
-
 		invalidLogin(username, password);
 
 		if(emp_code_error.getText() == "Please enter username!" &&
@@ -223,7 +180,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void verifyValidUsernameEmptyPassword(String username, String password){
 
 		String expectedUrl = driver.getCurrentUrl();
-
 		invalidLogin(username, password);
 
 		if((erroMessage.isDisplayed()) && (Password_error.getText() == "Please enter password !")) {
@@ -246,7 +202,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void verifyInvalidUsernameValidPassword(String username, String password) {
 
 		String expectedUrl = driver.getCurrentUrl();
-
 		invalidLogin(username, password);
 
 		//		if(emp_code_error.isDisplayed() && (emp_code_error.getText() == "Please enter username!")) { 
@@ -269,7 +224,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void verifyValidUsernameInvalidPassword(String username, String password) {
 
 		String expectedUrl = driver.getCurrentUrl();
-
 		invalidLogin(username, password);
 
 		//if((erroMessage.isDisplayed()) && (Password_error.getText() == "Please enter password !")) { 
@@ -292,7 +246,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void verifyInvalidUsernameInvalidPassword(String username, String password) {
 
 		String expectedUrl = driver.getCurrentUrl();
-
 		invalidLogin(username, password);
 
 		//		if(erroMessage.isDisplayed() && emp_code_error.getText()=="Please enter username!" &&
@@ -317,52 +270,28 @@ public class Payroll_HelpDesk_page_LoginLocator {
 	public void verifyAdminLogin(String username, String password) {
 
 		try {
+			emp_code.clear();
+			emp_code.sendKeys(username);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		emp_code.clear();
-		emp_code.sendKeys(username);
 
-		try {
+			Password.clear();
+			Password.sendKeys(password);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Password.clear();
-		Password.sendKeys(password);
 
-		try {
+			RememberMe.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		RememberMe.click();
 
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		buttonLogin.click();
-
-		try {
+			buttonLogin.click();
 			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		String exp_URL =  Constants.BASEURL + "Home/Index";
-		String act_URL = driver.getCurrentUrl();
-		Assert.assertEquals(act_URL, exp_URL);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Reporter.log("SUCCESSFULLY login by Admin User", true);
-	}
 
+			String exp_URL =  Constants.BASEURL + "Home/Index";
+			String act_URL = driver.getCurrentUrl();
+			Assert.assertEquals(act_URL, exp_URL);
+			Reporter.log("SUCCESSFULLY login by Admin User", true);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

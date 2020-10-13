@@ -86,122 +86,82 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 	 * @param strDescription
 	 */
 	public void createticket(String strSubject,String strCategory,String strPriority,String strDescription){
-		link_Ticket.click();
 		try {
+			link_Ticket.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		createTicket.click();
-		try {
+			createTicket.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		subject.click();
-		Select selectSubject = new Select(subject);
-		selectSubject.selectByVisibleText(strSubject); 
-		try {
+			subject.click();
+			Select selectSubject = new Select(subject);
+			selectSubject.selectByVisibleText(strSubject);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		category.click();
-		Select selectCategory = new Select(category);
-		selectCategory.selectByVisibleText(strCategory); 
-		try {
+			category.click();
+			Select selectCategory = new Select(category);
+			selectCategory.selectByVisibleText(strCategory);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Priority.click();
-		Select selectPriority = new Select(Priority);
-		selectPriority.selectByVisibleText(strPriority); 
-		try {
+			Priority.click();
+			Select selectPriority = new Select(Priority);
+			selectPriority.selectByVisibleText(strPriority);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Description.clear();
-		Description.sendKeys(strDescription);
-		try {
+			Description.clear();
+			Description.sendKeys(strDescription);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Actions action = new Actions(driver);
-		action.moveToElement(file).click().build().perform();
-		
-		//-----------ROBOT CLASS LOGIC-----------		  
-		StringSelection selection = new StringSelection(Constants.FILEUPLOADPATH);		
-		//Constants.PROJECTPATH  +  File.separator + "helper" + File.separator + "testingPurpose" + File.separator + "Test PNG-1.png"
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(selection, selection);
-
-		try { 
-			Robot robot = new Robot(); robot.delay(200);
-			robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_ENTER); robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_V); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_V); robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_TAB); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_TAB); robot.keyPress(KeyEvent.VK_TAB);
-			robot.delay(100); robot.keyRelease(KeyEvent.VK_TAB);
-			robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(100); 
-		} catch (Exception e){
-			e.printStackTrace(); 
-		}
-
-		buttonSubmit.click();	
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
-		String act_URL = driver.getCurrentUrl();
-		Assert.assertEquals(act_URL, exp_URL);
-		try {
+			Actions action = new Actions(driver);
+			action.moveToElement(file).click().build().perform();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Reporter.log("SUCCESSFULLY Created Ticket.!", true);
 
-		NumberOfPages.click();
-		Select selectNumberOfPages = new Select(NumberOfPages);
-		selectNumberOfPages.selectByVisibleText("100");
-		try {
+			//-----------ROBOT CLASS LOGIC-----------
+			StringSelection selection = new StringSelection(Constants.FILEUPLOADPATH);
+			//Constants.PROJECTPATH  +  File.separator + "helper" + File.separator + "testingPurpose" + File.separator + "Test PNG-1.png"
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			clipboard.setContents(selection, selection);
+
+			try {
+				Robot robot = new Robot(); robot.delay(200);
+				robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_ENTER); robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_V); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_V); robot.keyRelease(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_TAB); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_TAB); robot.keyPress(KeyEvent.VK_TAB);
+				robot.delay(100); robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(100);
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+
+			buttonSubmit.click();
+			Thread.sleep(3000);
+
+			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
+			String act_URL = driver.getCurrentUrl();
+			Assert.assertEquals(act_URL, exp_URL);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-		
-		PageNumber.click();
-		try {
+			Reporter.log("SUCCESSFULLY Created Ticket.!", true);
+
+			NumberOfPages.click();
+			Select selectNumberOfPages = new Select(NumberOfPages);
+			selectNumberOfPages.selectByVisibleText("100");
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}	
-		
-		searchBar.clear();
-		searchBar.sendKeys(Constants.strDate);
-		System.out.println("TODAY'S DATE:	"+ Constants.strDate);
-		try {
+
+			PageNumber.click();
+			Thread.sleep(2000);
+
+			searchBar.clear();
+			searchBar.sendKeys(Constants.strDate);
+			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
-
 
 	/**
 	 * TESTCASE METOD: MODIFY or EDIT Ticket
@@ -213,102 +173,63 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 	public void ediTicket(String UpdatedstrSubject,String UpdatedstrCategory,String UpdatedstrPriority,String UpdatedstrDescription){
 
 		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		editIconButton.click();
-		try {
+			editIconButton.click();
 			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		subject.click();
-		Select selectSubject = new Select(subject);
-		selectSubject.selectByVisibleText(UpdatedstrSubject); 
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		category.click();
-		Select selectCategory = new Select(category);
-		selectCategory.selectByVisibleText(UpdatedstrCategory); 
-		try {
+			subject.click();
+			Select selectSubject = new Select(subject);
+			selectSubject.selectByVisibleText(UpdatedstrSubject);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Priority.click();
-		Select selectPriority = new Select(Priority);
-		selectPriority.selectByVisibleText(UpdatedstrPriority); 
-		try {
+			category.click();
+			Select selectCategory = new Select(category);
+			selectCategory.selectByVisibleText(UpdatedstrCategory);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Description.clear();
-		Description.sendKeys(UpdatedstrDescription);
-		try {
+			Priority.click();
+			Select selectPriority = new Select(Priority);
+			selectPriority.selectByVisibleText(UpdatedstrPriority);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Actions action = new Actions(driver);
-		action.moveToElement(file).click().build().perform();
-		try {
+			Description.clear();
+			Description.sendKeys(UpdatedstrDescription);
+			Thread.sleep(1000);
+
+			Actions action = new Actions(driver);
+			action.moveToElement(file).click().build().perform();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		//-----------ROBOT CLASS LOGIC-----------		  
-		StringSelection selection = new StringSelection(Constants.UPDATEDFILEUPLOADPATH);		
-		//Constants.PROJECTPATH  +  File.separator + "helper" + File.separator + "testingPurpose" + File.separator + "Test PNG-1.png"
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(selection, selection);
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		try { 
-			Robot robot = new Robot(); robot.delay(200);
-			robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_ENTER); robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_V); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_V); robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_TAB); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_TAB); robot.keyPress(KeyEvent.VK_TAB);
-			robot.delay(100); robot.keyRelease(KeyEvent.VK_TAB);
-			robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
-			robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(100); 
-		} catch (Exception e){
-			e.printStackTrace(); 
-		}
+			//-----------ROBOT CLASS LOGIC-----------
+			StringSelection selection = new StringSelection(Constants.UPDATEDFILEUPLOADPATH);
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			clipboard.setContents(selection, selection);
+			Thread.sleep(2000);
 
-		editSaveButton.click();
-		try {
+			try {
+				Robot robot = new Robot(); robot.delay(200);
+				robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_ENTER); robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_V); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_V); robot.keyRelease(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_TAB); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_TAB); robot.keyPress(KeyEvent.VK_TAB);
+				robot.delay(100); robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER); robot.delay(100);
+				robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(100);
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+
+			editSaveButton.click();
 			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
-		String act_URL = driver.getCurrentUrl();
-		Assert.assertEquals(act_URL, exp_URL);
-		try {
+			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
+			String act_URL = driver.getCurrentUrl();
+			Assert.assertEquals(act_URL, exp_URL);
 			Thread.sleep(2000);
+			System.out.println("SUCCESSFULLY Updated Ticket.!");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("SUCCESSFULLY Updated Ticket.!");
 	}
 }

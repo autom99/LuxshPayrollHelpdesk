@@ -101,115 +101,66 @@ public class Payroll_HelpDesk_page_UserLocator {
 	 * @param PasswordEncText
 	 */
 	public void createUser(String GroupName,String EmpCode,String EmpName,String UserType,String EmailID,String PasswordEncText) {
-		link_User.click();
+
 		try {
+			link_User.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		buttonAddUser.click();
-		try {
+
+			buttonAddUser.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		SelectGroup.click();
-		try {
+
+			SelectGroup.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Select selectGroup = new Select(SelectGroup);
-		selectGroup.selectByVisibleText(GroupName);		
-		try {
+
+			Select selectGroup = new Select(SelectGroup);
+			selectGroup.selectByVisibleText(GroupName);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		EmployeeCode.clear();
-		EmployeeCode.sendKeys(EmpCode);
-		try {
+
+			EmployeeCode.clear();
+			EmployeeCode.sendKeys(EmpCode);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		EmployeeName.clear();
-		EmployeeName.sendKeys(EmpName);
-		try {
+
+			EmployeeName.clear();
+			EmployeeName.sendKeys(EmpName);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		SelectUserType.click();
-		try {
+
+			SelectUserType.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Select selectUserType = new Select(SelectUserType);
-		selectUserType.selectByVisibleText(UserType);		
-		try {
+
+			Select selectUserType = new Select(SelectUserType);
+			selectUserType.selectByVisibleText(UserType);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		Email.clear();
-		Email.sendKeys(EmailID);
-		try {
+
+			Email.clear();
+			Email.sendKeys(EmailID);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		Password.clear();
-		Password.sendKeys(PasswordEncText);
-		try {
+
+			Password.clear();
+			Password.sendKeys(PasswordEncText);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-				
-		/*
-		 * Active_checkbox.click(); try { Thread.sleep(1000); } catch
-		 * (InterruptedException e) { e.printStackTrace(); }
-		 */
-		
-		buttonSave.click();
-		try {
+
+			/*
+			 * Active_checkbox.click(); try { Thread.sleep(1000); } catch
+			 * (InterruptedException e) { e.printStackTrace(); }
+			 */
+			buttonSave.click();
 			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-		
-		NumberOfPages.click();
-		Select selectNumberOfPages = new Select(NumberOfPages);
-		selectNumberOfPages.selectByVisibleText("100");
-		try {
+
+			NumberOfPages.click();
+			Select selectNumberOfPages = new Select(NumberOfPages);
+			selectNumberOfPages.selectByVisibleText("100");
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-		
-		PageNumber.click();
-		try {
+
+			PageNumber.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-		
-		searchBar.clear();
-		searchBar.sendKeys(EmpCode);
-		try {
+
+			searchBar.clear();
+			searchBar.sendKeys(EmpCode);
 			Thread.sleep(4000);
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 	
 	/**
@@ -221,69 +172,44 @@ public class Payroll_HelpDesk_page_UserLocator {
 	 * @param UpdatedEmailID
 	 */
 	public void editUser(String UpdatedGroupName,String UpdatedEmpCode,String UpdatedEmpName,String UpdatedUserType,String UpdatedEmailID) {
-		
-		editIconButton.click();
+
 		try {
+			editIconButton.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}	
-		
-		edit_SelectGroup.click();
-		try {
+
+			edit_SelectGroup.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Select selectGroup = new Select(edit_SelectGroup);
-		selectGroup.selectByVisibleText(UpdatedGroupName);		
-		try {
+
+			Select selectGroup = new Select(edit_SelectGroup);
+			selectGroup.selectByVisibleText(UpdatedGroupName);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_EmployeeCode.clear();
-		edit_EmployeeCode.sendKeys(UpdatedEmpCode);
-		try {
+
+			edit_EmployeeCode.clear();
+			edit_EmployeeCode.sendKeys(UpdatedEmpCode);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_EmployeeName.clear();
-		edit_EmployeeName.sendKeys(UpdatedEmpName);
-		try {
+
+			edit_EmployeeName.clear();
+			edit_EmployeeName.sendKeys(UpdatedEmpName);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_SelectUserType.click();
-		try {
+
+			edit_SelectUserType.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Select selectUserType = new Select(edit_SelectUserType);
-		selectUserType.selectByVisibleText(UpdatedUserType);		
-		try {
+
+			Select selectUserType = new Select(edit_SelectUserType);
+			selectUserType.selectByVisibleText(UpdatedUserType);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_Email.clear();
-		edit_Email.sendKeys(UpdatedEmailID);
-		try {
+
+			edit_Email.clear();
+			edit_Email.sendKeys(UpdatedEmailID);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_buttonSave.click();
-		try {
+
+			edit_buttonSave.click();
 			Thread.sleep(2000);
+
+			searchBar.clear();
+			searchBar.sendKeys(UpdatedEmpCode);
+			Thread.sleep(4000);
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

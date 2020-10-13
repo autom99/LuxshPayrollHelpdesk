@@ -76,44 +76,48 @@ public class Payroll_HelpDesk_page_DashboardLocator {
 	 * TESTCASE METHOD : DASHBOARD FUNCTIONALITY
 	 */
 	public void dashboardOperations() {
-		navigateToAllTickets();
-		driver.navigate().back();
-		
-		navigateToOpenTickets();
-		driver.navigate().back();
-		
-		navigateToClosedTickets();
-		driver.navigate().back();
-		
-		navigateToOnholdTickets();
-		driver.navigate().back();
-		
-		navigateToReopenTickets();
-		driver.navigate().back();
-		
-		navigateToMyTickets();
-		driver.navigate().back();
-		
-		navigateToPendingTickets();
-		driver.navigate().back();
-		
-		navigateByUrlAssignToGroup();
-		driver.navigate().back();
-		
-		navigateIconSettingsGroup();
-		driver.navigate().back();
-		
-		navigateIconBellNotification();
-		driver.navigate().back();
-		
-		navigateHighPriority();
-		driver.navigate().back();
-		
-		navigateMediumPriority();
-		driver.navigate().back();
-		
-		navigateLowPriority();
-		driver.navigate().back();
+		try {
+			navigateToAllTickets();
+			driver.navigate().back();
+
+			navigateToOpenTickets();
+			driver.navigate().back();
+
+			navigateToClosedTickets();
+			driver.navigate().back();
+
+			navigateToOnholdTickets();
+			driver.navigate().back();
+
+			navigateToReopenTickets();
+			driver.navigate().back();
+
+			navigateToMyTickets();
+			driver.navigate().back();
+
+			navigateToPendingTickets();
+			driver.navigate().back();
+
+			navigateByUrlAssignToGroup();
+			driver.navigate().back();
+
+			navigateIconSettingsGroup();
+			driver.navigate().back();
+
+			navigateIconBellNotification();
+			driver.navigate().back();
+
+			navigateHighPriority();
+			driver.navigate().back();
+
+			navigateMediumPriority();
+			driver.navigate().back();
+
+			navigateLowPriority();
+			driver.navigate().back();
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 	}
 
 	/**

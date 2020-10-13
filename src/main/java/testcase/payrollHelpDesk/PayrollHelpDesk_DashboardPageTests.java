@@ -14,11 +14,10 @@ public class PayrollHelpDesk_DashboardPageTests {
 	public WebDriver driver;
 
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
-	PayrollHelpDesk_LoginPageTests objLoginTestpage;
 	Payroll_HelpDesk_page_DashboardLocator objDashboardPage;
 
 	@BeforeTest
-	public void initialBrowserDriver() throws InterruptedException {
+	public void initialBrowserDriver() {
 		driver = TestBase.testBase();
 	}
 	

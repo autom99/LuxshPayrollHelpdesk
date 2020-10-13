@@ -17,13 +17,12 @@ public class PayrollHelpDesk_TicketListingTests {
 	Payroll_HelpDesk_page_TicketListingLocator objTicketListingPage;
 	
 	@BeforeTest
-	public void initialBrowserDriver() throws InterruptedException {
+	public void initialBrowserDriver() {
 		driver = TestBase.testBase();
 	}
 	
 	/**
 	 * TESTCASE-1: searchByAllStatusTicketListing
-	 * @param searchText
 	 */
 	@Test(priority = 1)
 	public void searchByAllStatusTicketListing() {
@@ -34,7 +33,6 @@ public class PayrollHelpDesk_TicketListingTests {
 		objTicketListingPage.searchByStatusTicketListing("All");
 	}
 
-	/*
 	@Test(priority = 2)
 	public void searchByOpenStatusTicketListing() {				
 		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
@@ -71,6 +69,5 @@ public class PayrollHelpDesk_TicketListingTests {
 		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
 		objTicketListingPage.searchByStatusTicketListing("Assign to me");
 	}
-	*/
 	
 }

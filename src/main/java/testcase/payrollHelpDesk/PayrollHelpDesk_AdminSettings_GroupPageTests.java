@@ -14,11 +14,10 @@ public class PayrollHelpDesk_AdminSettings_GroupPageTests {
 	public WebDriver driver;
 
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
-	PayrollHelpDesk_LoginPageTests objLoginTestpage;
 	Payroll_HelpDesk_page_AdminSetting_GroupLocator objGroupPage;
 
 	@BeforeTest
-	public void initialBrowserDriver() throws InterruptedException {
+	public void initialBrowserDriver() {
 		driver = TestBase.testBase();
 	}
 

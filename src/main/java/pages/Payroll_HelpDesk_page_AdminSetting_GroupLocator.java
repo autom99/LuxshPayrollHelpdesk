@@ -89,86 +89,60 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 	 * 
 	 * @param GroupCode
 	 * @param GroupName
-	 * @param Notes
+	 * @param Note
 	 */
 	public void createGroup(String GroupCode,String GroupName,String Note) {
 
-		link_AdminSettings.click();
 		try {
+			link_AdminSettings.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		link_Group.click();
-		try {
+			link_Group.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		buttonAddGroup.click();
-		try {
+			buttonAddGroup.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Group_Code.clear();
-		Group_Code.sendKeys(GroupCode);
-		try {
+			Group_Code.clear();
+			Group_Code.sendKeys(GroupCode);
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		Group_Name.clear();
-		Group_Name.sendKeys(GroupName);
-
-		Notes.clear();
-		Notes.sendKeys(Note);		
-
-		try {
-			objCheckBox.Select_The_Checkbox(Active_checkbox);
+			Group_Name.clear();
+			Group_Name.sendKeys(GroupName);
 			Thread.sleep(1000);
-			objCheckBox.DeSelect_The_Checkbox(Active_checkbox);
-			Thread.sleep(1000);
-			objCheckBox.Select_The_Checkbox(Active_checkbox);
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-		buttonSave.click();
-		try {
+			Notes.clear();
+			Notes.sendKeys(Note);
+			Thread.sleep(1000);
+
+			try {
+				objCheckBox.Select_The_Checkbox(Active_checkbox);
+				Thread.sleep(1000);
+				objCheckBox.DeSelect_The_Checkbox(Active_checkbox);
+				Thread.sleep(1000);
+				objCheckBox.Select_The_Checkbox(Active_checkbox);
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			buttonSave.click();
+			Thread.sleep(4000);
+
+			NumberOfPages.click();
+			Select selectNumberOfPages = new Select(NumberOfPages);
+			selectNumberOfPages.selectByVisibleText("100");
+			Thread.sleep(1000);
+
+			PageNumber.click();
+			Thread.sleep(1000);
+
+			searchBar.clear();
+			searchBar.sendKeys(GroupCode);
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}		
-
-		NumberOfPages.click();
-		Select selectNumberOfPages = new Select(NumberOfPages);
-		selectNumberOfPages.selectByVisibleText("100");
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-
-		PageNumber.click();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
-
-		searchBar.clear();
-		searchBar.sendKeys(GroupCode);
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
+		}
 	}
 	
 	/**
@@ -178,60 +152,36 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 	 * @param UpdatedNote
 	 */
 	public void editGroup(String UpdatedGroupCode,String UpdatedGroupName,String UpdatedNote) {
-		
-		editIconButton.click();
+
 		try {
+			editIconButton.click();
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_Group_Code.clear();
-		edit_Group_Code.sendKeys(UpdatedGroupCode);
-		try {
+
+			edit_Group_Code.clear();
+			edit_Group_Code.sendKeys(UpdatedGroupCode);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_Group_Name.clear();
-		edit_Group_Name.sendKeys(UpdatedGroupName);
-		try {
+
+			edit_Group_Name.clear();
+			edit_Group_Name.sendKeys(UpdatedGroupName);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_Notes.clear();
-		edit_Notes.sendKeys(UpdatedNote);
-		try {
+
+			edit_Notes.clear();
+			edit_Notes.sendKeys(UpdatedNote);
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		edit_buttonSave.click();
-		try {
+
+			edit_buttonSave.click();
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}	
-		
-		searchBar.clear();
-		searchBar.sendKeys(UpdatedGroupCode);
-		try {
+
+			searchBar.clear();
+			searchBar.sendKeys(UpdatedGroupCode);
 			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}	
-		
-		//Navigate to the Dashboard Page
-		logo_img.click();
-		try {
+
+			//Navigate to the Dashboard Page
+			logo_img.click();
 			Thread.sleep(4000);
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-				
 	}
 }
