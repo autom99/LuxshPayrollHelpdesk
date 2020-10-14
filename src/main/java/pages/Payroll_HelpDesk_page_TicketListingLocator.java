@@ -6,10 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utility.Constants;
 
 public class Payroll_HelpDesk_page_TicketListingLocator {
-    WebDriver driver;
-    WebDriverWait wait;
+
+	public  static WebDriver driver;
+	public  static WebDriverWait wait;
 
     public Payroll_HelpDesk_page_TicketListingLocator(WebDriver driver) {
         this.driver = driver;
@@ -32,7 +34,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
     @FindBy(xpath = "//input[contains(@class,'btn-sm')]")
     private WebElement buttonSearch;
 
-    //---------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
     @FindBy(xpath = "//a[@href ='/Home/Index']")
     private WebElement logo_img;
 
@@ -63,7 +65,39 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
     @FindBy(xpath = "//select[contains(@name,'tblticket')]")
     private WebElement NumberOfRecordsPerPage;
 
-    //---------------------------------------------------------------------------------------------------------------------
+    //---------------------------------View Ticket----------------------------------------------------------------------
+	@FindBy(xpath = "//button[@title=\"View Ticket History\"]")
+	private WebElement buttonEye_viewTicket;
+
+	@FindBy(xpath = "//select[@id='ticketStatus']")
+	private WebElement buttonEye_viewTicket_SelectStatus;
+
+	@FindBy(xpath = "//textarea[@id='comments']")
+	private WebElement comments;
+
+	@FindBy(xpath = "//button[contains(text(),'Submit')]")
+	private WebElement buttonSubmit;
+
+	@FindBy(xpath = "//button[contains(text(),'Back')]")
+	private WebElement buttonBack;
+
+	//-----------------------------------Edit Ticket--------------------------------------------------------------------
+	@FindBy(xpath = "//button[@title=\"Edit\"]")
+	private WebElement buttonPencil_editTicket;
+
+	@FindBy(xpath = "//button[contains(text(),'Save')]")
+	private WebElement editSaveButton;
+	//-----------------------------------Download Ticket----------------------------------------------------------------
+	@FindBy(xpath = "//button[@title=\"Download\"]")
+	private WebElement buttonDownload_downloadTicket;
+
+	//----------------------------------Delete Ticket-------------------------------------------------------------------
+	@FindBy(xpath = "//button[@onclick=\"deleteTicket(); return false;\"]")
+	private WebElement delete_YesButton;
+
+	@FindBy(xpath = "//button[@title=\"Remove\"]")
+	private WebElement buttonDustbin_deleteTicket;
+	//------------------------------------------------------------------------------------------------------------------
 
     /**
      * TESTCASE MEHOD-1: searchByStatusTicketListing
@@ -71,7 +105,6 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
      * @param searchText: searchText
      */
     public void searchByStatusTicketListing(String searchText) {
-
         try {
             link_Ticket.click();
             Thread.sleep(1000);
@@ -105,7 +138,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
 
                 buttonPrev_PageNumber.click();
                 Thread.sleep(2000);
-                
+
                 //Navigate to the Dashboard Page
                 logo_img.click();
                 Thread.sleep(4000);
@@ -113,6 +146,98 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
+
+	/**
+	 * TESTCASE MEHOD-2: VIEW TICKET
+	 * @param searchText
+	 */
+	public void viewTicket(String searchText,String status,String strComments){
+
+		try {
+			link_Ticket.click();
+			Thread.sleep(1000);
+
+			link_TicketListing.click();
+			Thread.sleep(1000);
+
+			searchBar.clear();
+			searchBar.sendKeys(Constants.strDate);
+			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+			Thread.sleep(3000);
+
+			buttonEye_viewTicket.click();
+			Thread.sleep(3000);
+
+			buttonEye_viewTicket_SelectStatus.click();
+			Select selectStatus = new Select(buttonEye_viewTicket_SelectStatus);
+			selectStatus.selectByVisibleText(status);
+			Thread.sleep(1000);
+
+			comments.clear();
+			comments.sendKeys(strComments);
+			Thread.sleep(1000);
+
+			buttonSubmit.click();
+			Thread.sleep(3000);
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
+	}
+
+	/**
+	 * TESTCASE MEHOD-3: DELETE TICKET
+	 * @param searchText
+	 */
+	public void deleteTicket(String searchText){
+
+		try {
+			link_Ticket.click();
+			Thread.sleep(1000);
+
+			link_TicketListing.click();
+			Thread.sleep(1000);
+
+			searchBar.clear();
+			searchBar.sendKeys(Constants.strDate);
+			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+			Thread.sleep(3000);
+
+			buttonDustbin_deleteTicket.click();
+			Thread.sleep(3000);
+
+			delete_YesButton.click();
+			Thread.sleep(3000);
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
+	}
+
+	/**
+	 * TESTCASE MEHOD-4: DOWNLOAD TICKET
+	 * @param searchText
+	 */
+	public void downloadTicket(String searchText){
+
+		try {
+			link_Ticket.click();
+			Thread.sleep(1000);
+
+			link_TicketListing.click();
+			Thread.sleep(1000);
+
+			searchBar.clear();
+			searchBar.sendKeys(Constants.strDate);
+			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+			Thread.sleep(3000);
+
+			buttonDownload_downloadTicket.click();
+			Thread.sleep(3000);
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
+	}
 }

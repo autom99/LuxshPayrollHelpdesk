@@ -19,8 +19,8 @@ import utility.Constants;
 
 public class Payroll_HelpDesk_page_CreateTicketLocator {
 
-	WebDriver driver;
-	WebDriverWait wait;
+	public  static WebDriver driver;
+	public  static WebDriverWait wait;
 
 	public Payroll_HelpDesk_page_CreateTicketLocator(WebDriver driver) {
 		this.driver = driver;
@@ -118,7 +118,6 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 
 			//-----------ROBOT CLASS LOGIC-----------
 			StringSelection selection = new StringSelection(Constants.FILEUPLOADPATH);
-			//Constants.PROJECTPATH  +  File.separator + "helper" + File.separator + "testingPurpose" + File.separator + "Test PNG-1.png"
 			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 			clipboard.setContents(selection, selection);
 
@@ -165,12 +164,12 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 
 	/**
 	 * TESTCASE METOD: MODIFY or EDIT Ticket
-	 * @param UpdatedstrSubject
-	 * @param UpdatedstrCategory
-	 * @param UpdatedstrPriority
-	 * @param UpdatedstrDescription
+	 * @param UpdatedSubject
+	 * @param UpdatedCategory
+	 * @param UpdatedPriority
+	 * @param UpdatedDescription
 	 */
-	public void ediTicket(String UpdatedstrSubject,String UpdatedstrCategory,String UpdatedstrPriority,String UpdatedstrDescription){
+	public void ediTicket(String UpdatedSubject,String UpdatedCategory,String UpdatedPriority,String UpdatedDescription){
 
 		try {
 			editIconButton.click();
@@ -178,21 +177,21 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 
 			subject.click();
 			Select selectSubject = new Select(subject);
-			selectSubject.selectByVisibleText(UpdatedstrSubject);
+			selectSubject.selectByVisibleText(UpdatedSubject);
 			Thread.sleep(1000);
 
 			category.click();
 			Select selectCategory = new Select(category);
-			selectCategory.selectByVisibleText(UpdatedstrCategory);
+			selectCategory.selectByVisibleText(UpdatedCategory);
 			Thread.sleep(1000);
 
 			Priority.click();
 			Select selectPriority = new Select(Priority);
-			selectPriority.selectByVisibleText(UpdatedstrPriority);
+			selectPriority.selectByVisibleText(UpdatedPriority);
 			Thread.sleep(1000);
 
 			Description.clear();
-			Description.sendKeys(UpdatedstrDescription);
+			Description.sendKeys(UpdatedDescription);
 			Thread.sleep(1000);
 
 			Actions action = new Actions(driver);
@@ -228,6 +227,10 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 			Assert.assertEquals(act_URL, exp_URL);
 			Thread.sleep(2000);
 			System.out.println("SUCCESSFULLY Updated Ticket.!");
+
+			searchBar.clear();
+			searchBar.sendKeys(Constants.strDate);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

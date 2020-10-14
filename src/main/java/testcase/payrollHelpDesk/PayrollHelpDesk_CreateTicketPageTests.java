@@ -42,7 +42,8 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	@Test(priority = 2)
 	public void editTicket() {
 		objCreatePage = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
-		objCreatePage.ediTicket("Incorrect Pay", "Not Paid Correctly", "High", "Updated Test Description-Incorrect Pay-Not Paid Correctly");
+//		objCreatePage.ediTicket("Incorrect Pay", "Not Paid Correctly", "High", "Updated Test Description-Incorrect Pay-Not Paid Correctly");
+		objCreatePage.ediTicket("Payslips", "Payslip Request", "High", "Updated Test Description-Payslips-Payslip Request");
 	}
 	
 	@AfterMethod 

@@ -69,5 +69,22 @@ public class PayrollHelpDesk_TicketListingTests {
 		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
 		objTicketListingPage.searchByStatusTicketListing("Assign to me");
 	}
-	
+
+	@Test(priority = 8)
+	public void viewTicket(){
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.viewTicket(Constants.strDate,"Open","Test comment");
+	}
+
+	@Test(priority = 9)
+	public void deleteTicket(){
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.deleteTicket(Constants.strDate);
+	}
+
+	@Test(priority = 10)
+	public void downloadTicket(){
+		objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+		objTicketListingPage.downloadTicket(Constants.strDate);
+	}
 }
