@@ -85,9 +85,6 @@ public class Payroll_HelpDesk_page_AssignATicketLocator {
 
             targetCompletionDate.click();
             Thread.sleep(1000);
-
-
-
         }
         catch (Exception ex){
             ex.printStackTrace();
