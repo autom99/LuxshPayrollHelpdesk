@@ -1,0 +1,40 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="tests">
+
+    <test name="Login">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests"></class>
+        </classes>
+    </test>
+
+    <test name="Groups">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests"></class>
+        </classes>
+    </test>
+
+    <test name="Users">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_Add_UserPageTests"></class>
+        </classes>
+    </test>
+
+    <test name="Create Ticket">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests"></class>
+        </classes>
+    </test>
+
+    <test name="Ticket Listing">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests"></class>
+        </classes>
+    </test>
+    
+    <test name="Dashboard">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_DashboardPageTests"></class>
+        </classes>
+    </test>
+</suite>
