@@ -33,7 +33,8 @@ public class PayrollHelpDesk_DashboardPageTests {
 		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 		
 		objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
-		objDashboardPage.dashboardOperations();	
+		objDashboardPage.dashboardOperations();
+		driver.close();
 	}
 
 	@AfterMethod

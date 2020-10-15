@@ -91,6 +91,7 @@ public class PayrollHelpDesk_TicketListingTests {
     public void downloadTicket() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.downloadTicket(Constants.strDate);
+        driver.close();
     }
 
     @AfterMethod

@@ -43,9 +43,15 @@ public class PayrollHelpDesk_Add_UserPageTests {
 	 */
 	@Test(priority = 2)
 	public void editUser() {
-		objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
-		objUserPage.editUser("test group name", "Updated testTempEmpCode" + Constants.date.getTime(),
-				"Updated testTempEmpName" + Constants.date.getTime(), "Employee", "Updatedtest" + "@" + Constants.date.getTime());
+		try {
+			objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
+			objUserPage.editUser("test group name", "Updated testTempEmpCode" + Constants.date.getTime(),
+					"Updated testTempEmpName" + Constants.date.getTime(), "Employee", "Updatedtest" + "@" + Constants.date.getTime());
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
+		driver.close();
 	}
 
 	@AfterMethod

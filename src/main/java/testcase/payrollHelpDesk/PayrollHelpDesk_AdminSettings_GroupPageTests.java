@@ -35,10 +35,15 @@ public class PayrollHelpDesk_AdminSettings_GroupPageTests {
 	
 	@Test(priority = 2)
 	public void editGroup() {
-		objGroupPage = new Payroll_HelpDesk_page_AdminSetting_GroupLocator(driver);
-		objGroupPage.editGroup("Updated test group code" + Constants.date.getTime(), 
-				"Updated test group name" + Constants.date.getTime(), 
-				"Updated test note created on " + Constants.date.getTime());				
+		try {
+			objGroupPage = new Payroll_HelpDesk_page_AdminSetting_GroupLocator(driver);
+			objGroupPage.editGroup("Updated test group code" + Constants.date.getTime(),
+					"Updated test group name" + Constants.date.getTime(),
+					"Updated test note created on " + Constants.date.getTime());
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
+		driver.close();
 	}
 
 	@AfterMethod
