@@ -85,7 +85,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 	 * @param strPriority
 	 * @param strDescription
 	 */
-	public void createticket(String strSubject,String strCategory,String strPriority,String strDescription){
+	public void createTicket(String strSubject,String strCategory,String strPriority,String strDescription){
 		try {
 			link_Ticket.click();
 			Thread.sleep(1000);

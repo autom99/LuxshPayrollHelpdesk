@@ -1,6 +1,8 @@
 package testcase.payrollHelpDesk;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -8,6 +10,7 @@ import base.TestBase;
 import pages.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 import pages.Payroll_HelpDesk_page_UserLocator;
+import utility.CaptureScreenshot;
 import utility.Constants;
 
 public class PayrollHelpDesk_Add_UserPageTests {
@@ -45,4 +48,8 @@ public class PayrollHelpDesk_Add_UserPageTests {
 				"Updated testTempEmpName" + Constants.date.getTime(), "Employee", "Updatedtest" + "@" + Constants.date.getTime());
 	}
 
+	@AfterMethod
+	public void screenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+	}
 }

@@ -1,125 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="2" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="10" passed="10">
   <reporter-output>
     <line>
       <![CDATA[SUCCESSFULLY login by Admin User]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="136504" started-at="2020-10-12T13:16:06 IST" finished-at="2020-10-12T13:18:22 IST">
+  <suite name="Default suite" duration-ms="254704" started-at="2020-10-15T10:56:10 IST" finished-at="2020-10-15T11:00:25 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="136504" started-at="2020-10-12T13:16:06 IST" finished-at="2020-10-12T13:18:22 IST">
-      <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
-        <test-method status="PASS" signature="initialBrowserDriver()[pri:0, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf]" name="initialBrowserDriver" is-config="true" duration-ms="29843" started-at="2020-10-12T13:16:06 IST" finished-at="2020-10-12T13:16:35 IST">
+    <test name="Default test" duration-ms="254704" started-at="2020-10-15T10:56:10 IST" finished-at="2020-10-15T11:00:25 IST">
+      <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
+        <test-method status="PASS" signature="initialBrowserDriver()[pri:0, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="initialBrowserDriver" is-config="true" duration-ms="11844" started-at="2020-10-15T10:56:10 IST" finished-at="2020-10-15T10:56:22 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialBrowserDriver -->
-        <test-method status="FAIL" signature="createTicket()[pri:1, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf]" name="createTicket" duration-ms="82510" started-at="2020-10-12T13:16:35 IST" finished-at="2020-10-12T13:17:58 IST">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//input[@type='submit']"}
-  (Session info: chrome=85.0.4183.121)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'CORE08', ip: '172.16.3.200', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_152'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.121, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\prajahar\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53323}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 1bbac30d542fdd85fd1d5fbb499f90e7
-*** Element info: {Using=xpath, value=//input[@type='submit']}]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@type='submit']"}
-  (Session info: chrome=85.0.4183.121)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'CORE08', ip: '172.16.3.200', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_152'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.121, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\prajahar\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53323}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 1bbac30d542fdd85fd1d5fbb499f90e7
-*** Element info: {Using=xpath, value=//input[@type='submit']}
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at com.sun.proxy.$Proxy9.click(Unknown Source)
-at pages.Payroll_HelpDesk_page_CreateTicketLocator.createticket(Payroll_HelpDesk_page_CreateTicketLocator.java:162)
-at testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests.createTicket(PayrollHelpDesk_CreateTicketPageTests.java:37)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(ArrayList.java:1257)
-at org.testng.TestRunner.privateRun(TestRunner.java:764)
-at org.testng.TestRunner.run(TestRunner.java:585)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
-at org.testng.TestNG.runSuites(TestNG.java:1069)
-at org.testng.TestNG.run(TestNG.java:1037)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        <test-method status="PASS" signature="searchByAllStatusTicketListing()[pri:1, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByAllStatusTicketListing" duration-ms="34800" started-at="2020-10-15T10:56:22 IST" finished-at="2020-10-15T10:56:57 IST">
           <reporter-output>
             <line>
               <![CDATA[SUCCESSFULLY login by Admin User]]>
             </line>
           </reporter-output>
-        </test-method> <!-- createTicket -->
-        <test-method status="PASS" signature="screenShot(org.testng.ITestResult)[pri:0, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf]" name="screenShot" is-config="true" duration-ms="524" started-at="2020-10-12T13:17:58 IST" finished-at="2020-10-12T13:17:59 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=createTicket status=FAILURE method=PayrollHelpDesk_CreateTicketPageTests.createTicket()[pri:1, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf] output=SUCCESSFULLY login by Admin User]]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- searchByAllStatusTicketListing -->
+        <test-method status="PASS" signature="searchByOpenStatusTicketListing()[pri:2, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByOpenStatusTicketListing" duration-ms="18461" started-at="2020-10-15T10:56:57 IST" finished-at="2020-10-15T10:57:16 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- screenShot -->
-        <test-method status="PASS" signature="editTicket()[pri:2, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf]" name="editTicket" duration-ms="23508" started-at="2020-10-12T13:17:59 IST" finished-at="2020-10-12T13:18:22 IST">
+        </test-method> <!-- searchByOpenStatusTicketListing -->
+        <test-method status="PASS" signature="searchByClosedStatusTicketListing()[pri:3, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByClosedStatusTicketListing" duration-ms="20140" started-at="2020-10-15T10:57:16 IST" finished-at="2020-10-15T10:57:36 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- editTicket -->
-        <test-method status="PASS" signature="screenShot(org.testng.ITestResult)[pri:0, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf]" name="screenShot" is-config="true" duration-ms="1" started-at="2020-10-12T13:18:22 IST" finished-at="2020-10-12T13:18:22 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=editTicket status=SUCCESS method=PayrollHelpDesk_CreateTicketPageTests.editTicket()[pri:2, instance:testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests@528931cf] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- searchByClosedStatusTicketListing -->
+        <test-method status="PASS" signature="searchByPendingStatusTicketListing()[pri:4, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByPendingStatusTicketListing" duration-ms="18650" started-at="2020-10-15T10:57:36 IST" finished-at="2020-10-15T10:57:54 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- screenShot -->
-      </class> <!-- testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests -->
+        </test-method> <!-- searchByPendingStatusTicketListing -->
+        <test-method status="PASS" signature="searchByOnHoldStatusTicketListing()[pri:5, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByOnHoldStatusTicketListing" duration-ms="18535" started-at="2020-10-15T10:57:54 IST" finished-at="2020-10-15T10:58:13 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchByOnHoldStatusTicketListing -->
+        <test-method status="PASS" signature="searchByReOpenStatusTicketListing()[pri:6, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByReOpenStatusTicketListing" duration-ms="18690" started-at="2020-10-15T10:58:13 IST" finished-at="2020-10-15T10:58:32 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchByReOpenStatusTicketListing -->
+        <test-method status="PASS" signature="searchByAssignToMeStatusTicketListing()[pri:7, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="searchByAssignToMeStatusTicketListing" duration-ms="5495" started-at="2020-10-15T10:58:32 IST" finished-at="2020-10-15T10:58:37 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchByAssignToMeStatusTicketListing -->
+        <test-method status="PASS" signature="viewTicket()[pri:8, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="viewTicket" duration-ms="35972" started-at="2020-10-15T10:58:37 IST" finished-at="2020-10-15T10:59:13 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- viewTicket -->
+        <test-method status="PASS" signature="deleteTicket()[pri:9, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="deleteTicket" duration-ms="36020" started-at="2020-10-15T10:59:13 IST" finished-at="2020-10-15T10:59:49 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteTicket -->
+        <test-method status="PASS" signature="downloadTicket()[pri:10, instance:testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests@1f554b06]" name="downloadTicket" duration-ms="36011" started-at="2020-10-15T10:59:49 IST" finished-at="2020-10-15T11:00:25 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- downloadTicket -->
+      </class> <!-- testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

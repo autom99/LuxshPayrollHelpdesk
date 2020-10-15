@@ -105,94 +105,122 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
      * @param searchText: searchText
      */
     public void searchByStatusTicketListing(String searchText) {
-        try {
-            link_Ticket.click();
-            Thread.sleep(1000);
+		link_Ticket.click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-            link_TicketListing.click();
-            Thread.sleep(1000);
+		link_TicketListing.click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-            filter_status_type.click();
-            Select selectfilter_status_type = new Select(filter_status_type);
-            selectfilter_status_type.selectByVisibleText(searchText);
-            Thread.sleep(1000);
+		filter_status_type.click();
+		Select selectfilter_status_type = new Select(filter_status_type);
+		selectfilter_status_type.selectByVisibleText(searchText);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-            buttonSearch.click();
-            Thread.sleep(1000);
+		buttonSearch.click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-            //Pagination
-            if (pagination.isDisplayed()) {
-                NumberOfRecordsPerPage.click();
-                Select selectNumberOfPages = new Select(NumberOfRecordsPerPage);
-                selectNumberOfPages.selectByVisibleText("25");
-                Thread.sleep(2000);
+		//Pagination
+		if (pagination.isDisplayed()) {
+			NumberOfRecordsPerPage.click();
+			Select selectNumberOfPages = new Select(NumberOfRecordsPerPage);
+			selectNumberOfPages.selectByVisibleText("25");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
-                buttonNext_PageNumber.click();
-                Thread.sleep(2000);
+			buttonNext_PageNumber.click();
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
-                buttonNext_PageNumber.click();
-                Thread.sleep(2000);
+
+			buttonNext_PageNumber.click();
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
 //				buttonActive_SelectedPageNumber.click();
 //				Thread.sleep(2000);
 
-                buttonPrev_PageNumber.click();
-                Thread.sleep(2000);
+			buttonPrev_PageNumber.click();
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
-                //Navigate to the Dashboard Page
-                logo_img.click();
-                Thread.sleep(4000);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+			//Navigate to the Dashboard Page
+			logo_img.click();
+			try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
     }
 
 	/**
 	 * TESTCASE MEHOD-2: VIEW TICKET
 	 * @param searchText
 	 */
-	public void viewTicket(String searchText,String status,String strComments){
+	public void viewTicket(String searchText,String status,String strComments) throws InterruptedException {
 
-		try {
-			link_Ticket.click();
-			Thread.sleep(1000);
+		link_Ticket.click();
+		Thread.sleep(1000);
 
-			link_TicketListing.click();
-			Thread.sleep(1000);
+		link_TicketListing.click();
+		Thread.sleep(1000);
 
-			searchBar.clear();
-			searchBar.sendKeys(Constants.strDate);
-			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
-			Thread.sleep(3000);
+		searchBar.clear();
+		searchBar.sendKeys(Constants.strDate);
+//		System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+		Thread.sleep(3000);
 
-			buttonEye_viewTicket.click();
-			Thread.sleep(3000);
+		buttonEye_viewTicket.click();
+		Thread.sleep(3000);
 
-			buttonEye_viewTicket_SelectStatus.click();
-			Select selectStatus = new Select(buttonEye_viewTicket_SelectStatus);
-			selectStatus.selectByVisibleText(status);
-			Thread.sleep(1000);
+		buttonEye_viewTicket_SelectStatus.click();
+		Select selectStatus = new Select(buttonEye_viewTicket_SelectStatus);
+		selectStatus.selectByVisibleText(status);
+		Thread.sleep(1000);
 
-			comments.clear();
-			comments.sendKeys(strComments);
-			Thread.sleep(1000);
+		comments.clear();
+		comments.sendKeys(strComments);
+		Thread.sleep(1000);
 
-			buttonSubmit.click();
-			Thread.sleep(3000);
-		}
-		catch (Exception ex){
-			ex.printStackTrace();
-		}
+		buttonSubmit.click();
+		Thread.sleep(3000);
 	}
 
 	/**
 	 * TESTCASE MEHOD-3: DELETE TICKET
 	 * @param searchText
 	 */
-	public void deleteTicket(String searchText){
+	public void deleteTicket(String searchText) throws InterruptedException {
 
-		try {
 			link_Ticket.click();
 			Thread.sleep(1000);
 
@@ -201,7 +229,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
 
 			searchBar.clear();
 			searchBar.sendKeys(Constants.strDate);
-			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+//			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
 			Thread.sleep(3000);
 
 			buttonDustbin_deleteTicket.click();
@@ -209,19 +237,14 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
 
 			delete_YesButton.click();
 			Thread.sleep(3000);
-		}
-		catch (Exception ex){
-			ex.printStackTrace();
-		}
 	}
 
 	/**
 	 * TESTCASE MEHOD-4: DOWNLOAD TICKET
 	 * @param searchText
 	 */
-	public void downloadTicket(String searchText){
+	public void downloadTicket(String searchText) throws InterruptedException {
 
-		try {
 			link_Ticket.click();
 			Thread.sleep(1000);
 
@@ -230,14 +253,10 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
 
 			searchBar.clear();
 			searchBar.sendKeys(Constants.strDate);
-			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+//			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
 			Thread.sleep(3000);
 
 			buttonDownload_downloadTicket.click();
 			Thread.sleep(3000);
-		}
-		catch (Exception ex){
-			ex.printStackTrace();
-		}
 	}
 }

@@ -2,12 +2,15 @@ package testcase.payrollHelpDesk;
 
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.TestBase;
 import pages.Payroll_HelpDesk_page_LoginLocator;
+import utility.CaptureScreenshot;
 import utility.Constants;
 
 public class PayrollHelpDesk_LoginPageTests {
@@ -212,5 +215,10 @@ public class PayrollHelpDesk_LoginPageTests {
 			e.printStackTrace(); 
 		} 
 		driver.close();
+	}
+
+	@AfterMethod
+	public void screenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
 	}
 }

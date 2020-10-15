@@ -33,7 +33,7 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 		
 		objCreatePage = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
-		objCreatePage.createticket("General Query", "General Query", "Medium", "Test Description-General Query");
+		objCreatePage.createTicket("General Query", "General Query", "Medium", "Test Description-General Query");
 	}
 	
 	/**

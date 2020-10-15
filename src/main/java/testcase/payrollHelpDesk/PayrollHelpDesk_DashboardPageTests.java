@@ -1,12 +1,15 @@
 package testcase.payrollHelpDesk;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.TestBase;
 import pages.Payroll_HelpDesk_page_DashboardLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
+import utility.CaptureScreenshot;
 import utility.Constants;
 
 public class PayrollHelpDesk_DashboardPageTests {
@@ -31,5 +34,10 @@ public class PayrollHelpDesk_DashboardPageTests {
 		
 		objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
 		objDashboardPage.dashboardOperations();	
+	}
+
+	@AfterMethod
+	public void screenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
 	}
 }

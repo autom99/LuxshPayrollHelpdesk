@@ -56,9 +56,8 @@ public class Payroll_HelpDesk_page_AssignATicketLocator {
     private WebElement headingAssignTicket;
 
 
-    public void pendingTicketAssignToUser(String strGroup,String strUsers) {
+    public void pendingTicketAssignToUser(String strGroup,String strUsers) throws InterruptedException {
 
-        try {
             link_Ticket.click();
             Thread.sleep(1000);
 
@@ -85,10 +84,6 @@ public class Payroll_HelpDesk_page_AssignATicketLocator {
 
             targetCompletionDate.click();
             Thread.sleep(1000);
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
 
         //http://209.97.130.115:8011/Ticket/TicketAssignListing
     }

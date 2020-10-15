@@ -1,12 +1,15 @@
 package testcase.payrollHelpDesk;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.TestBase;
 import pages.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
+import utility.CaptureScreenshot;
 import utility.Constants;
 
 public class PayrollHelpDesk_AdminSettings_GroupPageTests {
@@ -37,5 +40,9 @@ public class PayrollHelpDesk_AdminSettings_GroupPageTests {
 				"Updated test group name" + Constants.date.getTime(), 
 				"Updated test note created on " + Constants.date.getTime());				
 	}
-	
+
+	@AfterMethod
+	public void screenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+	}
 }
