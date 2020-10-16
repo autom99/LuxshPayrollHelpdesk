@@ -33,11 +33,11 @@ public class PayrollHelpDesk_LoginPageTests {
 			objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-1	:Login Page: verify Admin User type", true);
-			Thread.sleep(4000); 
-		} 
+			Thread.sleep(4000);
+		}
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
+		}
 	}
 
 	//POSITIVE TESTCASE-2	:Login Page: verify Employee User type
@@ -49,12 +49,11 @@ public class PayrollHelpDesk_LoginPageTests {
 			objLoginPage.validateLogin(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-2	:Login Page: verify Employee User type", true);
-			Thread.sleep(4000); 
+			Thread.sleep(4000);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();
+		}
 	}
 
 	//POSITIVE TESTCASE-3	:Login Page: verify Normal User type
@@ -66,12 +65,11 @@ public class PayrollHelpDesk_LoginPageTests {
 			objLoginPage.validateLogin(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-3	:Login Page: verify Normal User type", true);
-			Thread.sleep(3000); 
+			Thread.sleep(3000);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();
+		}
 	}
 
 	/*	
@@ -123,8 +121,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();
+		}
 	}
 	
 	@Test(priority = 5)
@@ -140,8 +137,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();
+		}
 	}
 	
 	@Test(priority = 6)
@@ -157,8 +153,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();
+		}
 	}
 	
 
@@ -176,8 +171,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();		
+		}
 	}
 	
 	
@@ -195,8 +189,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		//driver.close();
+		}
 	}
 
 	//NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password
@@ -209,16 +202,18 @@ public class PayrollHelpDesk_LoginPageTests {
 			objLoginPage.verifyInvalidUsernameInvalidPassword(Constants.INVALIDUSERNAME, Constants.INVALIDPASSWORD);
 
 			Reporter.log("NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password", true);
-			Thread.sleep(2000); 
+			Thread.sleep(2000);
+
+			driver.close();
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace(); 
-		} 
-		driver.close();
+		}
 	}
 
 	@AfterMethod
-	public void screenShot(ITestResult result){
+	public void captureScreenShot(ITestResult result){
 		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+		CaptureScreenshot.captureScreenshotAllTests(driver,result);
 	}
 }
