@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import pages.Payroll_HelpDesk_page_AssignATicketLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
-import utility.CaptureScreenshot;
-import utility.Constants;
+import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
 
 public class PayrollHelpDesk_AssignATicketTests {
 
@@ -22,19 +22,23 @@ public class PayrollHelpDesk_AssignATicketTests {
     @BeforeTest
     public void initialBrowserDriver() {
         driver = TestBase.testBase();
+
+        objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test
     public void assignPendingTickets() throws InterruptedException {
-        objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//        objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+//        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
         objAssignATicketPage = new Payroll_HelpDesk_page_AssignATicketLocator(driver);
         objAssignATicketPage.pendingTicketAssignToUser("Test","Test");
     }
 
-    @AfterMethod
-    public void screenShot(ITestResult result){
-        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-    }
+//    @AfterMethod
+//    public void captureScreenShot(ITestResult result){
+//        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+//        CaptureScreenshot.captureScreenshotAllTests(driver,result);
+//    }
 }

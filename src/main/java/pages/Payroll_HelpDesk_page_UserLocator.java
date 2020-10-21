@@ -157,7 +157,6 @@ public class Payroll_HelpDesk_page_UserLocator {
 			searchBar.clear();
 			searchBar.sendKeys(EmpCode);
 			Thread.sleep(4000);
-
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -204,7 +203,7 @@ public class Payroll_HelpDesk_page_UserLocator {
 			Thread.sleep(2000);
 
 			edit_buttonSave.click();
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 
 			searchBar.clear();
 			searchBar.sendKeys(UpdatedEmpCode);
@@ -214,5 +213,4 @@ public class Payroll_HelpDesk_page_UserLocator {
 			e.printStackTrace();
 		}
 	}
-	
 }

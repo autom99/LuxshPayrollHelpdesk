@@ -1,6 +1,6 @@
 package testcase.payrollHelpDesk;
 
-import java.util.Properties;
+import base.TestBaseNew;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -10,12 +10,12 @@ import org.testng.annotations.Test;
 
 import base.TestBase;
 import pages.Payroll_HelpDesk_page_LoginLocator;
-import utility.CaptureScreenshot;
-import utility.Constants;
+import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
 
 public class PayrollHelpDesk_LoginPageTests {
 
-	public WebDriver driver;
+	WebDriver driver;
 
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
 	
@@ -27,7 +27,6 @@ public class PayrollHelpDesk_LoginPageTests {
 	//POSITIVE TESTCASE-1	:Login Page: verify Admin User type
 	@Test(priority = 1)
 	public void verifyAdminLogin() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
@@ -43,7 +42,6 @@ public class PayrollHelpDesk_LoginPageTests {
 	//POSITIVE TESTCASE-2	:Login Page: verify Employee User type
 	@Test(priority = 2)
 	public void verifyEmployeeLogin() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			objLoginPage.validateLogin(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
@@ -59,7 +57,6 @@ public class PayrollHelpDesk_LoginPageTests {
 	//POSITIVE TESTCASE-3	:Login Page: verify Normal User type
 	@Test(priority = 3)	
 	public void verifyUserLogin() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			objLoginPage.validateLogin(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
@@ -111,7 +108,6 @@ public class PayrollHelpDesk_LoginPageTests {
 
 	@Test(priority = 4)
 	public void EmptyUsernameEmptyPassword() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			objLoginPage.validateEmptyUsernameEmptyPassword(Constants.EMPTYDATA, Constants.EMPTYDATA);
@@ -126,7 +122,6 @@ public class PayrollHelpDesk_LoginPageTests {
 	
 	@Test(priority = 5)
 	public void EmptyUsernameValidPassword() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("", "12345678");
@@ -142,7 +137,6 @@ public class PayrollHelpDesk_LoginPageTests {
 	
 	@Test(priority = 6)
 	public void ValidUsernameEmptyPassword() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("testAdmin", "");
@@ -155,12 +149,10 @@ public class PayrollHelpDesk_LoginPageTests {
 			e.printStackTrace(); 
 		}
 	}
-	
 
 	//NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password
 	@Test(priority = 7)
 	public void InvalidUsernameValidPassword() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("!@$~&", "12345678");
@@ -173,12 +165,10 @@ public class PayrollHelpDesk_LoginPageTests {
 			e.printStackTrace(); 
 		}
 	}
-	
-	
+
 	//NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password
 	@Test(priority = 8)
 	public void ValidUsernameInvalidPassword() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("testAdmin", "!@$~&");
@@ -195,7 +185,6 @@ public class PayrollHelpDesk_LoginPageTests {
 	//NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password
 	@Test(priority = 9)
 	public void InvalidUsernameInvalidPassword() {
-
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("!@$~&", "!@$~&");
@@ -211,9 +200,9 @@ public class PayrollHelpDesk_LoginPageTests {
 		}
 	}
 
-	@AfterMethod
-	public void captureScreenShot(ITestResult result){
-		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-		CaptureScreenshot.captureScreenshotAllTests(driver,result);
-	}
+//	@AfterMethod
+//	public void captureScreenShot(ITestResult result){
+//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result.getName());
+//		CaptureScreenshot.captureScreenshotAllTests(driver,result);
+//	}
 }

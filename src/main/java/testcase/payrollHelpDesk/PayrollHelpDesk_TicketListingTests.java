@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 import base.TestBase;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 import pages.Payroll_HelpDesk_page_TicketListingLocator;
-import utility.CaptureScreenshot;
-import utility.Constants;
+import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
 
 public class PayrollHelpDesk_TicketListingTests {
 
@@ -22,15 +22,23 @@ public class PayrollHelpDesk_TicketListingTests {
     @BeforeTest
     public void initialBrowserDriver() {
         driver = TestBase.testBase();
+        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
+        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }
+
+//    @BeforeMethod
+//    public void verifyLogin(){
+//        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
+//        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//    }
 
     /**
      * TESTCASE-1: searchByAllStatusTicketListing
      */
     @Test(priority = 1)
     public void searchByAllStatusTicketListing() {
-        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
+//        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.searchByStatusTicketListing("All");
@@ -82,20 +90,22 @@ public class PayrollHelpDesk_TicketListingTests {
     }
 
     @Test(priority = 9)
-    public void deleteTicket() throws InterruptedException {
-        objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
-        objTicketListingPage.deleteTicket(Constants.strDate);
-    }
-
-    @Test(priority = 10)
     public void downloadTicket() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.downloadTicket(Constants.strDate);
+    }
+
+    @Test(priority = 10)
+    public void deleteTicket() throws InterruptedException {
+        objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
+        objTicketListingPage.deleteTicket(Constants.strDate);
+
         driver.close();
     }
 
-    @AfterMethod
-    public void screenShot(ITestResult result){
-        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-    }
+//    @AfterMethod
+//    public void captureScreenShot(ITestResult result){
+//        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+//        CaptureScreenshot.captureScreenshotAllTests(driver,result);
+//    }
 }

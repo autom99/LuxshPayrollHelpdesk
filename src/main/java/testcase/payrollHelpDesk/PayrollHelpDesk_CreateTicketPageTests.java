@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 import base.TestBase;
 import pages.Payroll_HelpDesk_page_CreateTicketLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
-import utility.CaptureScreenshot;
-import utility.Constants;
+import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
 
 public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 
@@ -22,6 +22,9 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	@BeforeTest
 	public void initialBrowserDriver() {
 		driver = TestBase.testBase();
+
+		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 
 	/**
@@ -29,8 +32,8 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	 */
 	@Test(priority = 1)
 	public void createTicket(){
-		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+//		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 		
 		objCreatePage = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
 		objCreatePage.createTicket("General Query", "General Query", "Medium", "Test Description-General Query");
@@ -47,8 +50,10 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 		driver.close();
 	}
 	
-	@AfterMethod 
-	public void screenShot(ITestResult result){
-		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-	}	
+//	@AfterMethod
+//	public void captureScreenShot(ITestResult result){
+//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+//		CaptureScreenshot.captureScreenshotAllTests(driver,result);
+//	}
+
 }

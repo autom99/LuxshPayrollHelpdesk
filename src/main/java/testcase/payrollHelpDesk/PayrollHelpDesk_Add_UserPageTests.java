@@ -7,11 +7,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.TestBase;
-import pages.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 import pages.Payroll_HelpDesk_page_UserLocator;
-import utility.CaptureScreenshot;
-import utility.Constants;
+import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
 
 public class PayrollHelpDesk_Add_UserPageTests {
 
@@ -23,6 +22,9 @@ public class PayrollHelpDesk_Add_UserPageTests {
 	@BeforeTest
 	public void initialBrowserDriver() {
 		driver = TestBase.testBase();
+
+		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 
 	/**
@@ -30,12 +32,10 @@ public class PayrollHelpDesk_Add_UserPageTests {
 	 */
 	@Test(priority = 1)
 	public void createUser() {
-		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-		
 		objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
-		objUserPage.createUser("test group name", "testTempEmpCode" + Constants.date.getTime(), "testTempEmpName" 
-								+ Constants.date.getTime(), "Admin", "test" + "@" + Constants.date.getTime(), "12345678");
+		objUserPage.createUser("test group name", "test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
+				"test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(), "Admin", "test" + "@" + Constants.date.getTime(),
+				"12345678");
 	}
 	
 	/**
@@ -45,17 +45,19 @@ public class PayrollHelpDesk_Add_UserPageTests {
 	public void editUser() {
 		try {
 			objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
-			objUserPage.editUser("test group name", "Updated testTempEmpCode" + Constants.date.getTime(),
-					"Updated testTempEmpName" + Constants.date.getTime(), "Employee", "Updatedtest" + "@" + Constants.date.getTime());
+			objUserPage.editUser("test group name", "Updated test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
+					"Updated test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(),
+					"Employee", "Updated_test" + "@" + "mail" + Constants.date.getTime());
+			driver.close();
 		}
 		catch (Exception ex){
 			ex.printStackTrace();
 		}
-		driver.close();
 	}
 
-	@AfterMethod
-	public void screenShot(ITestResult result){
-		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-	}
+//	@AfterMethod
+//	public void captureScreenShot(ITestResult result){
+//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result.getName());
+//        CaptureScreenshot.captureScreenshotAllTests(driver,result);
+//	}
 }

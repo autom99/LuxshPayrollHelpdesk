@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import utility.Constants;
+import TestUtil.Constants;
 
 public class Payroll_HelpDesk_page_CreateTicketLocator {
 

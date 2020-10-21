@@ -5,19 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-
-import utility.Constants;
+import TestUtil.Constants;
 
 public class Payroll_HelpDesk_page_LoginLocator {
 
     WebDriver driver;
     WebDriverWait wait;
-
-    String baseUrl = Constants.BASEURL;
 
     public Payroll_HelpDesk_page_LoginLocator(WebDriver driver) {
         this.driver = driver;
@@ -53,16 +49,15 @@ public class Payroll_HelpDesk_page_LoginLocator {
     WebElement Password_error;
 
     @FindBy(xpath = "//span[@class=\"field-validation-error\"]")
-    WebElement erroMessage;
+    WebElement errorMessage;
 
     /**
      * POSITIVE TESTCASE METHOD
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void validateLogin(String username, String password) {
-
         try {
             emp_code.clear();
             emp_code.sendKeys(username);
@@ -83,15 +78,7 @@ public class Payroll_HelpDesk_page_LoginLocator {
 
             if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
-            } else {
-                System.out.println("Unable to click on element");
             }
-
-            /*
-             * JavascriptExecutor executor = (JavascriptExecutor)driver;
-             * executor.executeScript("arguments[0].click();", buttonLogout);
-             * buttonLogout.click();
-             */
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -100,8 +87,8 @@ public class Payroll_HelpDesk_page_LoginLocator {
     /**
      * NEGATIVE TESTCASE METHOD
      *
-     * @param username
-     * @param password
+     * @param username = username
+     * @param password = Password
      */
     public void invalidLogin(String username, String password) {
         try {
@@ -126,149 +113,95 @@ public class Payroll_HelpDesk_page_LoginLocator {
     /**
      * NEGATIVE TESTCASE-1 :Login Page-Empty username & Password!
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void validateEmptyUsernameEmptyPassword(String username, String password) {
-
         String expectedUrl = driver.getCurrentUrl();
         invalidLogin(username, password);
 
-        if ((emp_code_error.isDisplayed() && emp_code_error.getText() == "Please enter username!") &&
-                (Password_error.isDisplayed() && (Password_error.getText() == "Please enter password !"))) {
-
-            Assert.assertEquals(expectedUrl, baseUrl);
-
-            if (expectedUrl.equalsIgnoreCase(baseUrl)) {
-                System.out.println("Test passed");
-            } else {
-                System.out.println("Test failed"); //Lambda status will be reflected as passed
-            }
+        if ((emp_code_error.isDisplayed() && emp_code_error.getText().equals("Please enter username!")) &&
+                (Password_error.isDisplayed() && (Password_error.getText().equals("Please enter password !")))) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL);
         }
-        System.out.println("NEGATIVE TESTCASE-1	: Empty username & Password!");
     }
 
     /**
      * NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void validateEmptyUsernameValidPassword(String username, String password) {
-
         String expectedUrl = driver.getCurrentUrl();
         invalidLogin(username, password);
 
-        if (emp_code_error.getText() == "Please enter username!" &&
-                (Password_error.getText() != "Please enter password !")) {
-
-            Assert.assertEquals(expectedUrl, baseUrl);
-            if (expectedUrl.equalsIgnoreCase(baseUrl)) {
-                System.out.println("Test passed");
-            } else {
-                System.out.println("Test failed"); //Lambda status will be reflected as passed
-            }
+        if (emp_code_error.getText().equals("Please enter username!")) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL);
         }
-        System.out.println("NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password");
     }
 
     /**
      * NEGATIVE TESTCASE-3	:Login Page: Valid Username & Empty Password
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void verifyValidUsernameEmptyPassword(String username, String password) {
-
         String expectedUrl = driver.getCurrentUrl();
         invalidLogin(username, password);
 
-        if ((erroMessage.isDisplayed()) && (Password_error.getText() == "Please enter password !")) {
-
-            Assert.assertEquals(expectedUrl, baseUrl);
-            if (expectedUrl.equalsIgnoreCase(baseUrl)) {
-                System.out.println("Test passed");
-            } else {
-                System.out.println("Test failed"); //Lambda status will be reflected as passed
-            }
-            System.out.println("NEGATIVE TESTCASE-3	: Login Page-Valid Username & Empty Password");
+        if ((errorMessage.isDisplayed()) && (Password_error.getText().equals("Please enter password !"))) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL);
         }
     }
 
     /**
      * NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void verifyInvalidUsernameValidPassword(String username, String password) {
-
         String expectedUrl = driver.getCurrentUrl();
         invalidLogin(username, password);
 
-        //		if(emp_code_error.isDisplayed() && (emp_code_error.getText() == "Please enter username!")) {
-        if (true) {
-            Assert.assertEquals(expectedUrl, baseUrl);
-            if (expectedUrl.equalsIgnoreCase(baseUrl)) {
-                System.out.println("Test passed");
-            } else {
-                System.out.println("Test failed"); //Lambda status will be reflected as passed
-            }
-            System.out.println("NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password");
-        }
+        Assert.assertEquals(expectedUrl, Constants.BASEURL);
     }
 
     /**
      * NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void verifyValidUsernameInvalidPassword(String username, String password) {
-
         String expectedUrl = driver.getCurrentUrl();
         invalidLogin(username, password);
 
-        //if((erroMessage.isDisplayed()) && (Password_error.getText() == "Please enter password !")) {
-        if (true) {
-            Assert.assertEquals(expectedUrl, baseUrl);
-            if (expectedUrl.equalsIgnoreCase(baseUrl)) {
-                System.out.println("Test passed");
-            } else {
-                System.out.println("Test failed"); //Lambda status will be reflected as passed
-            }
-            System.out.println("NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password");
-        }
+        Assert.assertEquals(expectedUrl, Constants.BASEURL);
     }
 
     /**
      * NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void verifyInvalidUsernameInvalidPassword(String username, String password) {
-
         String expectedUrl = driver.getCurrentUrl();
         invalidLogin(username, password);
 
-        Assert.assertEquals(expectedUrl, baseUrl);
-        if (expectedUrl.equalsIgnoreCase(baseUrl)) {
-            System.out.println("Test passed");
-        } else {
-            System.out.println("Test failed"); //Lambda status will be reflected as passed
-        }
-        System.out.println("NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password");
+        Assert.assertEquals(expectedUrl, Constants.BASEURL);
     }
 
     /**
      * verifyAdminLogin TESTCASE METHOD
      *
-     * @param username
-     * @param password
+     * @param username = Username
+     * @param password = password
      */
     public void verifyAdminLogin(String username, String password) {
-
         try {
             emp_code.clear();
             emp_code.sendKeys(username);
@@ -310,9 +243,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        } finally {
-//			driver.quit();
-//			driver.close();
         }
     }
 }
