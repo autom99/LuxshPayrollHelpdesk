@@ -1,14 +1,12 @@
 package TestUtil;
 
 import base.TestBase;
-import base.TestBaseNew;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.testng.ITestResult;
-
-import java.io.File;
-import java.io.IOException;
 
 public class WebEventListener extends TestBase implements WebDriverEventListener {
 
@@ -38,12 +36,12 @@ public class WebEventListener extends TestBase implements WebDriverEventListener
         System.out.println("Navigated to:'" + url + "'");
     }
 
-    public void beforeChangeValueOf(WebElement element, WebDriver driver) {
+    public void beforeChangeValueOf(WebElement element) {
         System.out.println("Value of the:" + element.toString()
                 + " before any changes made");
     }
 
-    public void afterChangeValueOf(WebElement element, WebDriver driver) {
+    public void afterChangeValueOf(WebElement element) {
         System.out.println("Element value changed to: " + element.toString());
     }
 

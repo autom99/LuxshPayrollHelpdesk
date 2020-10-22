@@ -335,8 +335,6 @@ public class Payroll_HelpDesk_page_DashboardLocator {
         String exp_URL = Constants.BASEURL + "Ticket/TicketPriorityListing?priority=Medium";
         String act_URL = driver.getCurrentUrl();
         Assert.assertEquals(act_URL, exp_URL);
-
-//        Reporter.log("Success: ICON-BELL-NOTIFICATION", true);
     }
 
     /**

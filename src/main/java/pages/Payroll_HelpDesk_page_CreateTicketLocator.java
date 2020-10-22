@@ -23,67 +23,67 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 	public  static WebDriverWait wait;
 
 	public Payroll_HelpDesk_page_CreateTicketLocator(WebDriver driver) {
-		this.driver = driver;
+		Payroll_HelpDesk_page_CreateTicketLocator.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
 	}
 
 	@FindBy(xpath = "//li[@id=\"link-Ticket\"]")
-	private WebElement link_Ticket; 
+	public WebElement link_Ticket;
 
 	@FindBy(xpath = "//span[contains(text(),'Create A Ticket')]")
-	private WebElement createTicket; 
+	public WebElement createTicket;
 
 	@FindBy(xpath = "//input[@name='Requester']")
-	private WebElement requester; 
+	public WebElement requester;
 
 	@FindBy(xpath = "//select[@id='SubjectId']")
-	private WebElement subject; 	
+	public WebElement subject;
 
 	@FindBy(xpath = "//select[@id='CatId']")
-	private WebElement category; 
+	public WebElement category;
 
 	@FindBy(xpath = "//select[@id='Priority']")
-	private WebElement Priority; 
+	public WebElement Priority;
 
 	@FindBy(xpath = "//textarea[@id='Description']")
-	private WebElement Description; 
+	public WebElement Description;
 
 	@FindBy(xpath = "//input[@id='file']")
-	private WebElement file; 
+	public WebElement file;
 
 	@FindBy(xpath = "//input[@type='submit']")
-	private WebElement buttonSubmit; 
+	public WebElement buttonSubmit;
 
 	@FindBy(xpath = "//input[@class=\"btn btn-danger valid\"]")
-	private WebElement buttonCancel; 
+	public WebElement buttonCancel;
 
 	//------------------------------------------------------------------------------------------
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'close')][contains(text(),'X')]")
-	private WebElement buttonX;
+	public WebElement buttonX;
 
 	@FindBy(xpath = "//select[contains(@name,'tblticket_length')]")
-	private WebElement NumberOfPages;
+	public WebElement NumberOfPages;
 
 	@FindBy(xpath = "//a[contains(text(),'1')]")
-	private WebElement PageNumber;
+	public WebElement PageNumber;
 
 	@FindBy(xpath = "//input[contains(@class,'form-control input-sm input-small input-inline')]")
-	private WebElement searchBar;
+	public WebElement searchBar;
 	//----------------------------------EDIT---------------------------------------------------
 	@FindBy(xpath = "//button[@class='btn text-primary btn-sm edit_btn mr-1'][2]")
-	private WebElement editIconButton;
+	public WebElement editIconButton;
 
 	@FindBy(xpath = "//button[contains(text(),'Save')]")
-	private WebElement editSaveButton;
+	public WebElement editSaveButton;
 	//------------------------------------------------------------------------------------------
 	
 	/**
-	 * TESTCASE METOD: Create Ticket
-	 * @param strSubject
-	 * @param strCategory
-	 * @param strPriority
-	 * @param strDescription
+	 * TESTCASE METHOD: Create Ticket
+	 * @param strSubject = subject
+	 * @param strCategory = category
+	 * @param strPriority = priority
+	 * @param strDescription = description
 	 */
 	public void createTicket(String strSubject,String strCategory,String strPriority,String strDescription){
 		try {
@@ -163,36 +163,41 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 	}
 
 	/**
-	 * TESTCASE METOD: MODIFY or EDIT Ticket
-	 * @param UpdatedSubject
-	 * @param UpdatedCategory
-	 * @param UpdatedPriority
-	 * @param UpdatedDescription
+	 * TESTCASE METHOD: MODIFY or EDIT Ticket
+	 * @param UpdatedSubject = subject
+	 * @param UpdatedCategory = category
+	 * @param UpdatedPriority = priority
+	 * @param UpdatedDescription = description
 	 */
 	public void ediTicket(String UpdatedSubject,String UpdatedCategory,String UpdatedPriority,String UpdatedDescription){
-
 		try {
 			editIconButton.click();
 			Thread.sleep(4000);
 
+//			buttonX.click();
+//			Thread.sleep(2000);
+//
+//			editIconButton.click();
+//			Thread.sleep(4000);
+
 			subject.click();
 			Select selectSubject = new Select(subject);
 			selectSubject.selectByVisibleText(UpdatedSubject);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 
 			category.click();
 			Select selectCategory = new Select(category);
 			selectCategory.selectByVisibleText(UpdatedCategory);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 
 			Priority.click();
 			Select selectPriority = new Select(Priority);
 			selectPriority.selectByVisibleText(UpdatedPriority);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 
 			Description.clear();
 			Description.sendKeys(UpdatedDescription);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 
 			Actions action = new Actions(driver);
 			action.moveToElement(file).click().build().perform();
@@ -225,7 +230,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator {
 			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
 			String act_URL = driver.getCurrentUrl();
 			Assert.assertEquals(act_URL, exp_URL);
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			System.out.println("SUCCESSFULLY Updated Ticket.!");
 
 			searchBar.clear();

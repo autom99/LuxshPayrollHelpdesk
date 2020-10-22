@@ -20,88 +20,87 @@ public class Payroll_HelpDesk_page_UserLocator {
 	}
 
 	@FindBy(xpath = "//li[@id='link-User']//a[@class='nav-link nav-toggle']")
-	private WebElement link_User;
+	public WebElement link_User;
 	
 	@FindBy(xpath = "//a[contains(@class,'btn-sm')]")
-	private WebElement buttonAddUser;
+	public WebElement buttonAddUser;
 		
 	@FindBy(xpath = "//input[contains(@class,'form-control input-sm input-small input-inline')]")
-	private WebElement searchBar;
+	public WebElement searchBar;
 	
 	@FindBy(xpath = "//select[@id='customgroupForAdd']") //TestGroupName
-	private WebElement SelectGroup;
+	public WebElement SelectGroup;
 	
 	@FindBy(xpath = "//input[@id='emp_code']")
-	private WebElement EmployeeCode;
+	public WebElement EmployeeCode;
 	
 	@FindBy(xpath = "//input[@id='FullName']")
-	private WebElement EmployeeName;
+	public WebElement EmployeeName;
 	
 	@FindBy(xpath = "//select[@id='userType']")
-	private WebElement SelectUserType;
+	public WebElement SelectUserType;
 	
 	@FindBy(xpath = "//input[@id='Email']")
-	private WebElement Email;
+	public WebElement Email;
 
 	@FindBy(xpath = "//input[@id='Password']")
-	private WebElement Password;
+	public WebElement Password;
 		
 	@FindBy(xpath = "//div[contains(@class,'col-md-6')]//div[contains(@class,'md-checkbox-inline')]//div[contains(@class,'md-checkbox')]")
-	private WebElement Active_checkbox;
+	public WebElement Active_checkbox;
 	
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'btn btn-danger')][contains(text(),'Cancel')]")
-	private WebElement buttonCancel;
+	public WebElement buttonCancel;
 	
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'btn green')][contains(text(),'Save')]")
-	private WebElement buttonSave;
+	public WebElement buttonSave;
 	
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'close')][contains(text(),'X')]")
-	private WebElement buttonX;
+	public WebElement buttonX;
 	
 	@FindBy(xpath = "//select[contains(@name,'tblusers_length')]")
-	private WebElement NumberOfPages;
+	public WebElement NumberOfPages;
 	
 	@FindBy(xpath = "//a[contains(text(),'1')]")
-	private WebElement PageNumber;
+	public WebElement PageNumber;
 	
 	//----------------------------------EDIT---------------------------------------------------
 	@FindBy(xpath = "//button[@class='btn text-primary btn-sm edit_btn mr-1']")
-	private WebElement editIconButton;
+	public WebElement editIconButton;
 	
 	@FindBy(xpath = "//select[@id='customgroupForEdit']") //TestGroupName
-	private WebElement edit_SelectGroup;
+	public WebElement edit_SelectGroup;
 	
 	@FindBy(xpath = "//input[@id='emp_codeForEdit']")
-	private WebElement edit_EmployeeCode;
+	public WebElement edit_EmployeeCode;
 	
 	@FindBy(xpath = "//input[@id='FullNameForEdit']")
-	private WebElement edit_EmployeeName;
+	public WebElement edit_EmployeeName;
 	
 	@FindBy(xpath = "//select[@id='userTypeForEdit']")
-	private WebElement edit_SelectUserType;
+	public WebElement edit_SelectUserType;
 	
 	@FindBy(xpath = "//input[@id='EmailForEdit']")
-	private WebElement edit_Email;
+	public WebElement edit_Email;
 	
 	@FindBy(xpath = "//div[@id='editUser']//button[@class='btn btn-danger'][contains(text(),'Cancel')]")
-	private WebElement edit_buttonCancel;
+	public WebElement edit_buttonCancel;
 	
 	@FindBy(xpath = "//div[@id='editUser']//button[@class='btn green'][contains(text(),'Save')]")
-	private WebElement edit_buttonSave;
+	public WebElement edit_buttonSave;
 		
 	//------------------------------------------------------------------------------------------
 	
 	/**TESTCASE METHOD: CREATE USER
 	 * 
-	 * @param GroupName
-	 * @param EmpCode
-	 * @param EmpName
-	 * @param UserType
-	 * @param EmailID
-	 * @param PasswordEncText
+	 * @param GroupName = group name
+	 * @param EmpCode = employee code
+	 * @param EmpName = employee name
+	 * @param UserType = user type
+	 * @param EmailID = email
+	 * @param PasswordEncText = password
 	 */
 	public void createUser(String GroupName,String EmpCode,String EmpName,String UserType,String EmailID,String PasswordEncText) {
-
 		try {
 			link_User.click();
 			Thread.sleep(1000);
@@ -164,17 +163,17 @@ public class Payroll_HelpDesk_page_UserLocator {
 	
 	/**
 	 * TESTCASE METHOD : EDIT or MODIFY USER
-	 * @param UpdatedGroupName
-	 * @param UpdatedEmpCode
-	 * @param UpdatedEmpName
-	 * @param UpdatedUserType
-	 * @param UpdatedEmailID
+	 * @param UpdatedGroupName = updated group name
+	 * @param UpdatedEmpCode = updated employee name
+	 * @param UpdatedEmpName = updated employee name
+	 * @param UpdatedUserType = updated user type
+	 * @param UpdatedEmailID = updated email
 	 */
 	public void editUser(String UpdatedGroupName,String UpdatedEmpCode,String UpdatedEmpName,String UpdatedUserType,String UpdatedEmailID) {
 
 		try {
 			editIconButton.click();
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 
 			edit_SelectGroup.click();
 			Thread.sleep(2000);

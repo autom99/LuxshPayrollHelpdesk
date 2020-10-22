@@ -14,85 +14,83 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 	public WebDriver driver;
 	public static WebDriverWait wait;
 
-	public static CheckBox objCheckBox = new CheckBox();
+	public static CheckBox objCheckBox;
 	
 	public Payroll_HelpDesk_page_AdminSetting_GroupLocator(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
 	}
 
 	@FindBy(xpath = "//span[contains(text(),'Admin Settings')]")
-	private WebElement link_AdminSettings;
+	public WebElement link_AdminSettings;
 
 	@FindBy(xpath = "//li[@id='link-CustomGroup']//a[contains(@class,'nav-link')]")
-	private WebElement link_Group;
+	public WebElement link_Group;
 
 	@FindBy(xpath = "//a[contains(@class,'btn-sm')]")
-	private WebElement buttonAddGroup;
+	public WebElement buttonAddGroup;
 
 	@FindBy(xpath = "//input[contains(@class,'form-control input-sm input-small input-inline')]")
-	private WebElement searchBar;
+	public WebElement searchBar;
 
 	@FindBy(xpath = "//input[@id='Group_Code']")
-	private WebElement Group_Code;
+	public WebElement Group_Code;
 
 	@FindBy(xpath = "//input[@id='Group_Name']")
-	private WebElement Group_Name;
+	public WebElement Group_Name;
 
 	@FindBy(xpath = "//input[@id='Notes']")
-	private WebElement Notes;
+	public WebElement Notes;
 
 	@FindBy(xpath = "//div[@id='frmEmp']//div[contains(@class,'md-checkbox-inline')]//div[contains(@class,'md-checkbox')]")
-	private WebElement Active_checkbox;
+	public WebElement Active_checkbox;
 
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'btn light btn-outline btn-danger')][contains(text(),'Cancel')]")
-	private WebElement buttonCancel;
+	public WebElement buttonCancel;
 
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'btn green')][contains(text(),'Save')]")
-	private WebElement buttonSave;
+	public WebElement buttonSave;
 
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'close')][contains(text(),'X')]")
-	private WebElement buttonX;
+	public WebElement buttonX;
 
 	@FindBy(xpath = "//select[contains(@name,'tblCustomGroups_length')]")
-	private WebElement NumberOfPages;
+	public WebElement NumberOfPages;
 
 	@FindBy(xpath = "//a[contains(text(),'1')]")
-	private WebElement PageNumber;
+	public WebElement PageNumber;
 
 	//----------------------------------EDIT---------------------------------------------------
 	@FindBy(xpath = "//button[@class='btn text-primary btn-sm edit_btn mr-1']")
-	private WebElement editIconButton;
+	public WebElement editIconButton;
 	
 	@FindBy(xpath = "//input[@id='Group_CodeForEdit']")
-	private WebElement edit_Group_Code;
+	public WebElement edit_Group_Code;
 
 	@FindBy(xpath = "//input[@id='Group_NameForEdit']")
-	private WebElement edit_Group_Name;
+	public WebElement edit_Group_Name;
 
 	@FindBy(xpath = "//input[@id='NotesForEdit']")
-	private WebElement edit_Notes;
+	public WebElement edit_Notes;
 	
 	@FindBy(xpath = "//div[@id='editCustomGroup']//button[@class='btn green'][contains(text(),'Save')]")
-	private WebElement edit_buttonSave;
+	public WebElement edit_buttonSave;
 	
 	@FindBy(xpath = "//div[@id='editCustomGroup']//button[@class='btn light btn-outline btn-danger'][contains(text(),'Cancel')]")
-	private WebElement edit_buttonCancel;
+	public WebElement edit_buttonCancel;
 	//---------------------------------------------------------------------------------------------------------------------
 	@FindBy(xpath="//a[@href ='/Home/Index']")
-	private WebElement logo_img;
+	public WebElement logo_img;
 	//---------------------------------------------------------------------------------------------------------------------
 
 	/**TESTCASE METHOD: CREATE GROUP
 	 * 
-	 * @param GroupCode
-	 * @param GroupName
-	 * @param Note
+	 * @param GroupCode = group code
+	 * @param GroupName = group name
+	 * @param Note = note
 	 */
 	public void createGroup(String GroupCode,String GroupName,String Note) {
-
 		try {
 			link_AdminSettings.click();
 			Thread.sleep(1000);
@@ -147,12 +145,11 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 	
 	/**
 	 * TESTCASE METHOD-2: EDIT or MODIFY GROUP
-	 * @param UpdatedGroupCode
-	 * @param UpdatedGroupName
-	 * @param UpdatedNote
+	 * @param UpdatedGroupCode = updated group code
+	 * @param UpdatedGroupName = updated group name
+	 * @param UpdatedNote = updated note
 	 */
 	public void editGroup(String UpdatedGroupCode,String UpdatedGroupName,String UpdatedNote) {
-
 		try {
 			editIconButton.click();
 			Thread.sleep(1000);

@@ -2,7 +2,7 @@
 
 <suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="tests">
 
-    <test name="Login" enabled="true">
+    <test name="Login" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests"></class>
         </classes>
@@ -20,7 +20,7 @@
         </classes>
     </test>
 
-    <test name="Create Ticket" enabled="false">
+    <test name="Create Ticket" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests"></class>
         </classes>

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import TestUtil.Constants;
+import org.testng.Assert;
 
 public class Payroll_HelpDesk_page_TicketListingLocator {
 
@@ -261,12 +262,10 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
         try {
 //			Actions build = new Actions(driver);
 //			build.moveToElement(buttonActive_SelectedPageNumber).build().perform();
-
             if (buttonDownload_downloadTicket.isDisplayed() && buttonDownload_downloadTicket.isEnabled()) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonDownload_downloadTicket);
                 //buttonDownload_downloadTicket.click();
-                Thread.sleep(5000);
-
+                Thread.sleep(3000);
                 WebElement validMessageFileUpload = driver.findElement(By.xpath("//div[contains(text(),'File not available.')]"));
                 Thread.sleep(2000);
                 if (validMessageFileUpload.isDisplayed()) {
@@ -279,9 +278,10 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
                 }
             } else {
                 if (noDataAvailable.isDisplayed()) {
+                    Assert.assertEquals(noDataAvailable,"No data available in table");
                     System.out.println("No data available in table");
                 } else {
-                    System.out.println("Error while..No data available in table..");
+                    System.out.println("Error while capturing data..No data available in table..");
                 }
             }
         } catch (Exception ex) {
