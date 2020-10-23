@@ -29,9 +29,6 @@ public class PayrollHelpDesk_AssignATicketTests {
 
     @Test
     public void assignPendingTickets() throws InterruptedException {
-//        objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-
         objAssignATicketPage = new Payroll_HelpDesk_page_AssignATicketLocator(driver);
         objAssignATicketPage.pendingTicketAssignToUser("Test","Test");
     }
