@@ -20,7 +20,7 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	Payroll_HelpDesk_page_CreateTicketLocator objCreatePage;
 
 	@BeforeTest
-	public void initialBrowserDriver() {
+	public void initialBrowserDriver()  {
 		driver = TestBase.testBase();
 
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);

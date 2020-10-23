@@ -20,44 +20,43 @@ public class Payroll_HelpDesk_page_AssignATicketLocator {
     }
 
     @FindBy(xpath = "//li[@id=\"link-Ticket\"]")
-    private WebElement link_Ticket;
+    public WebElement link_Ticket;
 
     @FindBy(xpath = "//span[contains(text(),'Assign A Ticket')]")
-    private WebElement link_assignATicket;
+    public WebElement link_assignATicket;
 
     @FindBy(xpath = "//button[@title=\"Assign\"]")
-    private WebElement assignIconButton;
+    public WebElement assignIconButton;
 
     @FindBy(xpath = "//input[@class='form-control input-sm input-small input-inline']")
-    private WebElement searchBar;
+    public WebElement searchBar;
 
     @FindBy(xpath = "//input[contains(@class,'btn-sm')]")
-    private WebElement buttonSearch;
+    public WebElement buttonSearch;
 
     @FindBy(xpath = "//button[@title=\"Assign\"]")
-    private WebElement buttonPencilIcon_AssignTicket;
+    public WebElement buttonPencilIcon_AssignTicket;
 
     @FindBy(xpath = "//select[@id='ddlGroup']")
-    private WebElement group;
+    public WebElement group;
 
     @FindBy(xpath = "//select[@id='ddlUser']")
-    private WebElement users;
+    public WebElement users;
 
     @FindBy(xpath = "//button[contains(text(),'Save')]")
-    private WebElement editSaveButton;
+    public WebElement editSaveButton;
 
     @FindBy(xpath = "//button[contains(text(),'Cancel')]")
-    private WebElement editCancelButton;
+    public WebElement editCancelButton;
 
     @FindBy(xpath = "//div[@id='dtpTargetCompletion']")
-    private WebElement targetCompletionDate;
+    public WebElement targetCompletionDate;
 
     @FindBy(xpath = "//h4[@id='editTicketNumber']")
-    private WebElement headingAssignTicket;
+    public WebElement headingAssignTicket;
 
-
-    public void pendingTicketAssignToUser(String strGroup,String strUsers) throws InterruptedException {
-
+    public void pendingTicketAssignToUser(String strGroup,String strUsers){
+        try {
             link_Ticket.click();
             Thread.sleep(1000);
 
@@ -85,6 +84,10 @@ public class Payroll_HelpDesk_page_AssignATicketLocator {
             targetCompletionDate.click();
             Thread.sleep(1000);
 
-        //http://209.97.130.115:8011/Ticket/TicketAssignListing
+            //http://209.97.130.115:8011/Ticket/TicketAssignListing
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

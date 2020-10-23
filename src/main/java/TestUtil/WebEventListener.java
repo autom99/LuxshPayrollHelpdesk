@@ -1,6 +1,7 @@
 package TestUtil;
 
 import base.TestBase;
+import base.TestBaseNew;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.testng.ITestResult;
 
-public class WebEventListener extends TestBase implements WebDriverEventListener {
+public class WebEventListener extends TestBaseNew implements WebDriverEventListener {
 
     ITestResult testName;
 

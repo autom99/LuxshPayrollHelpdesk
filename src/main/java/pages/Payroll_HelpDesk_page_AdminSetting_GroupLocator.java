@@ -1,5 +1,6 @@
 package pages;
 
+import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,13 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestUtil.CheckBox;
 
-public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
+public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 
-	public WebDriver driver;
+//	public WebDriver driver;
 	public static WebDriverWait wait;
 
 	public static CheckBox objCheckBox;
-	
+
 	public Payroll_HelpDesk_page_AdminSetting_GroupLocator(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -114,13 +115,14 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 			Thread.sleep(1000);
 
 			try {
+				objCheckBox = new CheckBox();
 				objCheckBox.Select_The_Checkbox(Active_checkbox);
 				Thread.sleep(1000);
 				objCheckBox.DeSelect_The_Checkbox(Active_checkbox);
 				Thread.sleep(1000);
 				objCheckBox.Select_The_Checkbox(Active_checkbox);
 				Thread.sleep(1000);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
@@ -138,7 +140,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 			searchBar.clear();
 			searchBar.sendKeys(GroupCode);
 			Thread.sleep(4000);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -176,8 +178,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator {
 			//Navigate to the Dashboard Page
 			logo_img.click();
 			Thread.sleep(4000);
-
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

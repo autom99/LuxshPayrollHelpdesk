@@ -2,21 +2,21 @@
 
 <suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="tests">
 
-    <test name="Login" enabled="false">
+    <test name="Login" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests"></class>
         </classes>
     </test>
 
-    <test name="Groups" enabled="false">
+    <test name="Groups" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests"></class>
         </classes>
     </test>
 
-    <test name="Users" enabled="false">
+    <test name="Users" enabled="true">
         <classes>
-            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_Add_UserPageTests"></class>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests"></class>
         </classes>
     </test>
 
@@ -26,15 +26,16 @@
         </classes>
     </test>
 
-    <test name="Ticket Listing" enabled="false">
+    <test name="Ticket Listing" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests"></class>
         </classes>
     </test>
-    
+
     <test name="Dashboard" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_DashboardPageTests"></class>
         </classes>
     </test>
+
 </suite>

@@ -1,0 +1,61 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="false">
+
+    <test name="Test_verifyAdminLogin" enabled="true">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
+                <methods>
+                    <include name="verifyAdminLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_Group">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
+                <methods>
+                    <include name="createGroup"/>
+                    <include name="editGroup"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_User">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
+                <methods>
+                    <include name="createUser"/>
+                    <include name="editUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_CreateTicket">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
+                <methods>
+                    <include name="createTicket"/>
+                    <include name="editTicket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_TicketListing">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
+                <methods>
+                    <include name="searchByAllStatusTicketListing"/>
+                    <include name="viewTicket"/>
+                    <include name="downloadTicket"/>
+                    <include name="deleteTicket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

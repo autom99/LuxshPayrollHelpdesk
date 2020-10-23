@@ -12,7 +12,7 @@ import pages.Payroll_HelpDesk_page_TicketListingLocator;
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
 
-public class PayrollHelpDesk_TicketListingTests {
+public class PayrollHelpDesk_TicketListingTests extends TestBase{
 
     public WebDriver driver;
 

@@ -18,37 +18,52 @@ public class TestBase {
 
     public static WebDriver driver;
     public static Properties ps;
-    private EventFiringWebDriver e_driver;
-    private WebEventListener eventListener;
-    private WebDriverWait wait;
-    public int waitTime = 10;
+    private static EventFiringWebDriver e_driver;
+    private static WebEventListener eventListener;
+    private static WebDriverWait wait;
+    public static int waitTime = 10;
 
     public static WebDriver testBase() {
-
         ChromeOptions options = new ChromeOptions();
-//		options.addArguments("-incognito");
+//        options.addArguments("-incognito");
         options.addArguments("start-maximized");
 
-        try {
-            FileInputStream fis = new FileInputStream(Constants.PROJECTPATH + "\\config.properties");
-            ps = new Properties();
-            ps.load(fis);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String browserName = ps.getProperty("browser");
+        System.setProperty("webdriver.chrome.driver", Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
+        driver = new ChromeDriver(options);
+        wait = new WebDriverWait(driver, waitTime);
 
-        if (browserName.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", Constants.PROJECTPATH + "\\drivers\\IEDriverServerWin32.exe");
-            driver = new FirefoxDriver(options);
-        } else if (browserName.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
-            driver = new ChromeDriver(options);
-        }
+        e_driver = new EventFiringWebDriver(driver);
 
-        driver.manage().deleteAllCookies();
-        driver.get(Constants.BASEURL);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        eventListener = new WebEventListener();
+        e_driver.register(eventListener);
+        driver = e_driver;
+
+        e_driver.manage().window().maximize();
+        e_driver.get(Constants.BASEURL);
+//        ChromeOptions options = new ChromeOptions();
+////		options.addArguments("-incognito");
+//        options.addArguments("start-maximized");
+//
+//        try {
+//            FileInputStream fis = new FileInputStream(Constants.PROJECTPATH + "\\config.properties");
+//            ps = new Properties();
+//            ps.load(fis);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String browserName = ps.getProperty("browser");
+//
+//        if (browserName.equals("firefox")) {
+//            System.setProperty("webdriver.gecko.driver", Constants.PROJECTPATH + "\\drivers\\IEDriverServerWin32.exe");
+//            driver = new FirefoxDriver(options);
+//        } else if (browserName.equals("chrome")) {
+//            System.setProperty("webdriver.chrome.driver", Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
+//            driver = new ChromeDriver(options);
+//        }
+//
+//        driver.manage().deleteAllCookies();
+//        driver.get(Constants.BASEURL);
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         return driver;
     }
 

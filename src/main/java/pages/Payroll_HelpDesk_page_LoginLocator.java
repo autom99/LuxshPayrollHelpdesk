@@ -1,5 +1,6 @@
 package pages;
 
+import base.TestBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,9 +11,9 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import TestUtil.Constants;
 
-public class Payroll_HelpDesk_page_LoginLocator {
+public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
-    WebDriver driver;
+//    WebDriver driver;
     WebDriverWait wait;
 
     public Payroll_HelpDesk_page_LoginLocator(WebDriver driver) {
@@ -36,9 +37,6 @@ public class Payroll_HelpDesk_page_LoginLocator {
     @FindBy(xpath = "//button[@class='login100-form-btn']")
     WebElement buttonLogin;
 
-    @FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
-    WebElement usernameTitle;
-
     @FindBy(xpath = "//a[@href ='/Account/SignOut']")
     WebElement buttonLogout;
 
@@ -50,6 +48,21 @@ public class Payroll_HelpDesk_page_LoginLocator {
 
     @FindBy(xpath = "//span[@class=\"field-validation-error\"]")
     WebElement errorMessage;
+
+    @FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
+    WebElement usernameTitle;
+
+    @FindBy(xpath = "//span[contains(text(),'Test Admin')]")
+    WebElement lblLoginUser;
+
+    @FindBy(xpath = "//h1[contains(text(),'Welcome to Admin Panel')]")
+    WebElement headerTextAdminUser;
+
+    @FindBy(xpath = "//h1[contains(text(),'Welcome to User Panel')]")
+    WebElement headerTextUser;
+
+    @FindBy(xpath = "//h1[contains(text(),'Welcome to Employee Panel')]")
+    WebElement headerTextEmployee;
 
     /**
      * POSITIVE TESTCASE METHOD
@@ -73,13 +86,13 @@ public class Payroll_HelpDesk_page_LoginLocator {
             buttonLogin.click();
             Thread.sleep(2000);
 
-            usernameTitle.click();
+            lblLoginUser.click();
             Thread.sleep(2000);
 
             if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
             }
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -220,13 +233,118 @@ public class Payroll_HelpDesk_page_LoginLocator {
             String exp_URL = Constants.BASEURL + "Home/Index";
             String act_URL = driver.getCurrentUrl();
             Assert.assertEquals(act_URL, exp_URL);
+            Reporter.log("SUCCESSFULLY Admin page is redirected.", true);
+
+            Assert.assertEquals(lblLoginUser.getText(),"Test Admin");
             Reporter.log("SUCCESSFULLY login by Admin User", true);
 
-            if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
-            }
-        } catch (InterruptedException e) {
+            Assert.assertEquals(headerTextAdminUser.getText(),"Welcome to Admin Panel");
+            Reporter.log("SUCCESSFULLY redirected to the Admin Page", true);
+
+            Thread.sleep(2000);
+
+            usernameTitle.click();
+            Thread.sleep(2000);
+
+            logOut();
+
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void verifyNormalUser(String username, String password){
+        try {
+            emp_code.clear();
+            emp_code.sendKeys(username);
+            Thread.sleep(2000);
+
+            Password.clear();
+            Password.sendKeys(password);
+            Thread.sleep(2000);
+
+            RememberMe.click();
+            Thread.sleep(2000);
+
+            buttonLogin.click();
+            Thread.sleep(4000);
+
+            String exp_URL = Constants.BASEURL + "Home/Index";
+            String act_URL = driver.getCurrentUrl();
+            Assert.assertEquals(act_URL, exp_URL);
+            Reporter.log("SUCCESSFULLY User page is redirected.", true);
+
+            Assert.assertEquals(lblLoginUser.getText(),"Test User");
+            Reporter.log("SUCCESSFULLY login by Normal User", true);
+
+            Assert.assertEquals(headerTextUser.getText(),"Welcome to User Panel");
+            Reporter.log("SUCCESSFULLY redirected to the Admin Page", true);
+
+            Thread.sleep(2000);
+
+            usernameTitle.click();
+            Thread.sleep(2000);
+
+            logOut();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyEmployeeUser(String username, String password){
+        try {
+            emp_code.clear();
+            emp_code.sendKeys(username);
+            Thread.sleep(2000);
+
+            Password.clear();
+            Password.sendKeys(password);
+            Thread.sleep(2000);
+
+            RememberMe.click();
+            Thread.sleep(2000);
+
+            buttonLogin.click();
+            Thread.sleep(4000);
+
+            String exp_URL = Constants.BASEURL + "Home/Index";
+            String act_URL = driver.getCurrentUrl();
+            Assert.assertEquals(act_URL, exp_URL);
+            Reporter.log("SUCCESSFULLY Employee page is redirected.", true);
+
+            Assert.assertEquals(headerTextEmployee.getText(),"Test Employee");
+            Reporter.log("SUCCESSFULLY login by Employee User", true);
+
+            Assert.assertEquals(headerTextEmployee.getText(),"Welcome to Employee Panel");
+            Reporter.log("SUCCESSFULLY redirected to the Employee Page", true);
+
+            Thread.sleep(2000);
+
+            usernameTitle.click();
+            Thread.sleep(2000);
+
+            logOut();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * verifyForgotPassword TESTCASE METHOD
+     *
+     * @param username = Username
+     */
+    public void verifyForgotPassword(String username) {
+        try {
+            forgetPassword.click();
+            Thread.sleep(4000);
+            emp_code.clear();
+            emp_code.sendKeys(username);
+            Thread.sleep(2000);
+        } catch (Exception ex) {
+            ex.getMessage();
         }
     }
 
@@ -235,11 +353,10 @@ public class Payroll_HelpDesk_page_LoginLocator {
      */
     public void logOut() {
         try {
-            if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
-                buttonLogout.click();
+            if (buttonLogout.isDisplayed()){
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
+//                buttonLogout.click();
                 Thread.sleep(2000);
-            } else {
-                System.out.println("Unable to click on element");
             }
         } catch (Exception ex) {
             ex.printStackTrace();

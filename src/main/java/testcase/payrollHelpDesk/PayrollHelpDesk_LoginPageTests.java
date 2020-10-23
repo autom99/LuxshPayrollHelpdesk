@@ -2,15 +2,16 @@ package testcase.payrollHelpDesk;
 
 import TestUtil.Constants;
 import base.TestBase;
+import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 
-public class PayrollHelpDesk_LoginPageTests {
+public class PayrollHelpDesk_LoginPageTests extends TestBase {
 
-	WebDriver driver;
+//	WebDriver driver;
 
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
 	
@@ -24,7 +25,7 @@ public class PayrollHelpDesk_LoginPageTests {
 	public void verifyAdminLogin() {
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+			objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-1	:Login Page: verify Admin User type", true);
 			Thread.sleep(4000);
@@ -40,6 +41,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			objLoginPage.validateLogin(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
+//			objLoginPage.verifyEmployeeUser(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-2	:Login Page: verify Employee User type", true);
 			Thread.sleep(4000);
@@ -55,6 +57,7 @@ public class PayrollHelpDesk_LoginPageTests {
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
 			objLoginPage.validateLogin(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
+//			objLoginPage.verifyNormalUser(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-3	:Login Page: verify Normal User type", true);
 			Thread.sleep(3000);
@@ -194,6 +197,19 @@ public class PayrollHelpDesk_LoginPageTests {
 			e.printStackTrace(); 
 		}
 	}
+
+//	@Test(priority = 10)
+//	public void VerifyForgotPassword(){
+//		try {
+//			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
+//			objLoginPage.verifyForgotPassword(Constants.USERNAME);
+//
+//			driver.close();
+//		}
+//		catch (Exception ex){
+//			ex.getMessage();
+//		}
+//	}
 
 //	@AfterMethod
 //	public void captureScreenShot(ITestResult result){

@@ -1,20 +1,15 @@
 package testcase.payrollHelpDesk;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
+import TestUtil.Constants;
+import base.TestBase;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import base.TestBase;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 import pages.Payroll_HelpDesk_page_UserLocator;
-import TestUtil.CaptureScreenshot;
-import TestUtil.Constants;
 
-public class PayrollHelpDesk_Add_UserPageTests {
+public class PayrollHelpDesk_UserPageTests extends TestBase {
 
-	public static WebDriver driver;
+//	public static WebDriver driver;
 
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
 	Payroll_HelpDesk_page_UserLocator objUserPage;
@@ -33,8 +28,11 @@ public class PayrollHelpDesk_Add_UserPageTests {
 	@Test(priority = 1)
 	public void createUser() {
 		objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
-		objUserPage.createUser("test group name", "test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
-				"test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(), "Admin", "test" + "@" + Constants.date.getTime(),
+		objUserPage.createUser("test group name",
+				"test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
+				"test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(),
+				"Employee",
+				"test" + "@" + Constants.date.getTime(),
 				"12345678");
 	}
 	
@@ -45,10 +43,12 @@ public class PayrollHelpDesk_Add_UserPageTests {
 	public void editUser() {
 		try {
 			objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
-			objUserPage.editUser("test group name", "Updated test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
+			objUserPage.editUser("test group name",
+					"Updated test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
 					"Updated test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(),
-					"Employee", "Updated_test" + "@" + "mail" + Constants.date.getTime());
-			driver.close();
+					"Admin",
+					"Updated_test" + "@" + "mail" + Constants.date.getTime());
+			objLoginPage.logOut();
 		}
 		catch (Exception ex){
 			ex.printStackTrace();
@@ -60,4 +60,5 @@ public class PayrollHelpDesk_Add_UserPageTests {
 //		CaptureScreenshot.captureScreenshotForFailedTests(driver,result.getName());
 //        CaptureScreenshot.captureScreenshotAllTests(driver,result);
 //	}
+
 }

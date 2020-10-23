@@ -1,18 +1,14 @@
 package testcase.payrollHelpDesk;
 
+import TestUtil.Constants;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import pages.Payroll_HelpDesk_page_AssignATicketLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
-import TestUtil.CaptureScreenshot;
-import TestUtil.Constants;
 
-public class PayrollHelpDesk_AssignATicketTests {
+public class PayrollHelpDesk_AssignATicketTests  extends TestBase{
 
     WebDriver driver;
 
@@ -28,7 +24,7 @@ public class PayrollHelpDesk_AssignATicketTests {
     }
 
     @Test
-    public void assignPendingTickets() throws InterruptedException {
+    public void assignPendingTickets() {
         objAssignATicketPage = new Payroll_HelpDesk_page_AssignATicketLocator(driver);
         objAssignATicketPage.pendingTicketAssignToUser("Test","Test");
     }
