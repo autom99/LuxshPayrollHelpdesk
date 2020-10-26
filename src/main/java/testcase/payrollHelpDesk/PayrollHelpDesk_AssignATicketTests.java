@@ -20,7 +20,7 @@ public class PayrollHelpDesk_AssignATicketTests  extends TestBase{
         driver = TestBase.testBase();
 
         objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test

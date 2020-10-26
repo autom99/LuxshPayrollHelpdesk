@@ -14,7 +14,7 @@ import TestUtil.Constants;
 
 public class PayrollHelpDesk_TicketListingTests extends TestBase{
 
-    public WebDriver driver;
+//    public WebDriver driver;
 
     Payroll_HelpDesk_page_LoginLocator objLoginPage;
     Payroll_HelpDesk_page_TicketListingLocator objTicketListingPage;
@@ -23,23 +23,14 @@ public class PayrollHelpDesk_TicketListingTests extends TestBase{
     public void initialBrowserDriver() {
         driver = TestBase.testBase();
         objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }
-
-//    @BeforeMethod
-//    public void verifyLogin(){
-//        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-//    }
 
     /**
      * TESTCASE-1: searchByAllStatusTicketListing
      */
     @Test(priority = 1)
     public void searchByAllStatusTicketListing() {
-//        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.searchByStatusTicketListing("All");
     }
@@ -90,16 +81,18 @@ public class PayrollHelpDesk_TicketListingTests extends TestBase{
     }
 
     @Test(priority = 9)
-    public void downloadTicket() throws InterruptedException {
+    public void downloadAttachment() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
-        objTicketListingPage.downloadTicket(Constants.strDate);
+        objTicketListingPage.downloadAttachment(Constants.strDate);
     }
 
     @Test(priority = 10)
     public void deleteTicket() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.deleteTicket(Constants.strDate);
-
+        Thread.sleep(2000);
+        objLoginPage.logOut();
+        Thread.sleep(2000);
         driver.close();
     }
 

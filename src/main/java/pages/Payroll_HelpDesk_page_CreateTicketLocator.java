@@ -5,6 +5,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+
+import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,9 +19,9 @@ import org.testng.Reporter;
 
 import TestUtil.Constants;
 
-public class Payroll_HelpDesk_page_CreateTicketLocator {
+public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
-	public  static WebDriver driver;
+//	public  static WebDriver driver;
 	public  static WebDriverWait wait;
 
 	public Payroll_HelpDesk_page_CreateTicketLocator(WebDriver driver) {

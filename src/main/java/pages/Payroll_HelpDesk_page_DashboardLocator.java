@@ -1,5 +1,6 @@
 package pages;
 
+import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +11,8 @@ import org.testng.Assert;
 
 import TestUtil.Constants;
 
-public class Payroll_HelpDesk_page_DashboardLocator {
-    WebDriver driver;
+public class Payroll_HelpDesk_page_DashboardLocator extends TestBase {
+//    WebDriver driver;
     WebDriverWait wait;
 
     public Payroll_HelpDesk_page_DashboardLocator(WebDriver driver) {

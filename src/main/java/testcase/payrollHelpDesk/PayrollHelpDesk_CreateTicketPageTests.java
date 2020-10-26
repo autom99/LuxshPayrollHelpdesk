@@ -24,7 +24,7 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 		driver = TestBase.testBase();
 
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 
 	/**
@@ -32,9 +32,6 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	 */
 	@Test(priority = 1)
 	public void createTicket(){
-//		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-//		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-		
 		objCreatePage = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
 		objCreatePage.createTicket("General Query", "General Query", "Medium", "Test Description-General Query");
 	}

@@ -2,17 +2,19 @@
 
 <suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="false">
 
-    <test name="Test_verifyAdminLogin" enabled="true">
+    <test name="Test_Login" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
                 <methods>
                     <include name="verifyAdminLogin"/>
+                    <include name="verifyEmployeeLogin"/>
+                    <include name="verifyUserLogin"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Test_Group">
+    <test name="Test_Group" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
@@ -23,7 +25,7 @@
         </classes>
     </test>
 
-    <test name="Test_User">
+    <test name="Test_User" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
                 <methods>
@@ -34,7 +36,7 @@
         </classes>
     </test>
 
-    <test name="Test_CreateTicket">
+    <test name="Test_CreateTicket" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
                 <methods>
@@ -45,13 +47,13 @@
         </classes>
     </test>
 
-    <test name="Test_TicketListing">
+    <test name="Test_TicketListing" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
                     <include name="searchByAllStatusTicketListing"/>
                     <include name="viewTicket"/>
-                    <include name="downloadTicket"/>
+                    <include name="downloadAttachment"/>
                     <include name="deleteTicket"/>
                 </methods>
             </class>

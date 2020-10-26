@@ -1,5 +1,6 @@
 package pages;
 
+import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import TestUtil.Constants;
 import org.testng.Assert;
 
-public class Payroll_HelpDesk_page_TicketListingLocator {
+public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
 
-    public static WebDriver driver;
+//    public static WebDriver driver;
     public static WebDriverWait wait;
 
     public Payroll_HelpDesk_page_TicketListingLocator(WebDriver driver) {
@@ -23,85 +24,88 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
     }
 
     @FindBy(xpath = "//li[@id=\"link-Ticket\"]")
-    private WebElement link_Ticket;
+    public WebElement link_Ticket;
 
     @FindBy(xpath = "//li[@id='link-TicketListing']//a[contains(@class,'nav-link')]")
-    private WebElement link_TicketListing;
+    public WebElement link_TicketListing;
 
     @FindBy(xpath = "//select[@id='status_type']")
-    private WebElement filter_status_type;
+    public WebElement filter_status_type;
 
     @FindBy(xpath = "//input[@class='form-control input-sm input-small input-inline']")
-    private WebElement searchBar;
+    public WebElement searchBar;
 
     @FindBy(xpath = "//input[contains(@class,'btn-sm')]")
-    private WebElement buttonSearch;
+    public WebElement buttonSearch;
 
     //------------------------------------------------------------------------------------------------------------------
     @FindBy(xpath = "//a[@href ='/Home/Index']")
-    private WebElement logo_img;
+    public WebElement logo_img;
 
     @FindBy(xpath = "//ul[@class =\"pagination\"]")
-    private WebElement pagination;
+    public WebElement pagination;
 
     @FindBy(xpath = "//div[@id='tblticket_paginate']")
-    private WebElement paginationTicketListingPage;
+    public WebElement paginationTicketListingPage;
 
     @FindBy(xpath = "//a[@title =\"Next\"]")
-    private WebElement buttonNext_PageNumber;
+    public WebElement buttonNext_PageNumber;
 
     @FindBy(xpath = "//a[@title =\"Prev\"]")
-    private WebElement buttonPrev_PageNumber;
+    public WebElement buttonPrev_PageNumber;
 
     @FindBy(xpath = "//li[@class=\"prev disabled\"]")
-    private WebElement buttonPrev_disabled;
+    public WebElement buttonPrev_disabled;
 
     @FindBy(xpath = "//li[@class='next disabled']")
-    private WebElement buttonNext_disabled;
+    public WebElement buttonNext_disabled;
 
     @FindBy(xpath = "//li[@class=\"active\"]")
-    private WebElement buttonActive_SelectedPageNumber;
+    public WebElement buttonActive_SelectedPageNumber;
 
     @FindBy(xpath = "//a[contains(text(),'2')]")
-    private WebElement PageNumber;
+    public WebElement PageNumber;
 
     @FindBy(xpath = "//select[contains(@name,'tblticket')]")
-    private WebElement NumberOfRecordsPerPage;
+    public WebElement NumberOfRecordsPerPage;
 
     //---------------------------------View Ticket----------------------------------------------------------------------
     @FindBy(xpath = "//button[@title=\"View Ticket History\"]")
-    private WebElement buttonEye_viewTicket;
+    public WebElement buttonEye_viewTicket;
 
     @FindBy(xpath = "//select[@id='ticketStatus']")
-    private WebElement buttonEye_viewTicket_SelectStatus;
+    public WebElement buttonEye_viewTicket_SelectStatus;
 
     @FindBy(xpath = "//textarea[@id='comments']")
-    private WebElement comments;
+    public WebElement comments;
 
     @FindBy(xpath = "//button[contains(text(),'Submit')]")
-    private WebElement buttonSubmit;
+    public WebElement buttonSubmit;
 
     @FindBy(xpath = "//button[contains(text(),'Back')]")
-    private WebElement buttonBack;
+    public WebElement buttonBack;
 
     //-----------------------------------Edit Ticket--------------------------------------------------------------------
     @FindBy(xpath = "//button[@title=\"Edit\"]")
-    private WebElement buttonPencil_editTicket;
+    public WebElement buttonPencil_editTicket;
 
     @FindBy(xpath = "//button[contains(text(),'Save')]")
-    private WebElement editSaveButton;
+    public WebElement editSaveButton;
     //-----------------------------------Download Ticket----------------------------------------------------------------
     @FindBy(xpath = "//button[@title=\"Download\"]")
-    private WebElement buttonDownload_downloadTicket;
+    public WebElement buttonDownload_downloadTicket;
 
     @FindBy(xpath = "//td[contains(text(),'No data available in table')]")
-    private WebElement noDataAvailable;
+    public WebElement noDataAvailable;
     //----------------------------------Delete Ticket-------------------------------------------------------------------
     @FindBy(xpath = "//button[@onclick=\"deleteTicket(); return false;\"]")
-    private WebElement delete_YesButton;
+    public WebElement delete_YesButton;
 
     @FindBy(xpath = "//button[@title=\"Remove\"]")
-    private WebElement buttonDustbin_deleteTicket;
+    public WebElement buttonDustbin_deleteTicket;
+
+    @FindBy(xpath = "//div[contains(text(),'File not available.')]")
+    WebElement validationFileUpload;
     //------------------------------------------------------------------------------------------------------------------
 
     /**
@@ -128,14 +132,14 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
         Select selectfilter_status_type = new Select(filter_status_type);
         selectfilter_status_type.selectByVisibleText(searchText);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         buttonSearch.click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -191,7 +195,6 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
      * @param searchText
      */
     public void viewTicket(String searchText, String status, String strComments) throws InterruptedException {
-
         link_Ticket.click();
         Thread.sleep(1000);
 
@@ -224,7 +227,6 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
      * @param searchText
      */
     public void deleteTicket(String searchText) throws InterruptedException {
-
         link_Ticket.click();
         Thread.sleep(1000);
 
@@ -247,8 +249,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
      *
      * @param searchText
      */
-    public void downloadTicket(String searchText) throws InterruptedException {
-
+    public void downloadAttachment(String searchText) throws InterruptedException {
         link_Ticket.click();
         Thread.sleep(1000);
 
@@ -265,11 +266,11 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
             if (buttonDownload_downloadTicket.isDisplayed() && buttonDownload_downloadTicket.isEnabled()) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonDownload_downloadTicket);
                 //buttonDownload_downloadTicket.click();
-                Thread.sleep(3000);
-                WebElement validMessageFileUpload = driver.findElement(By.xpath("//div[contains(text(),'File not available.')]"));
-                Thread.sleep(2000);
-                if (validMessageFileUpload.isDisplayed()) {
-                    String warnMessage = validMessageFileUpload.getText();
+                Thread.sleep(4000);
+//                WebElement validMessageFileUpload = driver.findElement(By.xpath("//div[contains(text(),'File not available.')]"));
+//                Thread.sleep(2000);
+                if (validationFileUpload.isDisplayed()) {
+                    String warnMessage = validationFileUpload.getText();
                     if (warnMessage.equalsIgnoreCase("File not available.")){
                         System.out.println("WARNING:Uploaded File is not available/supported.");
                     }
@@ -284,6 +285,9 @@ public class Payroll_HelpDesk_page_TicketListingLocator {
                     System.out.println("Error while capturing data..No data available in table..");
                 }
             }
+            searchBar.clear();
+            searchBar.sendKeys(Constants.strDate);
+            Thread.sleep(3000);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

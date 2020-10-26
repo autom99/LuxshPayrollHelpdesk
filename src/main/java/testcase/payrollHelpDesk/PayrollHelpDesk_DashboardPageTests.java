@@ -24,7 +24,7 @@ public class PayrollHelpDesk_DashboardPageTests extends TestBase {
 		driver = TestBase.testBase();
 
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 	
 	/**
@@ -33,9 +33,6 @@ public class PayrollHelpDesk_DashboardPageTests extends TestBase {
 	@Test(priority = 1)
 	public void dashboardNavigationAllFunctionality() {
 		try {
-//			objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-//			objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-
 			objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
 			objDashboardPage.dashboardOperations();
 

@@ -19,7 +19,7 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 		driver = TestBase.testBase();
 
 		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 
 	/**
@@ -48,7 +48,10 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 					"Updated test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(),
 					"Admin",
 					"Updated_test" + "@" + "mail" + Constants.date.getTime());
+			Thread.sleep(2000);
 			objLoginPage.logOut();
+			Thread.sleep(2000);
+			driver.close();
 		}
 		catch (Exception ex){
 			ex.printStackTrace();

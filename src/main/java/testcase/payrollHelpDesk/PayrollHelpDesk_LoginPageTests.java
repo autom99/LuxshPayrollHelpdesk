@@ -30,7 +30,7 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 			Reporter.log("POSITIVE TESTCASE-1	:Login Page: verify Admin User type", true);
 			Thread.sleep(4000);
 		}
-		catch (InterruptedException e) {
+		catch (Exception e) {
 			e.printStackTrace(); 
 		}
 	}
@@ -40,13 +40,12 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 	public void verifyEmployeeLogin() {
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.validateLogin(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
-//			objLoginPage.verifyEmployeeUser(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
+			objLoginPage.verifyEmployeeUser(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-2	:Login Page: verify Employee User type", true);
 			Thread.sleep(4000);
-		} 
-		catch (InterruptedException e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace(); 
 		}
 	}
@@ -56,8 +55,7 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 	public void verifyUserLogin() {
 		try {
 			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.validateLogin(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
-//			objLoginPage.verifyNormalUser(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
+			objLoginPage.verifyNormalUser(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-3	:Login Page: verify Normal User type", true);
 			Thread.sleep(3000);
@@ -216,4 +214,5 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 //		CaptureScreenshot.captureScreenshotForFailedTests(driver,result.getName());
 //		CaptureScreenshot.captureScreenshotAllTests(driver,result);
 //	}
+
 }
