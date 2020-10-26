@@ -40,8 +40,8 @@ public class CheckBox {
 			System.out.println("Unable to deselect checkbox: "+element);
 		}
 	}		
-	
-/**
+
+	/**
  * 	METHOD-3 : is used to select the checkbox with the specified value from multiple checkboxes.
  * @param element
  * @param valueToSelect
@@ -56,34 +56,6 @@ public class CheckBox {
 			}
 		}
 	}
-	
-//	private WebDriver driver;
-//	private String basePageURL;
-
-//	@Test
-//	public void testCaseToCheck() {
-//		driver = new FirefoxDriver();
-//		driver.get(basePageURL);
-//		WebElement checkBoxElement=driver.findElement(By.id("persist_box"));
-//		//Wait for the checkbox element to be visible
-//		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(checkBoxElement));
-//		Select_The_Checkbox(checkBoxElement);
-//	}
-//
-//	@Test
-//	public void testCaseToUnCheck() {
-//		driver.navigate().to(basePageURL);
-//		WebElement checkBoxElement=driver.findElement(By.id("persist_box"));
-//		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(checkBoxElement));
-//		DeSelect_The_Checkbox(checkBoxElement);
-//	}
-//
-//	@Test
-//	public void testCaseToCheckDesired(){
-//		driver.navigate().to("someother page");
-//		WebElement element = driver.findElement(By.cssSelector(".display"));
-//		Select_The_CheckBox_from_List(element, "soccer");
-//	}
 
 
 }

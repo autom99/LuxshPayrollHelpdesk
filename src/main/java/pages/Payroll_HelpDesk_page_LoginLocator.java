@@ -238,7 +238,11 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 //            Reporter.log("SUCCESSFULLY login by Admin User", true);
 
             Assert.assertEquals(headerTextAdminUser.getText(),"Welcome to Admin Panel");
-            Reporter.log("SUCCESSFULLY redirected to the Admin Page", true);
+            Reporter.log("SUCCESSFULLY redirected to the Admin Page.!", true);
+            Thread.sleep(2000);
+
+            Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
+            Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(2000);
 
             usernameTitle.click();
@@ -279,6 +283,10 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             Reporter.log("SUCCESSFULLY redirected to the Admin Page", true);
             Thread.sleep(2000);
 
+            Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
+            Reporter.log("SUCCESSFULLY matched with the title.!", true);
+            Thread.sleep(2000);
+
             usernameTitle.click();
             Thread.sleep(2000);
 
@@ -317,7 +325,10 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
             Assert.assertEquals(headerTextEmployee.getText(),"Welcome to Employee Panel");
             Reporter.log("SUCCESSFULLY redirected to the Employee Page", true);
+            Thread.sleep(2000);
 
+            Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
+            Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(2000);
 
             usernameTitle.click();

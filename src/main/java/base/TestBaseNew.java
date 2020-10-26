@@ -13,27 +13,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-
-import java.util.Properties;
+import org.testng.annotations.*;
 
 public class TestBaseNew {
 
     private WebDriver driver;
     private EventFiringWebDriver e_driver;
-    private WebEventListener eventListener;
     private WebDriverWait wait;
     public int waitTime = 10;
-    public static Properties ps;
+//    public static Properties ps;
 
+    @Parameters("browser")
     @BeforeClass()
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
 		options.addArguments("-incognito");
         options.addArguments("start-maximized");
+
+//      String browser = System.getProperty("browser");
 
         System.setProperty("webdriver.chrome.driver", Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
         driver = new ChromeDriver(options);
@@ -41,12 +38,23 @@ public class TestBaseNew {
 
         e_driver = new EventFiringWebDriver(driver);
 
-        eventListener = new WebEventListener();
+        WebEventListener eventListener = new WebEventListener();
         e_driver.register(eventListener);
         driver = e_driver;
 
         e_driver.manage().window().maximize();
         e_driver.get(Constants.BASEURL);
+//        if (browser.equalsIgnoreCase("Firefox")) {
+//            System.setProperty("webdriver.gecko.driver", Constants.PROJECTPATH + "\\drivers\\geckodriver.exe");
+//            driver = new FirefoxDriver();
+//        }
+//        else if (browser.equalsIgnoreCase("Chrome")) {
+//            System.setProperty("webdriver.chrome.driver", Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
+//            driver = new ChromeDriver();
+//        }
+//        else {
+//            throw new IllegalArgumentException("Invalid browser value!!");
+//        }
     }
 
    @Test

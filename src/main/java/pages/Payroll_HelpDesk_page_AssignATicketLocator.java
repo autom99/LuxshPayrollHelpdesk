@@ -11,11 +11,10 @@ import TestUtil.Constants;
 
 public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
 
-//    public static WebDriver driver;
     public static WebDriverWait wait;
 
     public Payroll_HelpDesk_page_AssignATicketLocator(WebDriver driver){
-        this.driver = driver;
+        TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
     }
