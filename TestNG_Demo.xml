@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="false">
+<suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="true">
 
     <test name="Test_Login" enabled="true">
         <classes>
@@ -14,7 +14,7 @@
         </classes>
     </test>
 
-    <test name="Test_Group" enabled="true">
+    <test name="Test_Group" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
@@ -25,7 +25,7 @@
         </classes>
     </test>
 
-    <test name="Test_User" enabled="true">
+    <test name="Test_User" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
                 <methods>
@@ -36,7 +36,7 @@
         </classes>
     </test>
 
-    <test name="Test_CreateTicket" enabled="true">
+    <test name="Test_CreateTicket" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
                 <methods>
@@ -47,7 +47,7 @@
         </classes>
     </test>
 
-    <test name="Test_TicketListing" enabled="true">
+    <test name="Test_TicketListing" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
