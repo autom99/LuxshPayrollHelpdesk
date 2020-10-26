@@ -96,9 +96,9 @@ public class PayrollHelpDesk_TicketListingTests extends TestBase{
         driver.close();
     }
 
-//    @AfterMethod
-//    public void captureScreenShot(ITestResult result){
-//        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-//        CaptureScreenshot.captureScreenshotAllTests(driver,result);
-//    }
+    @AfterMethod
+    public void captureScreenShot(ITestResult result){
+        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+        CaptureScreenshot.captureScreenshotPassedTests(driver,result);
+    }
 }

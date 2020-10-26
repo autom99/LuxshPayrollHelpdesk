@@ -33,7 +33,6 @@ public class TestBase {
         wait = new WebDriverWait(driver, waitTime);
 
         e_driver = new EventFiringWebDriver(driver);
-
         eventListener = new WebEventListener();
         e_driver.register(eventListener);
         driver = e_driver;

@@ -43,9 +43,9 @@ public class PayrollHelpDesk_DashboardPageTests extends TestBase {
 		}
 	}
 
-//	@AfterMethod
-//	public void captureScreenShot(ITestResult result){
-//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-//		CaptureScreenshot.captureScreenshotAllTests(driver,result);
-//	}
+	@AfterMethod
+	public void captureScreenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+		CaptureScreenshot.captureScreenshotPassedTests(driver,result);
+	}
 }

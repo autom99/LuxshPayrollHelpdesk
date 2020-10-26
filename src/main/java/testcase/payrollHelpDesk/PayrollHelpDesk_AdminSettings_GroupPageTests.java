@@ -1,8 +1,11 @@
 package testcase.payrollHelpDesk;
 
+import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
@@ -44,10 +47,10 @@ public class PayrollHelpDesk_AdminSettings_GroupPageTests extends TestBase {
         driver.close();
     }
 
-//	@AfterMethod
-//	public void captureScreenShot(ITestResult result){
-//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-//		CaptureScreenshot.captureScreenshotAllTests(driver,result);
-//	}
+	@AfterMethod
+	public void captureScreenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+		CaptureScreenshot.captureScreenshotPassedTests(driver,result);
+	}
 
 }

@@ -1,10 +1,13 @@
 package testcase.payrollHelpDesk;
 
+import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
 import base.TestBase;
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Payroll_HelpDesk_page_LoginLocator;
@@ -209,10 +212,10 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 //		}
 //	}
 
-//	@AfterMethod
-//	public void captureScreenShot(ITestResult result){
-//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result.getName());
-//		CaptureScreenshot.captureScreenshotAllTests(driver,result);
-//	}
+	@AfterMethod
+	public void captureScreenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+		CaptureScreenshot.captureScreenshotPassedTests(driver,result);
+	}
 
 }

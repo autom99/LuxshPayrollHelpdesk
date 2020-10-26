@@ -46,11 +46,11 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 		objCreatePage.ediTicket("Payslips", "Payslip Request", "High", "Updated Test Description-Payslips-Payslip Request");
 		driver.close();
 	}
-	
-//	@AfterMethod
-//	public void captureScreenShot(ITestResult result){
-//		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
-//		CaptureScreenshot.captureScreenshotAllTests(driver,result);
-//	}
+
+	@AfterMethod
+	public void captureScreenShot(ITestResult result){
+		CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+		CaptureScreenshot.captureScreenshotPassedTests(driver,result);
+	}
 
 }
