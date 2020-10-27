@@ -23,6 +23,9 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         wait = new WebDriverWait(driver, 20);
     }
 
+    @FindBy(xpath = "//span[contains(text(),'Dashboard')]")
+    public WebElement link_Dashboard;
+
     @FindBy(xpath = "//li[@id=\"link-Ticket\"]")
     public WebElement link_Ticket;
 
@@ -114,6 +117,13 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
      * @param searchText: searchText
      */
     public void searchByStatusTicketListing(String searchText) {
+//        link_Dashboard.click();
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         link_Ticket.click();
         try {
             Thread.sleep(1000);

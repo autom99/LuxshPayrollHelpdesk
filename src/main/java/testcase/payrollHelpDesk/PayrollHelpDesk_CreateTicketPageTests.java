@@ -14,8 +14,6 @@ import TestUtil.Constants;
 
 public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 
-	public static WebDriver driver;
-
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
 	Payroll_HelpDesk_page_CreateTicketLocator objCreatePage;
 

@@ -97,7 +97,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			Thread.sleep(1000);
 
 			link_Group.click();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 
 			buttonAddGroup.click();
 			Thread.sleep(2000);

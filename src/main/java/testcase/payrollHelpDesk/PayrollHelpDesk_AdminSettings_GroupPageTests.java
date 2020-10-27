@@ -3,7 +3,6 @@ package testcase.payrollHelpDesk;
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
 import base.TestBase;
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
@@ -12,8 +11,6 @@ import pages.Payroll_HelpDesk_page_AdminSetting_GroupLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 
 public class PayrollHelpDesk_AdminSettings_GroupPageTests extends TestBase {
-
-    public WebDriver driver;
 
     Payroll_HelpDesk_page_LoginLocator objLoginPage;
     Payroll_HelpDesk_page_AdminSetting_GroupLocator objGroupPage;

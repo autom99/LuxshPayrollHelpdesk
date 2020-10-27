@@ -21,14 +21,16 @@ import TestUtil.Constants;
 
 public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
-//	public  static WebDriver driver;
-	public  static WebDriverWait wait;
+	public static WebDriverWait wait;
 
 	public Payroll_HelpDesk_page_CreateTicketLocator(WebDriver driver) {
 		Payroll_HelpDesk_page_CreateTicketLocator.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
 	}
+
+	@FindBy(xpath = "//span[contains(text(),'Dashboard')]")
+	public WebElement link_Dashboard;
 
 	@FindBy(xpath = "//li[@id=\"link-Ticket\"]")
 	public WebElement link_Ticket;
@@ -89,6 +91,9 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void createTicket(String strSubject,String strCategory,String strPriority,String strDescription){
 		try {
+//			link_Dashboard.click();
+//			Thread.sleep(1000);
+
 			link_Ticket.click();
 			Thread.sleep(1000);
 

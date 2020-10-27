@@ -12,8 +12,6 @@ import pages.Payroll_HelpDesk_page_UserLocator;
 
 public class PayrollHelpDesk_UserPageTests extends TestBase {
 
-//	public static WebDriver driver;
-
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
 	Payroll_HelpDesk_page_UserLocator objUserPage;
 	

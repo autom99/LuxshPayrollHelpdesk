@@ -1,5 +1,6 @@
 package pages;
 
+import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import TestUtil.Constants;
+import org.testng.TestNGUtils;
 
 public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
@@ -71,21 +73,30 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
      */
     public void validateLogin(String username, String password) {
         try {
+            HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(Password);
             Password.clear();
             Password.sendKeys(password);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(RememberMe);
             RememberMe.click();
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(buttonLogin);
             buttonLogin.click();
             Thread.sleep(2000);
 
 //            lblLoginUser.click();
+//            Thread.sleep(2000);
+//            String exp = usernameTitle.getText().trim().toLowerCase();
+//            System.out.println("--------------------------------Expected String is : " + exp.trim());
+//            System.out.println("--------------------------------Actual String is : " + username.trim());
+//            Assert.assertEquals(exp.equalsIgnoreCase(username),exp.trim());
 //            Thread.sleep(2000);
 
 //            if (buttonLogout.isEnabled() && buttonLogout.isDisplayed()) {
@@ -232,7 +243,7 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             String exp_URL = Constants.BASEURL + "Home/Index";
             String act_URL = driver.getCurrentUrl();
             Assert.assertEquals(act_URL, exp_URL);
-            Reporter.log("SUCCESSFULLY Admin page is redirected.", true);
+            Reporter.log("SUCCESSFULLY redirected to the Admin page.", true);
 
 //            Assert.assertEquals(lblLoginUser.getText().trim().toLowerCase(), username.toLowerCase());
 //            Reporter.log("SUCCESSFULLY login by Admin User", true);
@@ -245,6 +256,7 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(2000);
 
+            System.out.println("username text is : " + usernameTitle.getText());
             usernameTitle.click();
             Thread.sleep(2000);
 
@@ -293,7 +305,6 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             logOut();
 
             Thread.sleep(2000);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

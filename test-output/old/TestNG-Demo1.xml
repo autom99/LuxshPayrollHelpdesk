@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="true">
+
+    <test name="Test_Demo-Failed" enabled="true">
+        <classes>
+            <class name="base.TestBaseNew">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

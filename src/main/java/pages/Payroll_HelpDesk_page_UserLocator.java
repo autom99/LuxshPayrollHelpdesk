@@ -1,5 +1,6 @@
 package pages;
 
+import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,9 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Payroll_HelpDesk_page_UserLocator {
+public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 
-	WebDriver driver;
 	WebDriverWait wait;
 
 	public Payroll_HelpDesk_page_UserLocator(WebDriver driver) {
@@ -18,6 +18,9 @@ public class Payroll_HelpDesk_page_UserLocator {
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
 	}
+
+	@FindBy(xpath = "//span[contains(text(),'Dashboard')]")
+	public WebElement link_Dashboard;
 
 	@FindBy(xpath = "//li[@id='link-User']//a[@class='nav-link nav-toggle']")
 	public WebElement link_User;
@@ -102,6 +105,9 @@ public class Payroll_HelpDesk_page_UserLocator {
 	 */
 	public void createUser(String GroupName,String EmpCode,String EmpName,String UserType,String EmailID,String PasswordEncText) {
 		try {
+//			link_Dashboard.click();
+//			Thread.sleep(1000);
+
 			link_User.click();
 			Thread.sleep(1000);
 
@@ -170,7 +176,6 @@ public class Payroll_HelpDesk_page_UserLocator {
 	 * @param UpdatedEmailID = updated email
 	 */
 	public void editUser(String UpdatedGroupName,String UpdatedEmpCode,String UpdatedEmpName,String UpdatedUserType,String UpdatedEmailID) {
-
 		try {
 			editIconButton.click();
 			Thread.sleep(3000);
@@ -207,8 +212,7 @@ public class Payroll_HelpDesk_page_UserLocator {
 			searchBar.clear();
 			searchBar.sendKeys(UpdatedEmpCode);
 			Thread.sleep(4000);
-
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

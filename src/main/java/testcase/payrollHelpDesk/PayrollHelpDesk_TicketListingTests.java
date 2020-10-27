@@ -1,20 +1,16 @@
 package testcase.payrollHelpDesk;
 
-import org.openqa.selenium.WebDriver;
+import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
+import base.TestBase;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import base.TestBase;
 import pages.Payroll_HelpDesk_page_LoginLocator;
 import pages.Payroll_HelpDesk_page_TicketListingLocator;
-import TestUtil.CaptureScreenshot;
-import TestUtil.Constants;
 
 public class PayrollHelpDesk_TicketListingTests extends TestBase{
-
-//    public WebDriver driver;
 
     Payroll_HelpDesk_page_LoginLocator objLoginPage;
     Payroll_HelpDesk_page_TicketListingLocator objTicketListingPage;
