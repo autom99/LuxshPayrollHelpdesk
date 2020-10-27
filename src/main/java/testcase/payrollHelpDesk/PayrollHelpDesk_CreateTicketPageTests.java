@@ -30,6 +30,12 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	 */
 	@Test(priority = 1)
 	public void createTicket(){
+		try {
+			Thread.sleep(15000);
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
 		objCreatePage = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
 		objCreatePage.createTicket("General Query", "General Query", "Medium", "Test Description-General Query");
 	}
@@ -39,6 +45,12 @@ public class PayrollHelpDesk_CreateTicketPageTests extends TestBase{
 	 */
 	@Test(priority = 2)
 	public void editTicket() {
+		try {
+			Thread.sleep(10000);
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
 		objCreatePage = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
 //		objCreatePage.ediTicket("Incorrect Pay", "Not Paid Correctly", "High", "Updated Test Description-Incorrect Pay-Not Paid Correctly");
 		objCreatePage.ediTicket("Payslips", "Payslip Request", "High", "Updated Test Description-Payslips-Payslip Request");

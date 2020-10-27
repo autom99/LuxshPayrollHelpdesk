@@ -1,5 +1,6 @@
 package pages;
 
+import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -93,23 +94,29 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 	 */
 	public void createGroup(String GroupCode,String GroupName,String Note) {
 		try {
+			HighlightElement.highlightElement(link_AdminSettings);
 			link_AdminSettings.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(link_Group);
 			link_Group.click();
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(buttonAddGroup);
 			buttonAddGroup.click();
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(Group_Code);
 			Group_Code.clear();
 			Group_Code.sendKeys(GroupCode);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(Group_Name);
 			Group_Name.clear();
 			Group_Name.sendKeys(GroupName);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(Notes);
 			Notes.clear();
 			Notes.sendKeys(Note);
 			Thread.sleep(1000);
@@ -126,17 +133,21 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 				e.printStackTrace();
 			}
 
+			HighlightElement.highlightElement(buttonSave);
 			buttonSave.click();
 			Thread.sleep(4000);
 
+			HighlightElement.highlightElement(NumberOfPages);
 			NumberOfPages.click();
 			Select selectNumberOfPages = new Select(NumberOfPages);
 			selectNumberOfPages.selectByVisibleText("100");
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(PageNumber);
 			PageNumber.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();
 			searchBar.sendKeys(GroupCode);
 			Thread.sleep(4000);
@@ -153,29 +164,36 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 	 */
 	public void editGroup(String UpdatedGroupCode,String UpdatedGroupName,String UpdatedNote) {
 		try {
+			HighlightElement.highlightElement(editIconButton);
 			editIconButton.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(edit_Group_Code);
 			edit_Group_Code.clear();
 			edit_Group_Code.sendKeys(UpdatedGroupCode);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(edit_Group_Name);
 			edit_Group_Name.clear();
 			edit_Group_Name.sendKeys(UpdatedGroupName);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(edit_Notes);
 			edit_Notes.clear();
 			edit_Notes.sendKeys(UpdatedNote);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(edit_buttonSave);
 			edit_buttonSave.click();
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();
 			searchBar.sendKeys(UpdatedGroupCode);
 			Thread.sleep(3000);
 
 			//Navigate to the Dashboard Page
+			HighlightElement.highlightElement(logo_img);
 			logo_img.click();
 			Thread.sleep(4000);
 		} catch (Exception e) {

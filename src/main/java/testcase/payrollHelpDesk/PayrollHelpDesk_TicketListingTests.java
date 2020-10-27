@@ -72,18 +72,36 @@ public class PayrollHelpDesk_TicketListingTests extends TestBase{
 
     @Test(priority = 8)
     public void viewTicket() throws InterruptedException {
+        try {
+            Thread.sleep(12000);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.viewTicket(Constants.strDate, "Open", "Test comment");
     }
 
     @Test(priority = 9)
     public void downloadAttachment() throws InterruptedException {
+        try {
+            Thread.sleep(12000);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.downloadAttachment(Constants.strDate);
     }
 
     @Test(priority = 10)
     public void deleteTicket() throws InterruptedException {
+        try {
+            Thread.sleep(12000);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
         objTicketListingPage.deleteTicket(Constants.strDate);
         Thread.sleep(2000);

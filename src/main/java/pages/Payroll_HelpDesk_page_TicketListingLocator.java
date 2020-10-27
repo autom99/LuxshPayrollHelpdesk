@@ -1,5 +1,6 @@
 package pages;
 
+import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -205,28 +206,35 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
      * @param searchText
      */
     public void viewTicket(String searchText, String status, String strComments) throws InterruptedException {
+        HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(link_TicketListing);
         link_TicketListing.click();
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(searchBar);
         searchBar.clear();
         searchBar.sendKeys(Constants.strDate);
         Thread.sleep(3000);
 
+        HighlightElement.highlightElement(buttonEye_viewTicket);
         buttonEye_viewTicket.click();
         Thread.sleep(3000);
 
+        HighlightElement.highlightElement(buttonEye_viewTicket_SelectStatus);
         buttonEye_viewTicket_SelectStatus.click();
         Select selectStatus = new Select(buttonEye_viewTicket_SelectStatus);
         selectStatus.selectByVisibleText(status);
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(comments);
         comments.clear();
         comments.sendKeys(strComments);
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(buttonSubmit);
         buttonSubmit.click();
         Thread.sleep(3000);
     }
@@ -237,19 +245,24 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
      * @param searchText
      */
     public void deleteTicket(String searchText) throws InterruptedException {
+        HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(link_TicketListing);
         link_TicketListing.click();
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(searchBar);
         searchBar.clear();
         searchBar.sendKeys(Constants.strDate);
         Thread.sleep(3000);
 
+        HighlightElement.highlightElement(buttonDustbin_deleteTicket);
         buttonDustbin_deleteTicket.click();
         Thread.sleep(3000);
 
+        HighlightElement.highlightElement(delete_YesButton);
         delete_YesButton.click();
         Thread.sleep(3000);
     }
@@ -260,12 +273,15 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
      * @param searchText
      */
     public void downloadAttachment(String searchText) throws InterruptedException {
+        HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(link_TicketListing);
         link_TicketListing.click();
         Thread.sleep(1000);
 
+        HighlightElement.highlightElement(searchBar);
         searchBar.clear();
         searchBar.sendKeys(Constants.strDate);
         Thread.sleep(3000);
@@ -295,6 +311,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
                     System.out.println("Error while capturing data..No data available in table..");
                 }
             }
+            HighlightElement.highlightElement(searchBar);
             searchBar.clear();
             searchBar.sendKeys(Constants.strDate);
             Thread.sleep(3000);

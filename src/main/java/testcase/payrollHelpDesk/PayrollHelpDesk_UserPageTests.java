@@ -28,6 +28,12 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 	 */
 	@Test(priority = 1)
 	public void createUser() {
+		try {
+			Thread.sleep(15000);
+		}
+		catch (Exception ex){
+			ex.printStackTrace();
+		}
 		objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
 		objUserPage.createUser("test group name",
 				"test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
@@ -43,6 +49,7 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 	@Test(priority = 2)
 	public void editUser() {
 		try {
+			Thread.sleep(10000);
 			objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
 			objUserPage.editUser("test group name",
 					"Updated test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),

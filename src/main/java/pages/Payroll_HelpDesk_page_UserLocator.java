@@ -1,5 +1,6 @@
 package pages;
 
+import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -108,12 +109,15 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 //			link_Dashboard.click();
 //			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(link_User);
 			link_User.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(buttonAddUser);
 			buttonAddUser.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(SelectGroup);
 			SelectGroup.click();
 			Thread.sleep(1000);
 
@@ -121,14 +125,17 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			selectGroup.selectByVisibleText(GroupName);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(EmployeeCode);
 			EmployeeCode.clear();
 			EmployeeCode.sendKeys(EmpCode);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(EmployeeName);
 			EmployeeName.clear();
 			EmployeeName.sendKeys(EmpName);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(SelectUserType);
 			SelectUserType.click();
 			Thread.sleep(1000);
 
@@ -136,10 +143,12 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			selectUserType.selectByVisibleText(UserType);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(Email);
 			Email.clear();
 			Email.sendKeys(EmailID);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(Password);
 			Password.clear();
 			Password.sendKeys(PasswordEncText);
 			Thread.sleep(1000);
@@ -148,17 +157,21 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			 * Active_checkbox.click(); try { Thread.sleep(1000); } catch
 			 * (InterruptedException e) { e.printStackTrace(); }
 			 */
+			HighlightElement.highlightElement(buttonSave);
 			buttonSave.click();
 			Thread.sleep(4000);
 
+			HighlightElement.highlightElement(NumberOfPages);
 			NumberOfPages.click();
 			Select selectNumberOfPages = new Select(NumberOfPages);
 			selectNumberOfPages.selectByVisibleText("100");
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(PageNumber);
 			PageNumber.click();
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();
 			searchBar.sendKeys(EmpCode);
 			Thread.sleep(4000);
@@ -177,9 +190,11 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	 */
 	public void editUser(String UpdatedGroupName,String UpdatedEmpCode,String UpdatedEmpName,String UpdatedUserType,String UpdatedEmailID) {
 		try {
+			HighlightElement.highlightElement(editIconButton);
 			editIconButton.click();
 			Thread.sleep(3000);
 
+			HighlightElement.highlightElement(edit_SelectGroup);
 			edit_SelectGroup.click();
 			Thread.sleep(2000);
 
@@ -187,14 +202,17 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			selectGroup.selectByVisibleText(UpdatedGroupName);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(edit_EmployeeCode);
 			edit_EmployeeCode.clear();
 			edit_EmployeeCode.sendKeys(UpdatedEmpCode);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(edit_EmployeeName);
 			edit_EmployeeName.clear();
 			edit_EmployeeName.sendKeys(UpdatedEmpName);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(edit_SelectUserType);
 			edit_SelectUserType.click();
 			Thread.sleep(2000);
 
@@ -202,13 +220,16 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			selectUserType.selectByVisibleText(UpdatedUserType);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(edit_Email);
 			edit_Email.clear();
 			edit_Email.sendKeys(UpdatedEmailID);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(edit_buttonSave);
 			edit_buttonSave.click();
 			Thread.sleep(3000);
 
+			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();
 			searchBar.sendKeys(UpdatedEmpCode);
 			Thread.sleep(4000);

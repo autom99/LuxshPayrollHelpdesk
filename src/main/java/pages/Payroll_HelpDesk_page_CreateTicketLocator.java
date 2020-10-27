@@ -6,6 +6,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
+import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -93,28 +94,33 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 		try {
 //			link_Dashboard.click();
 //			Thread.sleep(1000);
-
+			HighlightElement.highlightElement(link_Ticket);
 			link_Ticket.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(createTicket);
 			createTicket.click();
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(subject);
 			subject.click();
 			Select selectSubject = new Select(subject);
 			selectSubject.selectByVisibleText(strSubject);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(category);
 			category.click();
 			Select selectCategory = new Select(category);
 			selectCategory.selectByVisibleText(strCategory);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(Priority);
 			Priority.click();
 			Select selectPriority = new Select(Priority);
 			selectPriority.selectByVisibleText(strPriority);
 			Thread.sleep(1000);
 
+			HighlightElement.highlightElement(Description);
 			Description.clear();
 			Description.sendKeys(strDescription);
 			Thread.sleep(1000);
@@ -143,6 +149,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 				e.printStackTrace();
 			}
 
+			HighlightElement.highlightElement(buttonSubmit);
 			buttonSubmit.click();
 			Thread.sleep(3000);
 
@@ -152,14 +159,17 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			Thread.sleep(2000);
 			Reporter.log("SUCCESSFULLY Created Ticket.!", true);
 
+			HighlightElement.highlightElement(NumberOfPages);
 			NumberOfPages.click();
 			Select selectNumberOfPages = new Select(NumberOfPages);
 			selectNumberOfPages.selectByVisibleText("100");
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(PageNumber);
 			PageNumber.click();
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();
 			searchBar.sendKeys(Constants.strDate);
 			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
@@ -178,6 +188,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void ediTicket(String UpdatedSubject,String UpdatedCategory,String UpdatedPriority,String UpdatedDescription){
 		try {
+			HighlightElement.highlightElement(editIconButton);
 			editIconButton.click();
 			Thread.sleep(4000);
 
@@ -187,21 +198,25 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 //			editIconButton.click();
 //			Thread.sleep(4000);
 
+			HighlightElement.highlightElement(subject);
 			subject.click();
 			Select selectSubject = new Select(subject);
 			selectSubject.selectByVisibleText(UpdatedSubject);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(category);
 			category.click();
 			Select selectCategory = new Select(category);
 			selectCategory.selectByVisibleText(UpdatedCategory);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(Priority);
 			Priority.click();
 			Select selectPriority = new Select(Priority);
 			selectPriority.selectByVisibleText(UpdatedPriority);
 			Thread.sleep(2000);
 
+			HighlightElement.highlightElement(Description);
 			Description.clear();
 			Description.sendKeys(UpdatedDescription);
 			Thread.sleep(2000);
@@ -231,6 +246,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 				e.printStackTrace();
 			}
 
+			HighlightElement.highlightElement(editSaveButton);
 			editSaveButton.click();
 			Thread.sleep(4000);
 
@@ -240,6 +256,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			Thread.sleep(4000);
 			System.out.println("SUCCESSFULLY Updated Ticket.!");
 
+			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();
 			searchBar.sendKeys(Constants.strDate);
 			Thread.sleep(3000);

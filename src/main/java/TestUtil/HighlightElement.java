@@ -8,7 +8,7 @@ public class HighlightElement extends TestBase {
 
     public static void highlightElement(WebElement element){
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", element);
+        jse.executeScript("arguments[0].setAttribute('style', 'border: 3px solid red;');", element);
 
         try {
             Thread.sleep(500);

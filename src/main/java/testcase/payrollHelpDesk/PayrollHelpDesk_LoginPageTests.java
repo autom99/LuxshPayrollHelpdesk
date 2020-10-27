@@ -29,7 +29,7 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 			objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-1	:Login Page: verify Admin User type", true);
-			Thread.sleep(4000);
+			Thread.sleep(3000);
 		}
 		catch (Exception e) {
 			e.printStackTrace(); 
@@ -44,7 +44,7 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 			objLoginPage.verifyEmployeeUser(Constants.EMPLOYEEUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-2	:Login Page: verify Employee User type", true);
-			Thread.sleep(4000);
+			Thread.sleep(3000);
 		}
 		catch (Exception e) {
 			e.printStackTrace(); 

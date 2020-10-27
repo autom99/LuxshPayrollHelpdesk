@@ -17,6 +17,7 @@ public class CheckBox {
 				System.out.println("Checkbox: " + element + "is already selected");
 			} else {
 				// Select the Checkbox
+				HighlightElement.highlightElement(element);
 				element.click();
 			}
 		} catch (Exception e) {
@@ -32,6 +33,7 @@ public class CheckBox {
 		try {
 			if (element.isSelected()) {
 				//De-select the Checkbox
+				HighlightElement.highlightElement(element);
 				element.click();
 			} else {
 				System.out.println("Checkbox: "+element+"is already deselected");

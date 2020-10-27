@@ -226,17 +226,21 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
      */
     public void verifyAdminLogin(String username, String password) {
         try {
+            HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(Password);
             Password.clear();
             Password.sendKeys(password);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(RememberMe);
             RememberMe.click();
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(buttonLogin);
             buttonLogin.click();
             Thread.sleep(4000);
 
@@ -254,11 +258,11 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
             Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             System.out.println("username text is : " + usernameTitle.getText());
             usernameTitle.click();
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             logOut();
             Thread.sleep(2000);
@@ -269,17 +273,21 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
     public void verifyNormalUser(String username, String password){
         try {
+            HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(Password);
             Password.clear();
             Password.sendKeys(password);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(RememberMe);
             RememberMe.click();
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(buttonLogin);
             buttonLogin.click();
             Thread.sleep(4000);
 
@@ -299,6 +307,7 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(usernameTitle);
             usernameTitle.click();
             Thread.sleep(2000);
 
@@ -312,17 +321,21 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
     public void verifyEmployeeUser(String username, String password){
         try {
+            HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(Password);
             Password.clear();
             Password.sendKeys(password);
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(RememberMe);
             RememberMe.click();
             Thread.sleep(2000);
 
+            HighlightElement.highlightElement(buttonLogin);
             buttonLogin.click();
             Thread.sleep(4000);
 
@@ -340,8 +353,9 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 
             Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
+            HighlightElement.highlightElement(usernameTitle);
             usernameTitle.click();
             Thread.sleep(2000);
 
@@ -376,6 +390,7 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
     public void logOut() {
         try {
             if (buttonLogout.isDisplayed()){
+                HighlightElement.highlightElement(buttonLogout);
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
 //                buttonLogout.click();
                 Thread.sleep(2000);
