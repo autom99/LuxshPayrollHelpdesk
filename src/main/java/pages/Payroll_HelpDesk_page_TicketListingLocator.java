@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import TestUtil.Constants;
@@ -89,18 +90,27 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
     @FindBy(xpath = "//button[contains(text(),'Back')]")
     public WebElement buttonBack;
 
-    //-----------------------------------Edit Ticket--------------------------------------------------------------------
-    @FindBy(xpath = "//button[@title=\"Edit\"]")
-    public WebElement buttonPencil_editTicket;
+    @FindBy(xpath = "//div[contains(text(),'Ticket ReOpen Successfully !')]")
+    public WebElement ViewMsgViewTicket;
 
-    @FindBy(xpath = "//button[contains(text(),'Save')]")
-    public WebElement editSaveButton;
+//    //-----------------------------------Edit Ticket--------------------------------------------------------------------
+//    @FindBy(xpath = "//button[@title=\"Edit\"]")
+//    public WebElement buttonPencil_editTicket;
+//
+//    @FindBy(xpath = "//button[contains(text(),'Save')]")
+//    public WebElement editSaveButton;
+//
+//    @FindBy(xpath = "//div[contains(text(),'Ticket Updated Successfully !')]")
+//    public WebElement UpdateMsgEditTicket;
+//
+
     //-----------------------------------Download Ticket----------------------------------------------------------------
     @FindBy(xpath = "//button[@title=\"Download\"]")
     public WebElement buttonDownload_downloadTicket;
 
     @FindBy(xpath = "//td[contains(text(),'No data available in table')]")
     public WebElement noDataAvailable;
+
     //----------------------------------Delete Ticket-------------------------------------------------------------------
     @FindBy(xpath = "//button[@onclick=\"deleteTicket(); return false;\"]")
     public WebElement delete_YesButton;
@@ -110,6 +120,12 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
 
     @FindBy(xpath = "//div[contains(text(),'File not available.')]")
     WebElement validationFileUpload;
+
+    @FindBy(xpath = "//h4[@id='deleteTicketNumber']")
+    public WebElement PopUpMsgDeleteTicket;
+
+    @FindBy(xpath = "//div[contains(text(),'We have successfully delete your selected ticket.')]")
+    public WebElement SuccessMsgDeleteTicket;
     //------------------------------------------------------------------------------------------------------------------
 
     /**
@@ -237,6 +253,12 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         HighlightElement.highlightElement(buttonSubmit);
         buttonSubmit.click();
         Thread.sleep(3000);
+
+//        wait.until(ExpectedConditions.visibilityOf(ViewMsgViewTicket));
+//        if (ViewMsgViewTicket.isDisplayed()){
+//            Assert.assertEquals(ViewMsgViewTicket.getText(),"");
+//        }
+
     }
 
     /**
@@ -265,6 +287,11 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         HighlightElement.highlightElement(delete_YesButton);
         delete_YesButton.click();
         Thread.sleep(3000);
+
+//        wait.until(ExpectedConditions.visibilityOf(PopUpMsgDeleteTicket));
+        if (PopUpMsgDeleteTicket.isDisplayed()){
+            Assert.assertEquals(SuccessMsgDeleteTicket.getText(),"We have successfully delete your selected ticket.");
+        }
     }
 
     /**

@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -63,6 +64,9 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	@FindBy(xpath = "//input[@class=\"btn btn-danger valid\"]")
 	public WebElement buttonCancel;
 
+	@FindBy(xpath = "//div[contains(text(),'Ticket Added Successfully !')]")
+	public WebElement SuccessMsgAddTicket;
+
 	//------------------------------------------------------------------------------------------
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'close')][contains(text(),'X')]")
 	public WebElement buttonX;
@@ -81,7 +85,13 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
 	@FindBy(xpath = "//button[contains(text(),'Save')]")
 	public WebElement editSaveButton;
-	//------------------------------------------------------------------------------------------
+
+	@FindBy(xpath = "//div[contains(text(),'Ticket Updated Successfully !')]")
+	public WebElement UpdateMsgEditTicket;
+	//-----------------------------------------------------------------------------------------------
+	@FindBy(xpath="//a[@href ='/Home/Index']")
+	public WebElement logo_img;
+	//-----------------------------------------------------------------------------------------------
 	
 	/**
 	 * TESTCASE METHOD: Create Ticket
@@ -153,11 +163,15 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			buttonSubmit.click();
 			Thread.sleep(3000);
 
+//			wait.until(ExpectedConditions.visibilityOf(SuccessMsgAddTicket));
+			if (SuccessMsgAddTicket.isDisplayed()){
+				Assert.assertEquals(SuccessMsgAddTicket.getText(),"Ticket added successfully!");
+			}
+
 			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
 			String act_URL = driver.getCurrentUrl();
 			Assert.assertEquals(act_URL, exp_URL);
 			Thread.sleep(2000);
-			Reporter.log("SUCCESSFULLY Created Ticket.!", true);
 
 			HighlightElement.highlightElement(NumberOfPages);
 			NumberOfPages.click();
@@ -225,7 +239,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			action.moveToElement(file).click().build().perform();
 			Thread.sleep(2000);
 
-			//-----------ROBOT CLASS LOGIC-----------
+			//-----------FILE UPLOAD using ROBOT CLASS-----------
 			StringSelection selection = new StringSelection(Constants.UPDATEDFILEUPLOADPATH);
 			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 			clipboard.setContents(selection, selection);
@@ -250,6 +264,11 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			editSaveButton.click();
 			Thread.sleep(4000);
 
+//			wait.until(ExpectedConditions.visibilityOf(UpdateMsgEditTicket));
+			if (UpdateMsgEditTicket.isDisplayed()){
+				Assert.assertEquals(UpdateMsgEditTicket.getText(),"Ticket Updated successfully!");
+			}
+
 			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
 			String act_URL = driver.getCurrentUrl();
 			Assert.assertEquals(act_URL, exp_URL);
@@ -260,6 +279,10 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			searchBar.clear();
 			searchBar.sendKeys(Constants.strDate);
 			Thread.sleep(3000);
+
+			logo_img.click();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.getCurrentUrl(),Constants.BASEURL + "Home/Index");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

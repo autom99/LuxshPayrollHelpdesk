@@ -17,10 +17,9 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 	
 	@BeforeTest
 	public void initialBrowserDriver() {
-		driver = TestBase.testBase();
-
-		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//		driver = TestBase.testBase();
+//		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+//		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 
 	/**
@@ -28,12 +27,6 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 	 */
 	@Test(priority = 1)
 	public void createUser() {
-		try {
-			Thread.sleep(15000);
-		}
-		catch (Exception ex){
-			ex.printStackTrace();
-		}
 		objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
 		objUserPage.createUser("test group name",
 				"test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
@@ -48,22 +41,16 @@ public class PayrollHelpDesk_UserPageTests extends TestBase {
 	 */
 	@Test(priority = 2)
 	public void editUser() {
-		try {
-			Thread.sleep(10000);
 			objUserPage = new Payroll_HelpDesk_page_UserLocator(driver);
 			objUserPage.editUser("test group name",
 					"Updated test TempEmpCode" + Constants.strDate + "_" + Constants.date.getTime(),
 					"Updated test TempEmpName" + Constants.strDate + "_" + Constants.date.getTime(),
 					"Admin",
 					"Updated_test" + "@" + "mail" + Constants.date.getTime());
-			Thread.sleep(2000);
-			objLoginPage.logOut();
-			Thread.sleep(2000);
-			driver.close();
-		}
-		catch (Exception ex){
-			ex.printStackTrace();
-		}
+//			Thread.sleep(2000);
+//			objLoginPage.logOut();
+//			Thread.sleep(2000);
+//			driver.close();
 	}
 
 	@AfterMethod

@@ -6,16 +6,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestUtil.CheckBox;
+import org.testng.Assert;
+
+import javax.xml.bind.Element;
 
 public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 
-//	public WebDriver driver;
 	public static WebDriverWait wait;
-
 	public static CheckBox objCheckBox;
 
 	public Payroll_HelpDesk_page_AdminSetting_GroupLocator(WebDriver driver) {
@@ -63,6 +65,9 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 	@FindBy(xpath = "//a[contains(text(),'1')]")
 	public WebElement PageNumber;
 
+	@FindBy(xpath = "//div[contains(text(),'Group added successfully!')]")
+	public WebElement successMsgAddGroup;
+
 	//----------------------------------EDIT---------------------------------------------------
 	@FindBy(xpath = "//button[@class='btn text-primary btn-sm edit_btn mr-1']")
 	public WebElement editIconButton;
@@ -81,10 +86,14 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 	
 	@FindBy(xpath = "//div[@id='editCustomGroup']//button[@class='btn light btn-outline btn-danger'][contains(text(),'Cancel')]")
 	public WebElement edit_buttonCancel;
-	//---------------------------------------------------------------------------------------------------------------------
+
+	@FindBy(xpath = "//div[contains(text(),'CustomGroup updated successfully!')]")
+	public WebElement updateSuccessMsgEditGroup;
+
+	//-----------------------------------------------------------------------------------------------
 	@FindBy(xpath="//a[@href ='/Home/Index']")
 	public WebElement logo_img;
-	//---------------------------------------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------------------
 
 	/**TESTCASE METHOD: CREATE GROUP
 	 * 
@@ -137,6 +146,11 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			buttonSave.click();
 			Thread.sleep(4000);
 
+//			wait.until(ExpectedConditions.visibilityOf(successMsgAddGroup));
+			if (successMsgAddGroup.isDisplayed()){
+				Assert.assertEquals(successMsgAddGroup.getText(),"Group added successfully!");
+			}
+
 			HighlightElement.highlightElement(NumberOfPages);
 			NumberOfPages.click();
 			Select selectNumberOfPages = new Select(NumberOfPages);
@@ -186,6 +200,11 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			HighlightElement.highlightElement(edit_buttonSave);
 			edit_buttonSave.click();
 			Thread.sleep(2000);
+
+//			wait.until(ExpectedConditions.visibilityOf(updateSuccessMsgEditGroup));
+			if (updateSuccessMsgEditGroup.isDisplayed()){
+				Assert.assertEquals(updateSuccessMsgEditGroup.getText(),"CustomGroup updated successfully!");
+			}
 
 			HighlightElement.highlightElement(searchBar);
 			searchBar.clear();

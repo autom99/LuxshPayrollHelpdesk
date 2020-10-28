@@ -2,11 +2,10 @@
 
 <suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="true">
 
-    <test name="Test_Login" enabled="true">
+    <test name="Test_Login" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
                 <methods>
-                    <!--                    <include name="verifyAdminLogin"/>-->
                     <include name="verifyEmployeeLogin"/>
                     <include name="verifyUserLogin"/>
                 </methods>
@@ -51,7 +50,6 @@
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
-                    <!--                    <include name="searchByAllStatusTicketListing"/>-->
                     <include name="viewTicket"/>
                     <include name="downloadAttachment"/>
                     <include name="deleteTicket"/>
