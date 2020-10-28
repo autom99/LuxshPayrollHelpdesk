@@ -1,30 +1,24 @@
 package testcase.payrollHelpDesk;
 
-import org.openqa.selenium.WebDriver;
+import TestUtil.CaptureScreenshot;
+import base.TestBase;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import base.TestBase;
 import pages.Payroll_HelpDesk_page_DashboardLocator;
 import pages.Payroll_HelpDesk_page_LoginLocator;
-import TestUtil.CaptureScreenshot;
-import TestUtil.Constants;
 
 public class PayrollHelpDesk_DashboardPageTests extends TestBase {
-
-	public WebDriver driver;
 
 	Payroll_HelpDesk_page_LoginLocator objLoginPage;
 	Payroll_HelpDesk_page_DashboardLocator objDashboardPage;
 
 	@BeforeTest
 	public void initialBrowserDriver() {
-		driver = TestBase.testBase();
-
-		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//		driver = TestBase.testBase();
+//		objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+//		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 	}
 	
 	/**
@@ -32,15 +26,8 @@ public class PayrollHelpDesk_DashboardPageTests extends TestBase {
 	 */
 	@Test(priority = 1)
 	public void dashboardNavigationAllFunctionality() {
-		try {
-			objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
-			objDashboardPage.dashboardOperations();
-
-			driver.close();
-		}
-		catch (Exception ex){
-			ex.printStackTrace();
-		}
+		objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
+		objDashboardPage.dashboardOperations();
 	}
 
 	@AfterMethod

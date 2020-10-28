@@ -8,12 +8,13 @@
                 <methods>
                     <include name="verifyEmployeeLogin"/>
                     <include name="verifyUserLogin"/>
+                    <exclude name="validateLogin"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Test_Group" enabled="true">
+    <test name="Test_Group" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
@@ -24,7 +25,7 @@
         </classes>
     </test>
 
-    <test name="Test_User" enabled="true">
+    <test name="Test_User" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
                 <methods>
@@ -35,7 +36,7 @@
         </classes>
     </test>
 
-    <test name="Test_CreateTicket" enabled="true">
+    <test name="Test_CreateTicket" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
                 <methods>
@@ -46,7 +47,7 @@
         </classes>
     </test>
 
-    <test name="Test_TicketListing" enabled="true">
+    <test name="Test_TicketListing" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
@@ -58,4 +59,23 @@
         </classes>
     </test>
 
+    <test name="Test_Dashboard" enabled="false">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_DashboardPageTests">
+                <methods>
+                    <include name="dashboardOperations"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_AssignATicket" enabled="true">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AssignATicketTests">
+                <methods>
+                    <include name="pendingTicketAssignToUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

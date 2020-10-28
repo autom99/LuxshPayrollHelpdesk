@@ -102,8 +102,6 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void createTicket(String strSubject,String strCategory,String strPriority,String strDescription){
 		try {
-//			link_Dashboard.click();
-//			Thread.sleep(1000);
 			HighlightElement.highlightElement(link_Ticket);
 			link_Ticket.click();
 			Thread.sleep(1000);
