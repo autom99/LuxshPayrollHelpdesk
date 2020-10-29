@@ -13,68 +13,67 @@ import TestUtil.Constants;
 
 public class Payroll_HelpDesk_page_DashboardLocator extends TestBase {
 //    WebDriver driver;
-    WebDriverWait wait;
+    public static WebDriverWait wait;
 
     public Payroll_HelpDesk_page_DashboardLocator(WebDriver driver) {
-        // TODO Auto-generated constructor stub
         this.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
     }
 
     @FindBy(xpath = "//span[contains(text(),'Dashboard')]")
-    private WebElement link_Dashboard;
+    public WebElement link_Dashboard;
 
     @FindBy(xpath = "//div[contains(text(),'All Tickets')]")
-    private WebElement link_All_Tickets;
+    public WebElement link_All_Tickets;
 
     @FindBy(xpath = "//div[@id='openTicket_div']")
-    private WebElement link_Open_Tickets;
+    public WebElement link_Open_Tickets;
 
     @FindBy(xpath = "//div[@id='closeTicket_div']")
-    private WebElement link_Closed_Tickets;
+    public WebElement link_Closed_Tickets;
 
     @FindBy(xpath = "//div[@id='onholdTicket_div']")
-    private WebElement link_Onhold_Tickets;
+    public WebElement link_Onhold_Tickets;
 
     @FindBy(xpath = "//div[@id='reopenTicket_div']")
-    private WebElement link_Reopen_Tickets;
+    public WebElement link_Reopen_Tickets;
 
     @FindBy(xpath = "//div[@id='assignMe_div']")
-    private WebElement link_AssignMe;
+    public WebElement link_AssignMe;
 
     @FindBy(xpath = "//a[contains(text(),'Assign to Group ....')]")
-    private WebElement link_Assign_to_Group;
+    public WebElement link_Assign_to_Group;
 
     @FindBy(xpath = "//div[@id='pendingTicket_div']")
-    private WebElement link_Pending_Tickets;
+    public WebElement link_Pending_Tickets;
 
     @FindBy(xpath = "//*[@id=\"id-218\"]")
-    private WebElement link_chart_HighPriority;
+    public WebElement link_chart_HighPriority;
 
     @FindBy(xpath = "//*[@id=\"id-253\"]")
-    private WebElement link_chart_MediumPriority;
+    public WebElement link_chart_MediumPriority;
 
     @FindBy(xpath = "//*[@id=\"id-287\"]")
-    private WebElement link_chart_LowPriority;
+    public WebElement link_chart_LowPriority;
 
     //MODIFIED-	@FindBy(xpath = "(//*[contains(text(),'High')])[3]")
     @FindBy(xpath = "//*[@id=\"id-218\"]")
-    private WebElement button_chart_HighPriority;
+    public WebElement button_chart_HighPriority;
 
     //MODIFIED-	@FindBy(xpath = "(//*[contains(text(),'Medium')])[2]")
     @FindBy(xpath = "//*[@id=\"id-253\"]")
-    private WebElement button_chart_MediumPriority;
+    public WebElement button_chart_MediumPriority;
 
     //MODIFIED-	@FindBy(xpath = "(//*[contains(text(),'Low')])[2]")
     @FindBy(xpath = "//*[@id=\"id-287\"]")
-    private WebElement button_chart_LowPriority;
+    public WebElement button_chart_LowPriority;
 
     @FindBy(xpath = "//a[@id='pnotification']")
-    private WebElement icon_bell_Notification;
+    public WebElement icon_bell_Notification;
 
     @FindBy(xpath = "//a[@id='pnotification']/..//i[@class='icon-settings']")
-    private WebElement icon_settings_Group;
+    public WebElement icon_settings_Group;
 
     /**
      * TESTCASE METHOD : DASHBOARD FUNCTIONALITY

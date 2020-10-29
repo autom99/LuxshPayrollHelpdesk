@@ -1,7 +1,6 @@
 package testcase.payrollHelpDesk;
 
 import TestUtil.CaptureScreenshot;
-import TestUtil.Constants;
 import base.TestBase;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -17,9 +16,9 @@ public class PayrollHelpDesk_AssignATicketTests  extends TestBase{
 
     @BeforeTest
     public void initialBrowserDriver() {
-        driver = TestBase.testBase();
-        objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//        driver = TestBase.testBase();
+//        objLoginPage= new Payroll_HelpDesk_page_LoginLocator(driver);
+//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test(priority = 1)

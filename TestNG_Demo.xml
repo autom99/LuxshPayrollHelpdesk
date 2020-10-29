@@ -14,7 +14,7 @@
         </classes>
     </test>
 
-    <test name="Test_Group" enabled="false">
+    <test name="Test_Group" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
@@ -25,7 +25,7 @@
         </classes>
     </test>
 
-    <test name="Test_User" enabled="false">
+    <test name="Test_User" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
                 <methods>
@@ -36,7 +36,7 @@
         </classes>
     </test>
 
-    <test name="Test_CreateTicket" enabled="false">
+    <test name="Test_CreateTicket" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
                 <methods>
@@ -47,13 +47,23 @@
         </classes>
     </test>
 
-    <test name="Test_TicketListing" enabled="false">
+    <test name="Test_TicketListing" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
                     <include name="viewTicket"/>
                     <include name="downloadAttachment"/>
                     <include name="deleteTicket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_AssignATicket" enabled="true">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AssignATicketTests">
+                <methods>
+                    <include name="assignPendingTickets"/>
                 </methods>
             </class>
         </classes>
@@ -69,13 +79,5 @@
         </classes>
     </test>
 
-    <test name="Test_AssignATicket" enabled="true">
-        <classes>
-            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AssignATicketTests">
-                <methods>
-                    <include name="pendingTicketAssignToUser"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+
 </suite>

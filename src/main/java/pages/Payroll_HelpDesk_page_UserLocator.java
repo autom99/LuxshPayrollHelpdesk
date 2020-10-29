@@ -177,11 +177,11 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 
 			HighlightElement.highlightElement(buttonSave);
 			buttonSave.click();
-			Thread.sleep(4000);
+//			Thread.sleep(3000);
 
-//			wait.until(ExpectedConditions.visibilityOf(SuccessMsgAddUser));
+			wait.until(ExpectedConditions.visibilityOf(SuccessMsgAddUser));
 			if (SuccessMsgAddUser.isDisplayed()){
-				Assert.assertEquals(SuccessMsgAddUser.getText(),"User Added Successfully !'");
+				Assert.assertEquals(SuccessMsgAddUser.getText(),"User Added Successfully !");
 			}
 
 			HighlightElement.highlightElement(NumberOfPages);
@@ -198,7 +198,7 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			searchBar.clear();
 			searchBar.sendKeys(EmpCode);
 			Thread.sleep(4000);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -264,7 +264,7 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			edit_buttonSave.click();
 			Thread.sleep(3000);
 
-//			wait.until(ExpectedConditions.visibilityOf(updateSuccessMsgEditUser));
+			wait.until(ExpectedConditions.visibilityOf(updateSuccessMsgEditUser));
 			if (updateSuccessMsgEditUser.isDisplayed()){
 				Assert.assertEquals(updateSuccessMsgEditUser.getText(),"User updated successfully!");
 			}

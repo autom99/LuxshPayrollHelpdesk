@@ -312,7 +312,6 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             Thread.sleep(2000);
 
             logOut();
-
             Thread.sleep(2000);
         } catch (Exception e) {
             e.printStackTrace();
@@ -339,9 +338,9 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             buttonLogin.click();
             Thread.sleep(4000);
 
-            String exp_URL = Constants.BASEURL + "Home/Index";
-            String act_URL = driver.getCurrentUrl();
-            Assert.assertEquals(act_URL, exp_URL);
+//            String exp_URL = Constants.BASEURL + "Home/Index";
+//            String act_URL = driver.getCurrentUrl();
+            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Home/Index");
             Reporter.log("SUCCESSFULLY Employee page is redirected.", true);
 
 //            Assert.assertEquals(headerTextEmployee.getText().trim().toLowerCase(),username.toLowerCase());

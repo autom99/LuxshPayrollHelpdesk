@@ -1,11 +1,7 @@
 package pages;
 
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-
+import TestUtil.Constants;
+import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
@@ -17,13 +13,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 
-import TestUtil.Constants;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
 	public static WebDriverWait wait;
+	public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
+	public static GenericUtil genericUtil;
 
 	public Payroll_HelpDesk_page_CreateTicketLocator(WebDriver driver) {
 		Payroll_HelpDesk_page_CreateTicketLocator.driver = driver;
@@ -31,14 +31,11 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 		wait = new WebDriverWait(driver, 20);
 	}
 
-	@FindBy(xpath = "//span[contains(text(),'Dashboard')]")
-	public WebElement link_Dashboard;
-
-	@FindBy(xpath = "//li[@id=\"link-Ticket\"]")
+	@FindBy(xpath = "//li[@id='link-Ticket']")
 	public WebElement link_Ticket;
 
 	@FindBy(xpath = "//span[contains(text(),'Create A Ticket')]")
-	public WebElement createTicket;
+	public WebElement link_createTicket;
 
 	@FindBy(xpath = "//input[@name='Requester']")
 	public WebElement requester;
@@ -70,15 +67,6 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	//------------------------------------------------------------------------------------------
 	@FindBy(xpath = "//div[@id='editticket']//button[contains(@class,'close')][contains(text(),'X')]")
 	public WebElement buttonX;
-
-	@FindBy(xpath = "//select[contains(@name,'tblticket_length')]")
-	public WebElement NumberOfPages;
-
-	@FindBy(xpath = "//a[contains(text(),'1')]")
-	public WebElement PageNumber;
-
-	@FindBy(xpath = "//input[contains(@class,'form-control input-sm input-small input-inline')]")
-	public WebElement searchBar;
 	//----------------------------------EDIT---------------------------------------------------
 	@FindBy(xpath = "//button[@class='btn text-primary btn-sm edit_btn mr-1'][2]")
 	public WebElement editIconButton;
@@ -88,11 +76,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
 	@FindBy(xpath = "//div[contains(text(),'Ticket Updated Successfully !')]")
 	public WebElement UpdateMsgEditTicket;
-	//-----------------------------------------------------------------------------------------------
-	@FindBy(xpath="//a[@href ='/Home/Index']")
-	public WebElement logo_img;
-	//-----------------------------------------------------------------------------------------------
-	
+
 	/**
 	 * TESTCASE METHOD: Create Ticket
 	 * @param strSubject = subject
@@ -102,13 +86,19 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void createTicket(String strSubject,String strCategory,String strPriority,String strDescription){
 		try {
+			objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
+
 			HighlightElement.highlightElement(link_Ticket);
 			link_Ticket.click();
 			Thread.sleep(1000);
 
-			HighlightElement.highlightElement(createTicket);
-			createTicket.click();
+			HighlightElement.highlightElement(link_createTicket);
+			link_createTicket.click();
 			Thread.sleep(1000);
+
+//			Assert.assertEquals(usernameTitle.getText(),requester.getText());
+//			System.out.println("usernameTitle.getText()---------" + usernameTitle.getText());
+//			System.out.println("requester.getText()---------" + requester.getText());
 
 			HighlightElement.highlightElement(subject);
 			subject.click();
@@ -161,32 +151,28 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 			buttonSubmit.click();
 			Thread.sleep(3000);
 
-//			wait.until(ExpectedConditions.visibilityOf(SuccessMsgAddTicket));
-			if (SuccessMsgAddTicket.isDisplayed()){
-				Assert.assertEquals(SuccessMsgAddTicket.getText(),"Ticket added successfully!");
-			}
+//			wait.until(ExpectedConditions.textToBePresentInElement(SuccessMsgAddTicket,"Ticket added successfully!"));
+//			Assert.assertEquals(SuccessMsgAddTicket.getText(),"Ticket added successfully!");
 
-			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
-			String act_URL = driver.getCurrentUrl();
-			Assert.assertEquals(act_URL, exp_URL);
+			Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Ticket/TicketListing");
 			Thread.sleep(2000);
 
-			HighlightElement.highlightElement(NumberOfPages);
-			NumberOfPages.click();
-			Select selectNumberOfPages = new Select(NumberOfPages);
+			HighlightElement.highlightElement(objGenericLocator.NumberOfPages);
+			objGenericLocator.NumberOfPages.click();
+			Select selectNumberOfPages = new Select(objGenericLocator.NumberOfPages);
 			selectNumberOfPages.selectByVisibleText("100");
 			Thread.sleep(2000);
 
-			HighlightElement.highlightElement(PageNumber);
-			PageNumber.click();
+			HighlightElement.highlightElement(objGenericLocator.PageNumber);
+			objGenericLocator.PageNumber.click();
 			Thread.sleep(2000);
 
-			HighlightElement.highlightElement(searchBar);
-			searchBar.clear();
-			searchBar.sendKeys(Constants.strDate);
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(Constants.strDate);
 			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
 			Thread.sleep(3000);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -200,15 +186,14 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void ediTicket(String UpdatedSubject,String UpdatedCategory,String UpdatedPriority,String UpdatedDescription){
 		try {
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(Constants.strDate);
+			Thread.sleep(3000);
+
 			HighlightElement.highlightElement(editIconButton);
 			editIconButton.click();
 			Thread.sleep(4000);
-
-//			buttonX.click();
-//			Thread.sleep(2000);
-//
-//			editIconButton.click();
-//			Thread.sleep(4000);
 
 			HighlightElement.highlightElement(subject);
 			subject.click();
@@ -260,28 +245,24 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
 			HighlightElement.highlightElement(editSaveButton);
 			editSaveButton.click();
-			Thread.sleep(4000);
+//			Thread.sleep(2000);
 
-//			wait.until(ExpectedConditions.visibilityOf(UpdateMsgEditTicket));
+			wait.until(ExpectedConditions.visibilityOf(UpdateMsgEditTicket));
 			if (UpdateMsgEditTicket.isDisplayed()){
-				Assert.assertEquals(UpdateMsgEditTicket.getText(),"Ticket Updated successfully!");
+				Assert.assertEquals(UpdateMsgEditTicket.getText(),"Ticket Updated successfully !");
 			}
 
-			String exp_URL =  Constants.BASEURL + "Ticket/TicketListing";
-			String act_URL = driver.getCurrentUrl();
-			Assert.assertEquals(act_URL, exp_URL);
+			Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Ticket/TicketListing");
 			Thread.sleep(4000);
-			System.out.println("SUCCESSFULLY Updated Ticket.!");
 
-			HighlightElement.highlightElement(searchBar);
-			searchBar.clear();
-			searchBar.sendKeys(Constants.strDate);
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(Constants.strDate);
 			Thread.sleep(3000);
 
-			logo_img.click();
-			Thread.sleep(3000);
+			genericUtil.clickWithPause(objGenericLocator.logoImage,3000);
 			Assert.assertEquals(driver.getCurrentUrl(),Constants.BASEURL + "Home/Index");
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

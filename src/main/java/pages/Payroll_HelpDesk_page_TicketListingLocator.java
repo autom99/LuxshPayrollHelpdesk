@@ -134,12 +134,6 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
      * @param searchText: searchText
      */
     public void searchByStatusTicketListing(String searchText) {
-//        link_Dashboard.click();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
 
         link_Ticket.click();
         try {
@@ -253,12 +247,6 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         HighlightElement.highlightElement(buttonSubmit);
         buttonSubmit.click();
         Thread.sleep(3000);
-
-//        wait.until(ExpectedConditions.visibilityOf(ViewMsgViewTicket));
-//        if (ViewMsgViewTicket.isDisplayed()){
-//            Assert.assertEquals(ViewMsgViewTicket.getText(),"");
-//        }
-
     }
 
     /**
@@ -288,7 +276,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         delete_YesButton.click();
         Thread.sleep(3000);
 
-//        wait.until(ExpectedConditions.visibilityOf(PopUpMsgDeleteTicket));
+        wait.until(ExpectedConditions.visibilityOf(PopUpMsgDeleteTicket));
         if (PopUpMsgDeleteTicket.isDisplayed()){
             Assert.assertEquals(SuccessMsgDeleteTicket.getText(),"We have successfully delete your selected ticket.");
         }
