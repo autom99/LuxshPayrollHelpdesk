@@ -1,27 +1,29 @@
 package pages;
 
+import TestUtil.CheckBox;
+import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import TestUtil.CheckBox;
 import org.testng.Assert;
-
-import javax.xml.bind.Element;
+import testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests;
 
 public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 
 	public static WebDriverWait wait;
 	public static CheckBox objCheckBox;
+	public static Payroll_HelpDesk_page_CreateTicketLocator objCreateTicketLocator;
+	public static GenericUtil genericUtil;
+	public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
+	public static PayrollHelpDesk_CreateTicketPageTests objCreateTicketTestPage;
 
 	public Payroll_HelpDesk_page_AdminSetting_GroupLocator(WebDriver driver) {
-		this.driver = driver;
+		TestBase.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
 	}
@@ -34,9 +36,6 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 
 	@FindBy(xpath = "//a[contains(@class,'btn-sm')]")
 	public WebElement buttonAddGroup;
-
-	@FindBy(xpath = "//input[contains(@class,'form-control input-sm input-small input-inline')]")
-	public WebElement searchBar;
 
 	@FindBy(xpath = "//input[@id='Group_Code']")
 	public WebElement Group_Code;
@@ -102,33 +101,48 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 	 * @param Note = note
 	 */
 	public void createGroup(String GroupCode,String GroupName,String Note) {
+		//Init GenericUtil object with driver instance
+		genericUtil = new GenericUtil();
+		objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
+		objCreateTicketLocator = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
+
+		//init Create Ticket Test Page
+		objCreateTicketTestPage = new PayrollHelpDesk_CreateTicketPageTests();
+		objCreateTicketTestPage.createTicket();
+
 		try {
 			HighlightElement.highlightElement(link_AdminSettings);
-			link_AdminSettings.click();
-			Thread.sleep(1000);
+			genericUtil.clickWithPause(link_AdminSettings,1000);
+//			link_AdminSettings.click();
+//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(link_Group);
-			link_Group.click();
-			Thread.sleep(2000);
+			genericUtil.clickWithPause(link_Group,1000);
+//			link_Group.click();
+//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(buttonAddGroup);
-			buttonAddGroup.click();
-			Thread.sleep(2000);
+			genericUtil.clickWithPause(buttonAddGroup,2000);
+//			buttonAddGroup.click();
+//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(Group_Code);
 			Group_Code.clear();
-			Group_Code.sendKeys(GroupCode);
-			Thread.sleep(2000);
+			genericUtil.writeTextWithPause(Group_Code,GroupCode,2000);
+//			Group_Code.sendKeys(GroupCode);
+//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(Group_Name);
 			Group_Name.clear();
-			Group_Name.sendKeys(GroupName);
-			Thread.sleep(1000);
+			genericUtil.writeTextWithPause(Group_Name,GroupName,2000);
+//			Group_Name.sendKeys(GroupName);
+//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(Notes);
 			Notes.clear();
-			Notes.sendKeys(Note);
-			Thread.sleep(1000);
+			genericUtil.writeTextWithPause(Notes,Note,2000);
+//			Notes.sendKeys(Note);
+//			Thread.sleep(1000);
 
 			try {
 				objCheckBox = new CheckBox();
@@ -143,8 +157,9 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			}
 
 			HighlightElement.highlightElement(buttonSave);
-			buttonSave.click();
-			Thread.sleep(4000);
+			genericUtil.clickWithPause(buttonSave,4000);
+//			buttonSave.click();
+//			Thread.sleep(4000);
 
 //			wait.until(ExpectedConditions.visibilityOf(successMsgAddGroup));
 			if (successMsgAddGroup.isDisplayed()){
@@ -158,12 +173,13 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(PageNumber);
-			PageNumber.click();
-			Thread.sleep(1000);
+			genericUtil.clickWithPause(PageNumber,1000);
+//			PageNumber.click();
+//			Thread.sleep(1000);
 
-			HighlightElement.highlightElement(searchBar);
-			searchBar.clear();
-			searchBar.sendKeys(GroupCode);
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(GroupCode);
 			Thread.sleep(4000);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -197,6 +213,18 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			edit_Notes.sendKeys(UpdatedNote);
 			Thread.sleep(1000);
 
+			try {
+				objCheckBox = new CheckBox();
+				objCheckBox.Select_The_Checkbox(Active_checkbox);
+				Thread.sleep(1000);
+				objCheckBox.DeSelect_The_Checkbox(Active_checkbox);
+				Thread.sleep(1000);
+				objCheckBox.Select_The_Checkbox(Active_checkbox);
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			HighlightElement.highlightElement(edit_buttonSave);
 			edit_buttonSave.click();
 			Thread.sleep(2000);
@@ -206,9 +234,9 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 				Assert.assertEquals(updateSuccessMsgEditGroup.getText(),"CustomGroup updated successfully!");
 			}
 
-			HighlightElement.highlightElement(searchBar);
-			searchBar.clear();
-			searchBar.sendKeys(UpdatedGroupCode);
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(UpdatedGroupCode);
 			Thread.sleep(3000);
 
 			//Navigate to the Dashboard Page

@@ -4,6 +4,7 @@ import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -88,6 +89,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 		try {
 			objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
 
+			wait.until(ExpectedConditions.visibilityOf(link_Ticket));
 			HighlightElement.highlightElement(link_Ticket);
 			link_Ticket.click();
 			Thread.sleep(1000);
@@ -249,7 +251,7 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 
 			wait.until(ExpectedConditions.visibilityOf(UpdateMsgEditTicket));
 			if (UpdateMsgEditTicket.isDisplayed()){
-				Assert.assertEquals(UpdateMsgEditTicket.getText(),"Ticket Updated successfully !");
+				Assert.assertEquals(UpdateMsgEditTicket.getText(),"Ticket Updated Successfully !");
 			}
 
 			Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Ticket/TicketListing");

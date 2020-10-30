@@ -26,6 +26,9 @@ public class Payroll_HelpDesk_page_GenericLocator extends TestBase {
     @FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
     public WebElement usernameTitle;
 
+    @FindBy(xpath = "//a[@href ='/Account/SignOut']")
+    public WebElement buttonLogout;
+
 //---------------------DASHBOARD-----------------------------
     @FindBy(xpath = "//span[contains(text(),'Dashboard')]")
     public WebElement link_Dashboard;

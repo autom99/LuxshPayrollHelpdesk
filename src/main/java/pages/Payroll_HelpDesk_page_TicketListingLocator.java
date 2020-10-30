@@ -1,8 +1,9 @@
 package pages;
 
+import TestUtil.Constants;
+import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,16 +12,16 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import TestUtil.Constants;
 import org.testng.Assert;
 
 public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
 
-//    public static WebDriver driver;
     public static WebDriverWait wait;
+    public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
+    public static GenericUtil genericUtil;
 
     public Payroll_HelpDesk_page_TicketListingLocator(WebDriver driver) {
-        this.driver = driver;
+        TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
     }
@@ -213,9 +214,9 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
     /**
      * TESTCASE MEHOD-2: VIEW TICKET
      *
-     * @param searchText
      */
-    public void viewTicket(String searchText, String status, String strComments) throws InterruptedException {
+    public void viewTicket(String status, String strComments) throws InterruptedException {
+        Thread.sleep(2000);
         HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
@@ -252,9 +253,8 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
     /**
      * TESTCASE MEHOD-3: DELETE TICKET
      *
-     * @param searchText
      */
-    public void deleteTicket(String searchText) throws InterruptedException {
+    public void deleteTicket() throws InterruptedException {
         HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
@@ -276,7 +276,7 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         delete_YesButton.click();
         Thread.sleep(3000);
 
-        wait.until(ExpectedConditions.visibilityOf(PopUpMsgDeleteTicket));
+//        wait.until(ExpectedConditions.visibilityOf(PopUpMsgDeleteTicket));
         if (PopUpMsgDeleteTicket.isDisplayed()){
             Assert.assertEquals(SuccessMsgDeleteTicket.getText(),"We have successfully delete your selected ticket.");
         }
@@ -285,9 +285,12 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
     /**
      * TESTCASE MEHOD-4: DOWNLOAD TICKET
      *
-     * @param searchText
      */
-    public void downloadAttachment(String searchText) throws InterruptedException {
+    public void downloadAttachment() throws InterruptedException {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+        objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
+
         HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
@@ -296,20 +299,17 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
         link_TicketListing.click();
         Thread.sleep(1000);
 
-        HighlightElement.highlightElement(searchBar);
-        searchBar.clear();
-        searchBar.sendKeys(Constants.strDate);
+        HighlightElement.highlightElement(objGenericLocator.searchBar);
+        objGenericLocator.searchBar.clear();
+        objGenericLocator.searchBar.sendKeys(Constants.strDate);
         Thread.sleep(3000);
 
         try {
-//			Actions build = new Actions(driver);
-//			build.moveToElement(buttonActive_SelectedPageNumber).build().perform();
             if (buttonDownload_downloadTicket.isDisplayed() && buttonDownload_downloadTicket.isEnabled()) {
+                HighlightElement.highlightElement(buttonDownload_downloadTicket);
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonDownload_downloadTicket);
-                //buttonDownload_downloadTicket.click();
                 Thread.sleep(4000);
-//                WebElement validMessageFileUpload = driver.findElement(By.xpath("//div[contains(text(),'File not available.')]"));
-//                Thread.sleep(2000);
+
                 if (validationFileUpload.isDisplayed()) {
                     String warnMessage = validationFileUpload.getText();
                     if (warnMessage.equalsIgnoreCase("File not available.")){
@@ -320,15 +320,15 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
                 }
             } else {
                 if (noDataAvailable.isDisplayed()) {
-                    Assert.assertEquals(noDataAvailable,"No data available in table");
+                    Assert.assertEquals(noDataAvailable.getText(),"No data available in table");
                     System.out.println("No data available in table");
                 } else {
                     System.out.println("Error while capturing data..No data available in table..");
                 }
             }
-            HighlightElement.highlightElement(searchBar);
-            searchBar.clear();
-            searchBar.sendKeys(Constants.strDate);
+            HighlightElement.highlightElement(objGenericLocator.searchBar);
+            objGenericLocator.searchBar.clear();
+            objGenericLocator.searchBar.sendKeys(Constants.strDate);
             Thread.sleep(3000);
         } catch (Exception ex) {
             ex.printStackTrace();

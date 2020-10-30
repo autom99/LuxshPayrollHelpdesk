@@ -1,7 +1,6 @@
 package testcase.payrollHelpDesk;
 
 import TestUtil.CaptureScreenshot;
-import TestUtil.Constants;
 import base.TestBase;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +11,7 @@ import pages.Payroll_HelpDesk_page_TicketListingLocator;
 
 public class PayrollHelpDesk_TicketListingTests extends TestBase{
 
-    Payroll_HelpDesk_page_LoginLocator objLoginPage;
+//    Payroll_HelpDesk_page_LoginLocator objLoginPage;
     Payroll_HelpDesk_page_TicketListingLocator objTicketListingPage;
 
     @BeforeTest
@@ -73,19 +72,19 @@ public class PayrollHelpDesk_TicketListingTests extends TestBase{
     @Test(priority = 8)
     public void viewTicket() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
-        objTicketListingPage.viewTicket(Constants.strDate, "Open", "Test comment");
+        objTicketListingPage.viewTicket("Open", "Test comment");
     }
 
     @Test(priority = 9)
     public void downloadAttachment() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
-        objTicketListingPage.downloadAttachment(Constants.strDate);
+        objTicketListingPage.downloadAttachment();
     }
 
     @Test(priority = 10)
     public void deleteTicket() throws InterruptedException {
         objTicketListingPage = new Payroll_HelpDesk_page_TicketListingLocator(driver);
-        objTicketListingPage.deleteTicket(Constants.strDate);
+        objTicketListingPage.deleteTicket();
 //        Thread.sleep(2000);
 //        objLoginPage.logOut();
 //        Thread.sleep(2000);

@@ -2,19 +2,20 @@
 
 <suite thread-count="1" verbose="1" name="Payroll-HelpDesk" annotations="JDK" parallel="true">
 
-    <test name="Test_Login" enabled="false">
+    <test name="Test_Login" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
                 <methods>
                     <include name="verifyEmployeeLogin"/>
                     <include name="verifyUserLogin"/>
-                    <exclude name="validateLogin"/>
+                    <include name="verifyAdminLogin"/>
+<!--                    <include name="validateLogin"/>-->
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Test_Group" enabled="true">
+    <test name="Test_Group" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
@@ -25,7 +26,7 @@
         </classes>
     </test>
 
-    <test name="Test_User" enabled="true">
+    <test name="Test_User" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
                 <methods>
@@ -36,7 +37,7 @@
         </classes>
     </test>
 
-    <test name="Test_CreateTicket" enabled="true">
+    <test name="Test_CreateTicket" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
                 <methods>
@@ -47,7 +48,7 @@
         </classes>
     </test>
 
-    <test name="Test_TicketListing" enabled="true">
+    <test name="Test_TicketListing" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
@@ -59,7 +60,7 @@
         </classes>
     </test>
 
-    <test name="Test_AssignATicket" enabled="true">
+    <test name="Test_AssignATicket" enabled="false">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AssignATicketTests">
                 <methods>
@@ -78,6 +79,5 @@
             </class>
         </classes>
     </test>
-
 
 </suite>

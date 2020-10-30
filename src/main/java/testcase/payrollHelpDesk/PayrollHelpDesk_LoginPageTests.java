@@ -21,6 +21,20 @@ public class PayrollHelpDesk_LoginPageTests extends TestBase {
 		driver = TestBase.testBase();
 	}
 
+	@Test()
+	public void validateLogin(){
+		try {
+			objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
+			objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+
+			Reporter.log("POSITIVE TESTCASE-1	:Login Page: verify Admin User type", true);
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	//POSITIVE TESTCASE-1	:Login Page: verify Admin User type
 	@Test(priority = 1)
 	public void verifyAdminLogin() {

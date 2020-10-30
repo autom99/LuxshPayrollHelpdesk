@@ -2,6 +2,7 @@ package pages;
 
 import TestUtil.CheckBox;
 import TestUtil.Constants;
+import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
@@ -17,26 +18,22 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 
 	public static WebDriverWait wait;
 	public static CheckBox objCheckBox;
+	public static GenericUtil genericUtil;
+	public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
+	public static Payroll_HelpDesk_page_CreateTicketLocator objCreateTicketLocator;
 
 	public Payroll_HelpDesk_page_UserLocator(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		this.driver = driver;
+		TestBase.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 20);
 	}
-
-	@FindBy(xpath = "//span[contains(text(),'Dashboard')]")
-	public WebElement link_Dashboard;
 
 	@FindBy(xpath = "//li[@id='link-User']//a[@class='nav-link nav-toggle']")
 	public WebElement link_User;
 	
 	@FindBy(xpath = "//a[contains(@class,'btn-sm')]")
 	public WebElement buttonAddUser;
-		
-	@FindBy(xpath = "//input[contains(@class,'form-control input-sm input-small input-inline')]")
-	public WebElement searchBar;
-	
+
 	@FindBy(xpath = "//select[@id='customgroupForAdd']") //TestGroupName
 	public WebElement SelectGroup;
 	
@@ -96,10 +93,10 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	public WebElement edit_Email;
 	
 	@FindBy(xpath = "//div[@id='editUser']//button[@class='btn btn-danger'][contains(text(),'Cancel')]")
-	public WebElement edit_buttonCancel;
+	public WebElement editUser_buttonCancel;
 	
 	@FindBy(xpath = "//div[@id='editUser']//button[@class='btn green'][contains(text(),'Save')]")
-	public WebElement edit_buttonSave;
+	public WebElement editUser_buttonSave;
 
 	@FindBy(xpath = "//div[contains(text(),'User updated successfully!')]")
 	public WebElement updateSuccessMsgEditUser;
@@ -120,16 +117,19 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	public void createUser(String GroupName,String EmpCode,String EmpName,String UserType,String EmailID,String PasswordEncText) {
 		try {
 			HighlightElement.highlightElement(link_User);
-			link_User.click();
-			Thread.sleep(1000);
+			genericUtil.clickWithPause(link_User,1000);
+//			link_User.click();
+//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(buttonAddUser);
-			buttonAddUser.click();
-			Thread.sleep(1000);
+			genericUtil.clickWithPause(buttonAddUser,1000);
+//			buttonAddUser.click();
+//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(SelectGroup);
-			SelectGroup.click();
-			Thread.sleep(1000);
+			genericUtil.clickWithPause(SelectGroup,1000);
+//			SelectGroup.click();
+//			Thread.sleep(1000);
 
 			Select selectGroup = new Select(SelectGroup);
 			selectGroup.selectByVisibleText(GroupName);
@@ -148,7 +148,6 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			HighlightElement.highlightElement(SelectUserType);
 			SelectUserType.click();
 			Thread.sleep(1000);
-
 			Select selectUserType = new Select(SelectUserType);
 			selectUserType.selectByVisibleText(UserType);
 			Thread.sleep(1000);
@@ -160,8 +159,9 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 
 			HighlightElement.highlightElement(Password);
 			Password.clear();
-			Password.sendKeys(PasswordEncText);
-			Thread.sleep(1000);
+			genericUtil.writeTextWithPause(Password,PasswordEncText,1000);
+//			Password.sendKeys(PasswordEncText);
+//			Thread.sleep(1000);
 
 			try {
 				objCheckBox = new CheckBox();
@@ -194,9 +194,9 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			PageNumber.click();
 			Thread.sleep(2000);
 
-			HighlightElement.highlightElement(searchBar);
-			searchBar.clear();
-			searchBar.sendKeys(EmpCode);
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(EmpCode);
 			Thread.sleep(4000);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -260,8 +260,8 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 				e.printStackTrace();
 			}
 
-			HighlightElement.highlightElement(edit_buttonSave);
-			edit_buttonSave.click();
+			HighlightElement.highlightElement(editUser_buttonSave);
+			editUser_buttonSave.click();
 			Thread.sleep(3000);
 
 			wait.until(ExpectedConditions.visibilityOf(updateSuccessMsgEditUser));
@@ -269,9 +269,9 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 				Assert.assertEquals(updateSuccessMsgEditUser.getText(),"User updated successfully!");
 			}
 
-			HighlightElement.highlightElement(searchBar);
-			searchBar.clear();
-			searchBar.sendKeys(UpdatedEmpCode);
+			HighlightElement.highlightElement(objGenericLocator.searchBar);
+			objGenericLocator.searchBar.clear();
+			objGenericLocator.searchBar.sendKeys(UpdatedEmpCode);
 			Thread.sleep(4000);
 
 			logo_img.click();

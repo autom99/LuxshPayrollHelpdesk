@@ -1,5 +1,7 @@
 package pages;
 
+import TestUtil.Constants;
+import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,21 +9,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-import TestUtil.Constants;
-import org.testng.TestNGUtils;
 
-public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
+public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
 
-    public WebDriverWait wait;
+    public static WebDriverWait wait;
+    public static GenericUtil genericUtil;
 
     public Payroll_HelpDesk_page_LoginLocator(WebDriver driver) {
-        this.driver = driver;
+        TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
     }
+
+    @FindBy(xpath = "//img[@src=\"/Login/images/LuxshTechnologiesLogo_2020.svg\"]")
+    public WebElement logo_img;
 
     @FindBy(xpath = "//input[@id='emp_code']")
     public WebElement emp_code;
@@ -60,7 +65,7 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
     public WebElement headerTextAdminUser;
 
     @FindBy(xpath = "//h1[contains(text(),'Welcome to User Panel')]")
-    public WebElement headerTextUser;
+    public WebElement headerTextNormalUser;
 
     @FindBy(xpath = "//h1[contains(text(),'Welcome to Employee Panel')]")
     public WebElement headerTextEmployee;
@@ -72,7 +77,15 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
      * @param password = password
      */
     public void validateLogin(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
         try {
+//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(1000);
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
@@ -225,7 +238,15 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
      * @param password = password
      */
     public void verifyAdminLogin(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
         try {
+//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(1000);
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
@@ -244,23 +265,22 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
             buttonLogin.click();
             Thread.sleep(4000);
 
-            String exp_URL = Constants.BASEURL + "Home/Index";
-            String act_URL = driver.getCurrentUrl();
-            Assert.assertEquals(act_URL, exp_URL);
+            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Home/Index");
             Reporter.log("SUCCESSFULLY redirected to the Admin page.", true);
 
 //            Assert.assertEquals(lblLoginUser.getText().trim().toLowerCase(), username.toLowerCase());
 //            Reporter.log("SUCCESSFULLY login by Admin User", true);
 
-            Assert.assertEquals(headerTextAdminUser.getText(),"Welcome to Admin Panel");
+            Assert.assertEquals(headerTextAdminUser.getText(), "Welcome to Admin Panel");
             Reporter.log("SUCCESSFULLY redirected to the Admin Page.!", true);
             Thread.sleep(2000);
 
-            Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
+            Assert.assertEquals(driver.getTitle(), "Home Page - HelpDeskTicketing");
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(1000);
 
             System.out.println("username text is : " + usernameTitle.getText());
+            HighlightElement.highlightElement(usernameTitle);
             usernameTitle.click();
             Thread.sleep(1000);
 
@@ -271,8 +291,16 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
         }
     }
 
-    public void verifyNormalUser(String username, String password){
+    public void verifyNormalUser(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
         try {
+            genericUtil.pause(1000);
+//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
@@ -299,11 +327,11 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 //            Assert.assertEquals(lblLoginUser.getText().trim().toLowerCase(),usernameTitle);
 //            Reporter.log("SUCCESSFULLY login by Normal User", true);
 
-            Assert.assertEquals(headerTextUser.getText(),"Welcome to User Panel");
+            Assert.assertEquals(headerTextNormalUser.getText(), "Welcome to User Panel");
             Reporter.log("SUCCESSFULLY redirected to the Admin Page", true);
             Thread.sleep(2000);
 
-            Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
+            Assert.assertEquals(driver.getTitle(), "Home Page - HelpDeskTicketing");
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(2000);
 
@@ -318,8 +346,16 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
         }
     }
 
-    public void verifyEmployeeUser(String username, String password){
+    public void verifyEmployeeUser(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
         try {
+//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(1000);
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
             emp_code.sendKeys(username);
@@ -346,11 +382,11 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
 //            Assert.assertEquals(headerTextEmployee.getText().trim().toLowerCase(),username.toLowerCase());
 //            Reporter.log("SUCCESSFULLY login by Employee User", true);
 
-            Assert.assertEquals(headerTextEmployee.getText(),"Welcome to Employee Panel");
+            Assert.assertEquals(headerTextEmployee.getText(), "Welcome to Employee Panel");
             Reporter.log("SUCCESSFULLY redirected to the Employee Page", true);
             Thread.sleep(2000);
 
-            Assert.assertEquals(driver.getTitle(),"Home Page - HelpDeskTicketing");
+            Assert.assertEquals(driver.getTitle(), "Home Page - HelpDeskTicketing");
             Reporter.log("SUCCESSFULLY matched with the title.!", true);
             Thread.sleep(1000);
 
@@ -371,28 +407,34 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase{
      *
      * @param username = Username
      */
-    public void verifyForgotPassword(String username) {
-        try {
-            forgetPassword.click();
-            Thread.sleep(4000);
-            emp_code.clear();
-            emp_code.sendKeys(username);
-            Thread.sleep(2000);
-        } catch (Exception ex) {
-            ex.getMessage();
-        }
+    public void verifyForgotPassword(String username) throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(logo_img));
+        HighlightElement.highlightElement(logo_img);
+        Assert.assertTrue(logo_img.isDisplayed());
+
+        forgetPassword.click();
+        Thread.sleep(4000);
+        emp_code.clear();
+        emp_code.sendKeys(username);
+        Thread.sleep(2000);
     }
 
     /**
      * logOut method
      */
     public void logOut() {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
         try {
-            if (buttonLogout.isDisplayed()){
+//            HighlightElement.highlightElement(usernameTitle);
+//            genericUtil.clickWithPause(usernameTitle, 2000);
+
+            if (buttonLogout.isDisplayed()) {
                 HighlightElement.highlightElement(buttonLogout);
+                wait.until(ExpectedConditions.visibilityOf(buttonLogout));
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
-//                buttonLogout.click();
-                Thread.sleep(2000);
+                genericUtil.pause(2000);
 //                driver.close();
             }
         } catch (Exception ex) {
