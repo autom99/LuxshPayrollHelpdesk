@@ -87,6 +87,9 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void createTicket(String strSubject,String strCategory,String strPriority,String strDescription){
 		try {
+			//Init GenericUtil object with driver instance
+			genericUtil = new GenericUtil();
+
 			objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
 
 			wait.until(ExpectedConditions.visibilityOf(link_Ticket));
@@ -188,6 +191,9 @@ public class Payroll_HelpDesk_page_CreateTicketLocator extends TestBase {
 	 */
 	public void ediTicket(String UpdatedSubject,String UpdatedCategory,String UpdatedPriority,String UpdatedDescription){
 		try {
+			//Init GenericUtil object with driver instance
+			genericUtil = new GenericUtil();
+
 			HighlightElement.highlightElement(objGenericLocator.searchBar);
 			objGenericLocator.searchBar.clear();
 			objGenericLocator.searchBar.sendKeys(Constants.strDate);

@@ -244,8 +244,8 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         try {
 //            wait.until(ExpectedConditions.visibilityOf(logo_img));
             genericUtil.pause(1000);
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
+//            HighlightElement.highlightElement(logo_img);
+//            Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
@@ -298,8 +298,8 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         try {
             genericUtil.pause(1000);
 //            wait.until(ExpectedConditions.visibilityOf(logo_img));
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
+//            HighlightElement.highlightElement(logo_img);
+//            Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
@@ -351,10 +351,10 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         genericUtil = new GenericUtil();
 
         try {
-//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+////            wait.until(ExpectedConditions.visibilityOf(logo_img));
             genericUtil.pause(1000);
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
+//            HighlightElement.highlightElement(logo_img);
+//            Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
@@ -374,8 +374,6 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
             buttonLogin.click();
             Thread.sleep(4000);
 
-//            String exp_URL = Constants.BASEURL + "Home/Index";
-//            String act_URL = driver.getCurrentUrl();
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Home/Index");
             Reporter.log("SUCCESSFULLY Employee page is redirected.", true);
 

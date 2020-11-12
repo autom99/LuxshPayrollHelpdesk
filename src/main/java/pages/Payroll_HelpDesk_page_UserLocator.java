@@ -21,6 +21,7 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	public static GenericUtil genericUtil;
 	public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
 	public static Payroll_HelpDesk_page_CreateTicketLocator objCreateTicketLocator;
+	public static HighlightElement objHighlightElement;
 
 	public Payroll_HelpDesk_page_UserLocator(WebDriver driver) {
 		TestBase.driver = driver;
@@ -101,9 +102,6 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	@FindBy(xpath = "//div[contains(text(),'User updated successfully!')]")
 	public WebElement updateSuccessMsgEditUser;
 	//-----------------------------------------------------------------------------------------------
-	@FindBy(xpath="//a[@href ='/Home/Index']")
-	public WebElement logo_img;
-	//-----------------------------------------------------------------------------------------------
 
 	/**TESTCASE METHOD: CREATE USER
 	 * 
@@ -116,20 +114,19 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	 */
 	public void createUser(String GroupName,String EmpCode,String EmpName,String UserType,String EmailID,String PasswordEncText) {
 		try {
+			//Init GenericUtil object with driver instance
+			genericUtil = new GenericUtil();
+			objHighlightElement = new HighlightElement();
+			objGenericLocator= new Payroll_HelpDesk_page_GenericLocator(driver);
+
 			HighlightElement.highlightElement(link_User);
 			genericUtil.clickWithPause(link_User,1000);
-//			link_User.click();
-//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(buttonAddUser);
 			genericUtil.clickWithPause(buttonAddUser,1000);
-//			buttonAddUser.click();
-//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(SelectGroup);
 			genericUtil.clickWithPause(SelectGroup,1000);
-//			SelectGroup.click();
-//			Thread.sleep(1000);
 
 			Select selectGroup = new Select(SelectGroup);
 			selectGroup.selectByVisibleText(GroupName);
@@ -160,8 +157,6 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			HighlightElement.highlightElement(Password);
 			Password.clear();
 			genericUtil.writeTextWithPause(Password,PasswordEncText,1000);
-//			Password.sendKeys(PasswordEncText);
-//			Thread.sleep(1000);
 
 			try {
 				objCheckBox = new CheckBox();
@@ -177,27 +172,27 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 
 			HighlightElement.highlightElement(buttonSave);
 			buttonSave.click();
-//			Thread.sleep(3000);
 
 			wait.until(ExpectedConditions.visibilityOf(SuccessMsgAddUser));
-			if (SuccessMsgAddUser.isDisplayed()){
-				Assert.assertEquals(SuccessMsgAddUser.getText(),"User Added Successfully !");
-			}
-
-			HighlightElement.highlightElement(NumberOfPages);
-			NumberOfPages.click();
-			Select selectNumberOfPages = new Select(NumberOfPages);
-			selectNumberOfPages.selectByVisibleText("100");
+//			Thread.sleep(4000);
+			Assert.assertEquals(SuccessMsgAddUser.getText(),"User Added Successfully !");
 			Thread.sleep(2000);
 
-			HighlightElement.highlightElement(PageNumber);
-			PageNumber.click();
-			Thread.sleep(2000);
+//			HighlightElement.highlightElement(objGenericLocator.NumberOfPages);
+//			objGenericLocator.NumberOfPages.click();
+//			Select selectNumberOfPages = new Select(objGenericLocator.NumberOfPages);
+//			selectNumberOfPages.selectByVisibleText("100");
+//			Thread.sleep(2000);
+//
+//			HighlightElement.highlightElement(objGenericLocator.PageNumber);
+//			objGenericLocator.PageNumber.click();
+//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(objGenericLocator.searchBar);
 			objGenericLocator.searchBar.clear();
-			objGenericLocator.searchBar.sendKeys(EmpCode);
-			Thread.sleep(4000);
+			objGenericLocator.searchBar.sendKeys("test" + "@");
+			System.out.println("TODAY'S DATE:	"+ Constants.strDate);
+			Thread.sleep(3000);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -213,6 +208,10 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 	 */
 	public void editUser(String UpdatedGroupName,String UpdatedEmpCode,String UpdatedEmpName,String UpdatedUserType,String UpdatedEmailID) {
 		try {
+			//Init GenericUtil object with driver instance
+			genericUtil = new GenericUtil();
+			Thread.sleep(3000);
+
 			HighlightElement.highlightElement(editIconButton);
 			editIconButton.click();
 			Thread.sleep(3000);
@@ -264,20 +263,16 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			editUser_buttonSave.click();
 			Thread.sleep(3000);
 
-			wait.until(ExpectedConditions.visibilityOf(updateSuccessMsgEditUser));
-			if (updateSuccessMsgEditUser.isDisplayed()){
-				Assert.assertEquals(updateSuccessMsgEditUser.getText(),"User updated successfully!");
-			}
+			Assert.assertEquals(updateSuccessMsgEditUser.getText(),"User updated successfully!");
+			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(objGenericLocator.searchBar);
 			objGenericLocator.searchBar.clear();
 			objGenericLocator.searchBar.sendKeys(UpdatedEmpCode);
 			Thread.sleep(4000);
 
-			logo_img.click();
-			Thread.sleep(4000);
 			Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Home/Index");
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

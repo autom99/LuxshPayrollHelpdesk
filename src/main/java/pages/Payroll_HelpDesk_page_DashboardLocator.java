@@ -1,5 +1,6 @@
 package pages;
 
+import TestUtil.GenericUtil;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +13,9 @@ import org.testng.Assert;
 import TestUtil.Constants;
 
 public class Payroll_HelpDesk_page_DashboardLocator extends TestBase {
-//    WebDriver driver;
+
     public static WebDriverWait wait;
+    public static GenericUtil genericUtil;
 
     public Payroll_HelpDesk_page_DashboardLocator(WebDriver driver) {
         this.driver = driver;
@@ -80,44 +82,60 @@ public class Payroll_HelpDesk_page_DashboardLocator extends TestBase {
      */
     public void dashboardOperations() {
         try {
+            //Init GenericUtil object with driver instance
+            genericUtil = new GenericUtil();
+
             navigateToAllTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateToOpenTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateToClosedTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateToOnholdTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateToReopenTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateToMyTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateToPendingTickets();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateByUrlAssignToGroup();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateIconSettingsGroup();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateIconBellNotification();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateHighPriority();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateMediumPriority();
             driver.navigate().back();
+            genericUtil.pause(2000);
 
             navigateLowPriority();
             driver.navigate().back();
+            genericUtil.pause(2000);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -143,8 +161,6 @@ public class Payroll_HelpDesk_page_DashboardLocator extends TestBase {
         String exp_URL = Constants.BASEURL + "Ticket/TicketListing?status=all";
         String act_URL = driver.getCurrentUrl();
         Assert.assertEquals(act_URL, exp_URL);
-
-//        Reporter.log("Success: ALL TICKETS", true);
     }
 
     /**

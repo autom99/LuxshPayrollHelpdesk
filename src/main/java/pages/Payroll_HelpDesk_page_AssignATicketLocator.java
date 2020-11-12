@@ -58,6 +58,7 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
 
     /**
      * TESTCASE METHOD: pendingTicketAssignToUser
+     *
      * @param strGroup = GroupOption
      * @param strUsers = UserOption
      */
@@ -73,13 +74,13 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
 
         try {
             HighlightElement.highlightElement(objGenericLocator.link_Dashboard);
-            genericUtil.clickWithPause(objGenericLocator.link_Dashboard,2000);
+            genericUtil.clickWithPause(objGenericLocator.link_Dashboard, 2000);
 
             HighlightElement.highlightElement(objCreateTicketLocator.link_Ticket);
-            genericUtil.clickWithPause(objCreateTicketLocator.link_Ticket,2000);
+            genericUtil.clickWithPause(objCreateTicketLocator.link_Ticket, 2000);
 
             HighlightElement.highlightElement(link_assignATicket);
-            genericUtil.clickWithPause(link_assignATicket,2000);
+            genericUtil.clickWithPause(link_assignATicket, 2000);
 
             Assert.assertEquals(sectionTitleAssignATicket.getText(), "Pending Ticket Assign To User");
             System.out.println("---------Assign A ticket Page-Section Title :--------- " + sectionTitleAssignATicket.getText());
@@ -119,10 +120,10 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
             genericUtil.pause(3000);
 
             HighlightElement.highlightElement(SaveButton);
-            genericUtil.clickWithPause(SaveButton,3000);
+            genericUtil.clickWithPause(SaveButton, 3000);
             wait.until(ExpectedConditions.textToBePresentInElement(SuccessAssignATicket, "User Assigned to Ticket Successfully!"));
 
-            genericUtil.assertEqualsWithPause(SuccessAssignATicket.getText(), "User Assigned to Ticket Successfully!",4000);
+            genericUtil.assertEqualsWithPause(SuccessAssignATicket.getText(), "User Assigned to Ticket Successfully!", 4000);
             System.out.println("---------Success Assign A ticket  :--------- " + SuccessAssignATicket.getText());
 
 //            Assert.assertEquals(SuccessAssignATicket.getText(), "User Assigned to Ticket Successfully!");
@@ -130,7 +131,7 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
 //            genericUtil.pause(4000);
 
             HighlightElement.highlightElement(objGenericLocator.usernameTitle);
-            genericUtil.clickWithPause(objGenericLocator.usernameTitle,2000);
+            genericUtil.clickWithPause(objGenericLocator.usernameTitle, 2000);
 
             HighlightElement.highlightElement(objGenericLocator.buttonLogout);
             wait.until(ExpectedConditions.visibilityOf(objGenericLocator.buttonLogout));
@@ -146,18 +147,29 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
 
     public void verifyPendingTicketAssignToUser() {
         try {
+            //Login As Normal User
             objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
             objLoginPage.validateLogin(Constants.NORMALUSERNAME, Constants.VALIDPASSWORD);
 
             HighlightElement.highlightElement(objGenericLocator.link_Dashboard);
-            genericUtil.clickWithPause(objGenericLocator.link_Dashboard,2000);
+            genericUtil.clickWithPause(objGenericLocator.link_Dashboard, 2000);
 
             HighlightElement.highlightElement(link_AssignMe);
-            genericUtil.clickWithPause(link_AssignMe,2000);
+            genericUtil.clickWithPause(link_AssignMe, 2000);
 
             HighlightElement.highlightElement(objGenericLocator.searchBar);
-            genericUtil.clearWithPause(objGenericLocator.searchBar,2000);
-            genericUtil.writeTextWithPause(objGenericLocator.searchBar,Constants.strDate,3000);
+            genericUtil.clearWithPause(objGenericLocator.searchBar, 2000);
+            genericUtil.writeTextWithPause(objGenericLocator.searchBar, Constants.strDate, 3000);
+
+            //Logout
+            HighlightElement.highlightElement(objLoginPage.buttonLogout);
+            wait.until(ExpectedConditions.visibilityOf(objLoginPage.buttonLogout));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", objLoginPage.buttonLogout);
+            genericUtil.pause(2000);
+
+            //Login As Admin
+            objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+
         } catch (Exception ex) {
             ex.getStackTrace();
         }

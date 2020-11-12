@@ -8,15 +8,20 @@
                 <methods>
                     <include name="verifyEmployeeLogin"/>
                     <include name="verifyUserLogin"/>
-                    <include name="verifyAdminLogin"/>
-<!--                    <include name="validateLogin"/>-->
+                    <!--                    <include name="verifyAdminLogin"/>-->
+                    <!--                    <include name="validateLogin"/>-->
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Test_Group" enabled="false">
+    <test name="Test_Group" enabled="true">
         <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
+                <methods>
+                    <include name="validateLogin"/>
+                </methods>
+            </class>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
                     <include name="createGroup"/>
@@ -26,7 +31,7 @@
         </classes>
     </test>
 
-    <test name="Test_User" enabled="false">
+    <test name="Test_User" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_UserPageTests">
                 <methods>
@@ -72,12 +77,16 @@
 
     <test name="Test_Dashboard" enabled="false">
         <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
+                <methods>
+                    <include name="validateLogin"/>
+                </methods>
+            </class>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_DashboardPageTests">
                 <methods>
-                    <include name="dashboardOperations"/>
+                    <include name="dashboardNavigationAllFunctionality"/>
                 </methods>
             </class>
         </classes>
     </test>
-
 </suite>

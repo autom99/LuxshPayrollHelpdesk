@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.concurrent.TimeUnit;
+
 public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
 
     public static WebDriverWait wait;
@@ -216,7 +218,8 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
      *
      */
     public void viewTicket(String status, String strComments) throws InterruptedException {
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         HighlightElement.highlightElement(link_Ticket);
         link_Ticket.click();
         Thread.sleep(1000);
@@ -308,7 +311,8 @@ public class Payroll_HelpDesk_page_TicketListingLocator extends TestBase {
             if (buttonDownload_downloadTicket.isDisplayed() && buttonDownload_downloadTicket.isEnabled()) {
                 HighlightElement.highlightElement(buttonDownload_downloadTicket);
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonDownload_downloadTicket);
-                Thread.sleep(4000);
+//                Thread.sleep(4000);
+                driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 
                 if (validationFileUpload.isDisplayed()) {
                     String warnMessage = validationFileUpload.getText();

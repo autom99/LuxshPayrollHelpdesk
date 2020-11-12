@@ -113,24 +113,16 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 		try {
 			HighlightElement.highlightElement(link_AdminSettings);
 			genericUtil.clickWithPause(link_AdminSettings,1000);
-//			link_AdminSettings.click();
-//			Thread.sleep(1000);
 
 			HighlightElement.highlightElement(link_Group);
 			genericUtil.clickWithPause(link_Group,1000);
-//			link_Group.click();
-//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(buttonAddGroup);
 			genericUtil.clickWithPause(buttonAddGroup,2000);
-//			buttonAddGroup.click();
-//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(Group_Code);
 			Group_Code.clear();
 			genericUtil.writeTextWithPause(Group_Code,GroupCode,2000);
-//			Group_Code.sendKeys(GroupCode);
-//			Thread.sleep(2000);
 
 			HighlightElement.highlightElement(Group_Name);
 			Group_Name.clear();
@@ -141,8 +133,6 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 			HighlightElement.highlightElement(Notes);
 			Notes.clear();
 			genericUtil.writeTextWithPause(Notes,Note,2000);
-//			Notes.sendKeys(Note);
-//			Thread.sleep(1000);
 
 			try {
 				objCheckBox = new CheckBox();
@@ -158,8 +148,6 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 
 			HighlightElement.highlightElement(buttonSave);
 			genericUtil.clickWithPause(buttonSave,4000);
-//			buttonSave.click();
-//			Thread.sleep(4000);
 
 //			wait.until(ExpectedConditions.visibilityOf(successMsgAddGroup));
 			if (successMsgAddGroup.isDisplayed()){
