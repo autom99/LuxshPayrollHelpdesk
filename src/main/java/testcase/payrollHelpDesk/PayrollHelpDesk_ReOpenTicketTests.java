@@ -24,5 +24,4 @@ public class PayrollHelpDesk_ReOpenTicketTests extends TestBase {
         objReOpenTicketLocator = new Payroll_HelpDesk_page_ReOpenTicketLocator(driver);
         objReOpenTicketLocator.reOpenTicket();
     }
-
 }

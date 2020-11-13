@@ -81,7 +81,8 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         genericUtil = new GenericUtil();
 
         try {
-//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(2000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
             genericUtil.pause(1000);
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
@@ -242,10 +243,11 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         genericUtil = new GenericUtil();
 
         try {
-//            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(3000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
             genericUtil.pause(1000);
-//            HighlightElement.highlightElement(logo_img);
-//            Assert.assertTrue(logo_img.isDisplayed());
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
@@ -296,10 +298,10 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         genericUtil = new GenericUtil();
 
         try {
-            genericUtil.pause(1000);
-//            wait.until(ExpectedConditions.visibilityOf(logo_img));
-//            HighlightElement.highlightElement(logo_img);
-//            Assert.assertTrue(logo_img.isDisplayed());
+            genericUtil.pause(3000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();
@@ -351,10 +353,11 @@ public class Payroll_HelpDesk_page_LoginLocator extends TestBase {
         genericUtil = new GenericUtil();
 
         try {
-////            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(3000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
             genericUtil.pause(1000);
-//            HighlightElement.highlightElement(logo_img);
-//            Assert.assertTrue(logo_img.isDisplayed());
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(emp_code);
             emp_code.clear();

@@ -12,7 +12,7 @@ import pages.Payroll_HelpDesk_page_LoginLocator;
 
 public class PayrollHelpDesk_AdminSettings_GroupPageTests extends TestBase {
 
-//    Payroll_HelpDesk_page_LoginLocator objLoginPage;
+    Payroll_HelpDesk_page_LoginLocator objLoginPage;
     Payroll_HelpDesk_page_AdminSetting_GroupLocator objGroupPage;
 
     @BeforeTest

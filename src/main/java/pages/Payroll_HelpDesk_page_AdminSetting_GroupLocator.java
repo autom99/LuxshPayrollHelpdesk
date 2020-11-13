@@ -1,6 +1,7 @@
 package pages;
 
 import TestUtil.CheckBox;
+import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
@@ -21,6 +22,7 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 	public static GenericUtil genericUtil;
 	public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
 	public static PayrollHelpDesk_CreateTicketPageTests objCreateTicketTestPage;
+	public static Payroll_HelpDesk_page_LoginLocator objLoginPage;
 
 	public Payroll_HelpDesk_page_AdminSetting_GroupLocator(WebDriver driver) {
 		TestBase.driver = driver;
@@ -105,6 +107,9 @@ public class Payroll_HelpDesk_page_AdminSetting_GroupLocator extends TestBase {
 		genericUtil = new GenericUtil();
 		objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
 		objCreateTicketLocator = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
+
+		objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
+		objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 		//init Create Ticket Test Page
 		objCreateTicketTestPage = new PayrollHelpDesk_CreateTicketPageTests();

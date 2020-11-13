@@ -17,11 +17,6 @@
 
     <test name="Test_Group" enabled="true">
         <classes>
-            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_LoginPageTests">
-                <methods>
-                    <include name="validateLogin"/>
-                </methods>
-            </class>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AdminSettings_GroupPageTests">
                 <methods>
                     <include name="createGroup"/>
@@ -42,7 +37,7 @@
         </classes>
     </test>
 
-    <test name="Test_CreateTicket" enabled="false">
+    <test name="Test_CreateTicket" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_CreateTicketPageTests">
                 <methods>
@@ -53,7 +48,7 @@
         </classes>
     </test>
 
-    <test name="Test_TicketListing" enabled="false">
+    <test name="Test_TicketListing" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_TicketListingTests">
                 <methods>
@@ -65,11 +60,21 @@
         </classes>
     </test>
 
-    <test name="Test_AssignATicket" enabled="false">
+    <test name="Test_AssignATicket" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_AssignATicketTests">
                 <methods>
                     <include name="assignPendingTickets"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test_ReOpenTicket" enabled="true">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_ReOpenTicketTests">
+                <methods>
+                    <include name="reOpenTicket"/>
                 </methods>
             </class>
         </classes>

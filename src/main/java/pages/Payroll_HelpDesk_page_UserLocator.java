@@ -263,6 +263,7 @@ public class Payroll_HelpDesk_page_UserLocator extends TestBase {
 			editUser_buttonSave.click();
 			Thread.sleep(3000);
 
+			wait.until(ExpectedConditions.visibilityOf(updateSuccessMsgEditUser));
 			Assert.assertEquals(updateSuccessMsgEditUser.getText(),"User updated successfully!");
 			Thread.sleep(2000);
 
