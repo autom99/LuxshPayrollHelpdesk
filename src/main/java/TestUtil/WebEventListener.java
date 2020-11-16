@@ -1,15 +1,13 @@
 package TestUtil;
 
-import base.TestBase;
-import base.TestBaseNew;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.testng.ITestResult;
 
-import java.io.File;
-
-public class WebEventListener extends TestBaseNew implements WebDriverEventListener {
+public class WebEventListener implements WebDriverEventListener  {
 
     ITestResult testName;
 
@@ -142,13 +140,5 @@ public class WebEventListener extends TestBaseNew implements WebDriverEventListe
     public void onException(Throwable throwable, WebDriver driver) {
 
     }
-
-//    public void onException(Throwable throwable, WebDriver driver) {
-//
-//        //            /* Take screenshot when exception happened. */
-////            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-////            /* save screenshot to file. */
-////            FileUtils.copyFile(scrFile, new File("./Screenshots/Failed/"+ result.getName() + " On " + Constants.strDate + "_" + Constants.date.getTime() + ".png"));
-//        CaptureScreenshot.captureScreenshotForFailedTests(driver,result.getName());
-//    }
 }
+

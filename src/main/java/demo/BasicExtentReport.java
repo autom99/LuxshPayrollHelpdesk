@@ -1,6 +1,7 @@
 package demo;
 
 import TestUtil.Constants;
+import base.TestBase;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -15,18 +16,19 @@ import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.*;
 
-public class BasicExtentReport {
+public class BasicExtentReport extends TestBase {
 
     //builds a new report using the html template
-    static ExtentHtmlReporter htmlReporter;
+    ExtentHtmlReporter htmlReporter;
 
-    static ExtentReports extent;
+    ExtentReports extent;
+
     //helps to generate the logs in test report.
-    static ExtentTest test;
+    ExtentTest test;
 
-    @Parameters({ "OS", "browser" })
+    @Parameters({"browser"})
     @BeforeTest
-    public void startReport(String OS, String browser) {
+    public void startReport(String browser) {
         // initialize the HtmlReporter
         htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/testReport.html");
 
@@ -35,7 +37,7 @@ public class BasicExtentReport {
         extent.attachReporter(htmlReporter);
 
         //To add system or environment info by using the setSystemInfo method.
-        extent.setSystemInfo("OS", OS);
+//        extent.setSystemInfo("OS", OS);
         extent.setSystemInfo("Browser", browser);
 
         //configuration items to change the look and feel

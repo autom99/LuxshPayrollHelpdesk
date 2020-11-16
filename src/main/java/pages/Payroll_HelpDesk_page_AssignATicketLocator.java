@@ -56,6 +56,9 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
     @FindBy(xpath = "//div[contains(text(),'User Assigned to Ticket Successfully!')]")
     public WebElement SuccessAssignATicket;
 
+    @FindBy(xpath = "//a[@href ='/Account/SignOut']")
+    public WebElement buttonLogout;
+
     /**
      * TESTCASE METHOD: pendingTicketAssignToUser
      *
@@ -65,6 +68,7 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
     public void pendingTicketAssignToUser(String strGroup, String strUsers) {
         //Init GenericUtil object with driver instance
         genericUtil = new GenericUtil();
+        objLoginPage = new Payroll_HelpDesk_page_LoginLocator(driver);
         objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
         objCreateTicketLocator = new Payroll_HelpDesk_page_CreateTicketLocator(driver);
 
@@ -162,8 +166,8 @@ public class Payroll_HelpDesk_page_AssignATicketLocator extends TestBase {
             genericUtil.writeTextWithPause(objGenericLocator.searchBar, Constants.strDate, 3000);
 
             //Logout
-            HighlightElement.highlightElement(objLoginPage.buttonLogout);
-            wait.until(ExpectedConditions.visibilityOf(objLoginPage.buttonLogout));
+            HighlightElement.highlightElement(buttonLogout);
+//            wait.until(ExpectedConditions.visibilityOf(buttonLogout));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", objLoginPage.buttonLogout);
             genericUtil.pause(2000);
 
