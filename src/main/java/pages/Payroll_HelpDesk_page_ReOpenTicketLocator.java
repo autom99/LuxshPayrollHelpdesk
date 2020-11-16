@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class Payroll_HelpDesk_page_ReOpenTicketLocator extends TestBase{
+public class Payroll_HelpDesk_page_ReOpenTicketLocator extends TestBase {
 
     public static WebDriverWait wait;
     public static Payroll_HelpDesk_page_GenericLocator objGenericLocator;
@@ -40,7 +40,7 @@ public class Payroll_HelpDesk_page_ReOpenTicketLocator extends TestBase{
     @FindBy(xpath = "//button[contains(text(),'Cancel')]")
     public WebElement buttonCancel;
 
-    @FindBy(xpath = "//div[contains(text(),'Ticket Updated Successfully !')]")
+    @FindBy(xpath = "//div[contains(text(),'Ticket On-Hold Successfully!')]")
     public WebElement UpdateMsgEditTicket;
 
     @FindBy(xpath = "//h4[@id='editTicketNumber']")
@@ -55,23 +55,29 @@ public class Payroll_HelpDesk_page_ReOpenTicketLocator extends TestBase{
     @FindBy(xpath = "//span[contains(text(),'Dashboard')]")
     public WebElement link_Dashboard;
 
+    @FindBy(xpath = "//h1[contains(text(),'Ticket Re-Open')]")
+    public WebElement verifyTitle_reOpenTicket;
+
     /**
      * TEST CASE: ReOpen Ticket
      */
-    public void reOpenTicket(){
+    public void verifyReOpenTicket() {
         //Init GenericUtil object with driver instance
         genericUtil = new GenericUtil();
         objDashboardPage = new Payroll_HelpDesk_page_DashboardLocator(driver);
         objGenericLocator = new Payroll_HelpDesk_page_GenericLocator(driver);
 
         HighlightElement.highlightElement(link_Dashboard);
-        genericUtil.clickWithPause(link_Dashboard,2000);
+        genericUtil.clickWithPause(link_Dashboard, 2000);
 
         HighlightElement.highlightElement(link_Ticket);
-        genericUtil.clickWithPause(link_Ticket,2000);
+        genericUtil.clickWithPause(link_Ticket, 2000);
 
         HighlightElement.highlightElement(link_reOpenTicket);
-        genericUtil.clickWithPause(link_reOpenTicket,2000);
+        genericUtil.clickWithPause(link_reOpenTicket, 2000);
+
+        HighlightElement.highlightElement(link_reOpenTicket);
+        genericUtil.clickWithPause(verifyTitle_reOpenTicket,2000);
 
         HighlightElement.highlightElement(objGenericLocator.searchBar);
         objGenericLocator.searchBar.clear();
@@ -85,12 +91,12 @@ public class Payroll_HelpDesk_page_ReOpenTicketLocator extends TestBase{
         wait.until(ExpectedConditions.visibilityOf(title_reOpenTicket));
         wait.until(ExpectedConditions.visibilityOf(title_Description));
 
-        genericUtil.clickWithPause(editSaveButton,3000);
+        genericUtil.clickWithPause(editSaveButton, 3000);
 //        wait.until(ExpectedConditions.visibilityOf(successMsgReOpen));
 
         //Navigate to the ReOpen Ticket from Dashboard
-        genericUtil.clickWithPause(link_Dashboard,3000);
-        Assert.assertEquals(driver.getCurrentUrl(),Constants.BASEURL + "Home/Index");
+        genericUtil.clickWithPause(link_Dashboard, 3000);
+        Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "Home/Index");
 
         objDashboardPage.navigateToReopenTickets();
     }

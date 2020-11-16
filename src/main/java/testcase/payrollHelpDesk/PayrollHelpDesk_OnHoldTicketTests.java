@@ -5,11 +5,11 @@ import base.TestBase;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Payroll_HelpDesk_page_LoginLocator;
-import pages.Payroll_HelpDesk_page_ReOpenTicketLocator;
+import pages.Payroll_HelpDesk_page_OnHoldTicketLocator;
 
-public class PayrollHelpDesk_ReOpenTicketTests extends TestBase {
+public class PayrollHelpDesk_OnHoldTicketTests extends TestBase {
 
-    public  static Payroll_HelpDesk_page_ReOpenTicketLocator objReOpenTicketLocator;
+    public  static Payroll_HelpDesk_page_OnHoldTicketLocator objOnHoldTicketLocator;
     public  static Payroll_HelpDesk_page_LoginLocator objLoginPage;
 
     @BeforeTest
@@ -20,8 +20,8 @@ public class PayrollHelpDesk_ReOpenTicketTests extends TestBase {
     }
 
     @Test
-    public void reOpenTicket(){
-        objReOpenTicketLocator = new Payroll_HelpDesk_page_ReOpenTicketLocator(driver);
-        objReOpenTicketLocator.verifyReOpenTicket();
+    public void onHoldTicket(){
+        objOnHoldTicketLocator = new Payroll_HelpDesk_page_OnHoldTicketLocator(driver);
+        objOnHoldTicketLocator.verifyOnHoldTicket();
     }
 }

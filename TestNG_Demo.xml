@@ -70,6 +70,16 @@
         </classes>
     </test>
 
+    <test name="Test_OnHoldTicket" enabled="true">
+        <classes>
+            <class name="testcase.payrollHelpDesk.PayrollHelpDesk_OnHoldTicketTests">
+                <methods>
+                    <include name="onHoldTicket"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
     <test name="Test_ReOpenTicket" enabled="true">
         <classes>
             <class name="testcase.payrollHelpDesk.PayrollHelpDesk_ReOpenTicketTests">
